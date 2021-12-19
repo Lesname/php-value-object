@@ -11,7 +11,7 @@ use RuntimeException;
  */
 abstract class AbstractNumberValueObject implements NumberValueObject
 {
-    public function __construct(public float | int $value)
+    public function __construct(private float | int $value)
     {}
 
     public function getValue(): float|int
