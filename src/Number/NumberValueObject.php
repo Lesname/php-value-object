@@ -10,11 +10,22 @@ use LessValueObject\ValueObject;
  */
 interface NumberValueObject extends ValueObject
 {
-    public function getValue(): float | int;
+    /**
+     * @psalm-pure
+     */
+    public static function getPrecision(): int;
 
+    /**
+     * @psalm-pure
+     */
     public static function getMaxValue(): float | int;
 
+    /**
+     * @psalm-pure
+     */
     public static function getMinValue(): float | int;
+
+    public function getValue(): float | int;
 
     public function isGreater(NumberValueObject | float | int $value): bool;
 
