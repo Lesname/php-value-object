@@ -29,4 +29,14 @@ abstract class AbstractIntValueObject extends AbstractNumberValueObject implemen
     {
         return 0;
     }
+
+    /**
+     * @psalm-pure
+     */
+    abstract public static function getMinValue(): int;
+
+    /**
+     * @psalm-pure
+     */
+    abstract public static function getMaxValue(): int;
 }

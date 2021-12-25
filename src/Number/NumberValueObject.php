@@ -18,12 +18,12 @@ interface NumberValueObject extends ValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxValue(): float | int;
+    public static function getMinValue(): float | int;
 
     /**
      * @psalm-pure
      */
-    public static function getMinValue(): float | int;
+    public static function getMaxValue(): float | int;
 
     public function getValue(): float | int;
 

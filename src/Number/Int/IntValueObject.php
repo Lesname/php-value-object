@@ -10,5 +10,15 @@ use LessValueObject\Number\NumberValueObject;
  */
 interface IntValueObject extends NumberValueObject
 {
+    /**
+     * @psalm-pure
+     */
+    public static function getMinValue(): int;
+
+    /**
+     * @psalm-pure
+     */
+    public static function getMaxValue(): int;
+
     public function getValue(): int;
 }
