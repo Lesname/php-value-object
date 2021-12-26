@@ -6,7 +6,7 @@ namespace LessValueObject\String\Format;
 /**
  * @psalm-immutable
  */
-final class Uri extends AbstractFormatStringValueObject
+final class Uri extends AbstractFormattedStringValueObject
 {
     /**
      * @psalm-pure

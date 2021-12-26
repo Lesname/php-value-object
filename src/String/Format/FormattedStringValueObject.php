@@ -8,7 +8,7 @@ use LessValueObject\String\StringValueObject;
 /**
  * @psalm-immutable
  */
-interface StringFormatValueObject extends StringValueObject
+interface FormattedStringValueObject extends StringValueObject
 {
     /**
      * @psalm-pure

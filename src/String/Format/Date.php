@@ -8,7 +8,7 @@ use RuntimeException;
 /**
  * @psalm-immutable
  */
-final class Date extends AbstractFormatStringValueObject
+final class Date extends AbstractFormattedStringValueObject
 {
     /**
      * @psalm-pure

@@ -11,7 +11,7 @@ use LessValueObject\String\Format\Exception\NotFormat;
 /**
  * @psalm-immutable
  */
-abstract class AbstractFormatStringValueObject extends AbstractStringValueObject implements StringFormatValueObject
+abstract class AbstractFormattedStringValueObject extends AbstractStringValueObject implements FormattedStringValueObject
 {
     /**
      * @throws NotFormat
