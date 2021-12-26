@@ -6,7 +6,7 @@ namespace LessValueObject\String\Format;
 /**
  * @psalm-immutable
  */
-final class Ip extends AbstractStringFormatValueObject
+final class Ip extends AbstractFormatStringValueObject
 {
     /**
      * @psalm-pure

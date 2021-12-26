@@ -4,13 +4,20 @@ declare(strict_types=1);
 namespace LessValueObject\String\Format;
 
 use LessValueObject\String\AbstractStringValueObject;
+use LessValueObject\String\Exception\TooLong;
+use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Exception\NotFormat;
 
 /**
  * @psalm-immutable
  */
-abstract class AbstractStringFormatValueObject extends AbstractStringValueObject implements StringFormatValueObject
+abstract class AbstractFormatStringValueObject extends AbstractStringValueObject implements StringFormatValueObject
 {
+    /**
+     * @throws NotFormat
+     * @throws TooLong
+     * @throws TooShort
+     */
     public function __construct(string $string)
     {
         parent::__construct($string);
