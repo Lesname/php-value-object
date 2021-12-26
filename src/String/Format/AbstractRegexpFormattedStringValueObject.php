@@ -13,8 +13,17 @@ abstract class AbstractRegexpFormattedStringValueObject extends AbstractFormatte
      */
     abstract public static function getRegexPattern(): string;
 
+    /**
+     * @psalm-pure
+     */
     public static function isFormat(string $input): bool
     {
+        $length = mb_strlen($input);
+
+        if ($length < static::getMinLength() || $length > static::getMaxLength()) {
+            return false;
+        }
+
         $pattern = static::getRegexPattern();
         return preg_match("/{$pattern}/", $input) === 1;
     }

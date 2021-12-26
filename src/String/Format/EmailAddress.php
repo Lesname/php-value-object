@@ -13,6 +13,12 @@ final class EmailAddress extends AbstractFormattedStringValueObject
      */
     public static function isFormat(string $input): bool
     {
+        $length = mb_strlen($input);
+
+        if ($length < static::getMinLength() || $length > static::getMaxLength()) {
+            return false;
+        }
+
         return filter_var($input, FILTER_VALIDATE_EMAIL, FILTER_FLAG_EMAIL_UNICODE) !== false;
     }
 

@@ -15,6 +15,12 @@ final class Date extends AbstractFormattedStringValueObject
      */
     public static function isFormat(string $input): bool
     {
+        $length = mb_strlen($input);
+
+        if ($length < static::getMinLength() || $length > static::getMaxLength()) {
+            return false;
+        }
+
         if (preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $input, $matches) !== 1) {
             return false;
         }
