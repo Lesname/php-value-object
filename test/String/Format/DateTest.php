@@ -15,7 +15,8 @@ final class DateTest extends TestCase
     {
         self::assertTrue(Date::isFormat('2021-12-30'));
         self::assertFalse(Date::isFormat('2021-12-32'));
-        self::assertFalse(Date::isFormat('fiz'));
+        self::assertFalse(Date::isFormat('1-12-32'));
+        self::assertFalse(Date::isFormat('2021-a-32'));
     }
 
     public function testLengthConstraint(): void

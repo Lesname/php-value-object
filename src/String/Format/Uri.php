@@ -27,7 +27,7 @@ final class Uri extends AbstractFormattedStringValueObject
      */
     public static function getMinLength(): int
     {
-        return 1;
+        return 5;
     }
 
     /**

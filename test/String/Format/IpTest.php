@@ -21,6 +21,7 @@ final class IpTest extends TestCase
         self::assertTrue(Ip::isFormat('abcd:abcd:abcd:abcd:abcd:abcd:abcd:abcd'));
         self::assertTrue(Ip::isFormat('ABCD:ABCD:ABCD:ABCD:ABCD:ABCD:192.168.158.190'));
 
+        self::assertFalse(Ip::isFormat('1'));
         self::assertFalse(Ip::isFormat('fiz'));
         self::assertFalse(Ip::isFormat('255.255.255.256'));
     }
