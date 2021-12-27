@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 final class AbstractCollectionValueObjectTest extends TestCase
 {
-
     public function testMinOutBounds(): void
     {
         $this->expectException(TooFewItems::class);
