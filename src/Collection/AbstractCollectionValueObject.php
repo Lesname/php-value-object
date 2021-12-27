@@ -15,7 +15,7 @@ use Traversable;
  * @implements IteratorAggregate<int, T>
  * @implements CollectionValueObject<T>
  *
- * @template T of Vo
+ * @template T of ValueObject
  *
  * @psalm-immutable
  */

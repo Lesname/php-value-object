@@ -75,5 +75,4 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
      * @return T|null
      */
     public function last(): ?ValueObject;
-
 }
