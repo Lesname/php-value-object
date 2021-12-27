@@ -22,7 +22,7 @@ final class Timestamp extends AbstractIntValueObject
      * @throws MinOutBounds
      * @throws PrecisionOutBounds
      *
-     * @psalm-suppress ImpureMethodCall getTimestamp and format are pure
+     * @psalm-suppress ImpureMethodCall getTimestamp
      */
     public static function fromDateTime(DateTimeInterface $dateTime): self
     {
@@ -67,9 +67,12 @@ final class Timestamp extends AbstractIntValueObject
 
     public function toDateTime(): DateTimeInterface
     {
-        return (new DateTime())->setTimestamp($this->getValue());
+        return new DateTime('@' . $this->getValue());
     }
 
+    /**
+     * @psalm-suppress ImpureMethodCall format is pure
+     */
     public function format(string $format): string
     {
         return $this->toDateTime()->format($format);

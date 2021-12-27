@@ -9,7 +9,6 @@ use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
 use LessValueObject\Number\Int\AbstractIntValueObject;
-use RuntimeException;
 
 /**
  * @psalm-immutable
@@ -58,10 +57,7 @@ final class MilliTimestamp extends AbstractIntValueObject
 
     public function toDateTime(): DateTimeInterface
     {
-        $datetime = DateTime::createFromFormat('U.v', (string)($this->getValue() / 1_000));
-        assert($datetime instanceof DateTimeInterface, new RuntimeException('Failed creating datetime'));
-
-        return $datetime;
+        return new DateTime('@' . ($this->getValue() / 1_000));
     }
 
     /**
@@ -74,6 +70,9 @@ final class MilliTimestamp extends AbstractIntValueObject
         return new Timestamp((int) floor($this->getValue() / 1_000));
     }
 
+    /**
+     * @psalm-suppress ImpureMethodCall format is pure
+     */
     public function format(string $format): string
     {
         return $this->toDateTime()->format($format);
