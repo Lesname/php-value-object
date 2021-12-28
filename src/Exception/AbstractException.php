@@ -10,6 +10,6 @@ use Exception;
  *
  * @psalm-suppress MutableDependency base dependency
  */
-abstract class AbstractValueObjectException extends Exception
+abstract class AbstractException extends Exception
 {
 }

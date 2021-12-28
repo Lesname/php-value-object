@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace LessValueObject\Collection\Exception;
 
-use LessValueObject\Exception\AbstractValueObjectException;
+use LessValueObject\Exception\AbstractException;
 
 /**
  * @psalm-immutable
  */
-final class TooManyItems extends AbstractValueObjectException
+final class TooManyItems extends AbstractException
 {
     public function __construct(public int $max, public int $given)
     {

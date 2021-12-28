@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number\Exception;
 
-use LessValueObject\Exception\AbstractValueObjectException;
+use LessValueObject\Exception\AbstractException;
 
 /**
  * @psalm-immutable
  */
-final class MaxOutBounds extends AbstractValueObjectException
+final class MaxOutBounds extends AbstractException
 {
     public function __construct(
         public float|int $max,

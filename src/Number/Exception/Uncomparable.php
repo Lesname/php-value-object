@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number\Exception;
 
-use LessValueObject\Exception\AbstractValueObjectException;
+use LessValueObject\Exception\AbstractException;
 use LessValueObject\Number\NumberValueObject;
 
 /**
  * @psalm-immutable
  */
-final class Uncomparable extends AbstractValueObjectException
+final class Uncomparable extends AbstractException
 {
     public function __construct(public NumberValueObject $left, public NumberValueObject $right)
     {
