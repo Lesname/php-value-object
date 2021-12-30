@@ -4,12 +4,12 @@ declare(strict_types=1);
 namespace LessValueObject\Enum\Exception;
 
 use LessValueObject\Enum\EnumValueObject;
-use LessValueObject\Exception\AbstractValueObjectException;
+use LessValueObject\Exception\AbstractException;
 
 /**
  * @psalm-immutable
  */
-final class UnknownCase extends AbstractValueObjectException
+final class UnknownCase extends AbstractException
 {
     /**
      * @param class-string<EnumValueObject> $enum

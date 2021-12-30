@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number\Exception;
 
-use LessValueObject\Exception\AbstractValueObjectException;
+use LessValueObject\Exception\AbstractException;
 
 /**
  * @psalm-immutable
  */
-final class MinOutBounds extends AbstractValueObjectException
+final class MinOutBounds extends AbstractException
 {
     public function __construct(
         public float|int $precision,

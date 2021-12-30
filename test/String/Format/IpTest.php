@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObjectTest\String\Format;
 
+use LessValueObject\String\Format\Exception\UnknownVersion;
 use LessValueObject\String\Format\Ip;
 use PHPUnit\Framework\TestCase;
 
@@ -30,5 +31,18 @@ final class IpTest extends TestCase
     {
         self::assertSame(2, Ip::getMinLength());
         self::assertSame(45, Ip::getMaxLength());
+    }
+
+    public function testLocal(): void
+    {
+        self::assertSame('127.0.0.1', (string)Ip::local(4));
+        self::assertSame('::1', (string)Ip::local(6));
+    }
+
+    public function testLocalUnknownVersion(): void
+    {
+        $this->expectException(UnknownVersion::class);
+
+        Ip::local(1);
     }
 }

@@ -6,7 +6,7 @@ namespace LessValueObject\String;
 /**
  * @psalm-immutable
  */
-final class UtmParameter extends AbstractStringValueObject
+final class UserAgent extends AbstractStringValueObject
 {
     /**
      * @psalm-pure
@@ -21,6 +21,6 @@ final class UtmParameter extends AbstractStringValueObject
      */
     public static function getMaxLength(): int
     {
-        return 100;
+        return 255;
     }
 }

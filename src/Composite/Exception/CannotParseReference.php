@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace LessValueObject\Composite\Exception;
 
-use LessValueObject\Exception\AbstractValueObjectException;
+use LessValueObject\Exception\AbstractException;
 
 /**
  * @psalm-immutable
  */
-final class CannotParseReference extends AbstractValueObjectException
+final class CannotParseReference extends AbstractException
 {
     public function __construct(public string $given)
     {
