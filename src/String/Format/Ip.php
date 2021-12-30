@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace LessValueObject\String\Format;
 
 use LessValueObject\String\Format\Exception\UnknownVersion;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @psalm-immutable
@@ -36,6 +37,20 @@ final class Ip extends AbstractFormattedStringValueObject
             6 => new self('::1'),
             default => throw new UnknownVersion($version),
         };
+    }
+
+    /**
+     * @psalm-pure
+     *
+     * @psalm-suppress ImpureMethodCall getters
+     */
+    public static function fromRequest(ServerRequestInterface $request): ?Ip
+    {
+        $params = $request->getServerParams();
+
+        return isset($params['REMOTE_ADDR']) && is_string($params['REMOTE_ADDR'])
+            ? new self($params['REMOTE_ADDR'])
+            : null;
     }
 
     /**

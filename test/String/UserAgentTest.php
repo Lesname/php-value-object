@@ -6,6 +6,7 @@ namespace LessValueObjectTest\String;
 use LessValueObject\String\Exception\TooLong;
 use LessValueObject\String\UserAgent;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @covers \LessValueObject\String\UserAgent
@@ -25,5 +26,19 @@ final class UserAgentTest extends TestCase
         $this->expectException(TooLong::class);
 
         new UserAgent(str_repeat('a', 256));
+    }
+
+    public function testFromRequest(): void
+    {
+        $request = $this->createMock(ServerRequestInterface::class);
+        $request
+            ->expects(self::once())
+            ->method('getHeaderLine')
+            ->with('user-agent')
+            ->willReturn(str_repeat('a', 256));
+
+        $userAgent = UserAgent::fromRequest($request);
+
+        self::assertSame(str_repeat('a', 255), (string)$userAgent);
     }
 }
