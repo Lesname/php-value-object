@@ -9,6 +9,7 @@ use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Exception\NotFormat;
 use LessValueObject\String\Format\Reference\Id;
 use LessValueObject\String\Format\Reference\Type;
+use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @psalm-immutable
@@ -47,6 +48,21 @@ final class Reference extends AbstractCompositeValueObject
     public static function fromArray(array $array): self
     {
         return new self(new Type($array['type']), new Id($array['id']));
+    }
+
+    /**
+     * @psalm-pure
+     *
+     * @psalm-suppress ImpureMethodCall getter
+     */
+    public static function fromRequest(ServerRequestInterface $request): ?Reference
+    {
+        $identity = $request->getAttribute('identity');
+        assert(is_string($identity) || is_null($identity), 'Identity must be string or null');
+
+        return is_string($identity)
+            ? self::fromString($identity)
+            : null;
     }
 
     public function __toString(): string
