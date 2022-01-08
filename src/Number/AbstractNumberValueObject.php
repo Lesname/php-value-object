@@ -74,12 +74,14 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     }
 
     /**
+     * @psalm-param pure-callable(float | int, float | int): bool $comparor
+     *
      * @param NumberValueObject|float|int $with
-     * @param Closure(float | int, float | int): bool $comparor
+     * @param callable(float | int, float | int): bool $comparor
      *
      * @throws Uncomparable
      */
-    protected function compare(NumberValueObject|float|int $with, Closure $comparor): bool
+    protected function compare(NumberValueObject|float|int $with, callable $comparor): bool
     {
         if (is_float($with) || is_int($with)) {
             return $comparor($with, $this->getValue());

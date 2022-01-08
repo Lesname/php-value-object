@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace LessValueObject\Collection;
 
 use ArrayIterator;
-use Closure;
 use IteratorAggregate;
 use LessValueObject\Collection\Exception\TooFewItems;
 use LessValueObject\Collection\Exception\TooManyItems;
@@ -26,26 +25,28 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
      */
     public function __construct(public array $items)
     {
-        if (count($items) < static::getMinSize()) {
-            throw new TooFewItems(static::getMinSize(), count($items));
+        if (count($items) < static::getMinlength()) {
+            throw new TooFewItems(static::getMinlength(), count($items));
         }
 
-        if (count($items) > static::getMaxSize()) {
-            throw new TooManyItems(static::getMaxSize(), count($items));
+        if (count($items) > static::getMaxLength()) {
+            throw new TooManyItems(static::getMaxLength(), count($items));
         }
     }
 
     /**
-     * @param Closure(T, int): M $closure
+     * @psalm-param pure-callable(T, int): M $callable
+     *
+     * @param callable(T, int): M $callable
      *
      * @template M
      *
      * @return iterable<int, M>
      */
-    public function map(Closure $closure): iterable
+    public function map(callable $callable): iterable
     {
         foreach ($this->items as $i => $item) {
-            yield $i => $closure($item, $i);
+            yield $i => $callable($item, $i);
         }
     }
 
@@ -58,7 +59,9 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     }
 
     /**
-     * @param Closure(I|R, T, int): R $closure
+     * @psalm-param pure-callable(I|R, T, int): R $callable
+     *
+     * @param callable(I|R, T, int): R $callable
      * @param I $initial
      *
      * @template I
@@ -66,26 +69,28 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
      *
      * @return R | I
      */
-    public function reduce(Closure $closure, mixed $initial = null): mixed
+    public function reduce(callable $callable, mixed $initial = null): mixed
     {
         $result = $initial;
 
         foreach ($this->items as $index => $item) {
-            $result = $closure($result ?? $initial, $item, $index);
+            $result = $callable($result ?? $initial, $item, $index);
         }
 
         return $result;
     }
 
     /**
-     * @param Closure(T, int): bool $closure
+     * @psalm-param pure-callable(T, int): bool $callable
+     *
+     * @param callable(T, int): bool $callable
      *
      * @return T|null
      */
-    public function find(Closure $closure): ?ValueObject
+    public function find(callable $callable): ?ValueObject
     {
         foreach ($this->items as $index => $item) {
-            if ($closure($item, $index)) {
+            if ($callable($item, $index)) {
                 return $item;
             }
         }

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace LessValueObject\Collection;
 
-use Closure;
 use Countable;
 use LessValueObject\ValueObject;
 use Traversable;
@@ -20,28 +19,30 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
     /**
      * @psalm-pure
      */
-    public static function getMinSize(): int;
+    public static function getMinlength(): int;
 
     /**
      * @psalm-pure
      */
-    public static function getMaxSize(): int;
+    public static function getMaxLength(): int;
 
     /**
      * @return class-string<T>
      *
      * @psalm-pure
      */
-    public static function getItemType(): string;
+    public static function getItem(): string;
 
     /**
-     * @param Closure(T, int): M $closure
+     * @psalm-param pure-callable(T, int): M $callable
+     *
+     * @param callable(T, int): M $callable
      *
      * @template M
      *
      * @return iterable<int, M>
      */
-    public function map(Closure $closure): iterable;
+    public function map(callable $callable): iterable;
 
     /**
      * @return iterable<int, T>
@@ -49,7 +50,9 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
     public function slice(int $offset, ?int $length = null): iterable;
 
     /**
-     * @param Closure(I, T, int): R $closure
+     * @psalm-param pure-callable(I, T, int): R $callable
+     *
+     * @param callable(I, T, int): R $callable
      * @param I $initial
      *
      * @template I
@@ -57,14 +60,16 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
      *
      * @return R
      */
-    public function reduce(Closure $closure, mixed $initial): mixed;
+    public function reduce(callable $callable, mixed $initial): mixed;
 
     /**
-     * @param Closure(T, int): bool $closure
+     * @psalm-param pure-callable(T, int): bool $callable
+     *
+     * @param callable(T, int): bool $callable
      *
      * @return T|null
      */
-    public function find(Closure $closure): ?ValueObject;
+    public function find(callable $callable): ?ValueObject;
 
     /**
      * @return T|null
