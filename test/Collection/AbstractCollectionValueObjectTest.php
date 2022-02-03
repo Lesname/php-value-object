@@ -29,7 +29,7 @@ final class AbstractCollectionValueObjectTest extends TestCase
                 return 2;
             }
 
-            public static function getItem(): string
+            public static function getItemType(): string
             {
                 return ValueObject::class;
             }
@@ -51,213 +51,11 @@ final class AbstractCollectionValueObjectTest extends TestCase
                 return 0;
             }
 
-            public static function getItem(): string
+            public static function getItemType(): string
             {
                 return ValueObject::class;
             }
         };
-    }
-
-    public function testMap(): void
-    {
-        $vo = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$vo]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 1;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        $mapper = static fn ($item, $index) => $item === $vo && $index === 0;
-
-        foreach ($collection->map($mapper) as $i) {
-            self::assertTrue($i);
-        }
-    }
-
-    public function testSlice(): void
-    {
-        $first = $this->createMock(ValueObject::class);
-        $two = $this->createMock(ValueObject::class);
-        $three = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$first, $two, $three]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 3;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        foreach ($collection->slice(1, 1) as $i) {
-            self::assertSame($two, $i);
-        }
-    }
-
-    public function testReduce(): void
-    {
-        $first = $this->createMock(ValueObject::class);
-        $two = $this->createMock(ValueObject::class);
-        $three = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$first, $two, $three]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 3;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        $result = $collection->reduce(
-            function (int $carry, $item, int $index): int {
-                return $carry + $index;
-            },
-            69,
-        );
-
-        self::assertSame(72, $result);
-    }
-
-    public function testFind(): void
-    {
-        $first = $this->createMock(ValueObject::class);
-        $two = $this->createMock(ValueObject::class);
-        $three = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$first, $two, $three]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 3;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        $result = $collection->find(static fn($item, $index): bool => $item === $two);
-
-        self::assertSame($two, $result);
-    }
-
-    public function testFindNoMatch(): void
-    {
-        $first = $this->createMock(ValueObject::class);
-        $two = $this->createMock(ValueObject::class);
-        $three = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$first, $two, $three]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 3;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        $result = $collection->find(static fn($item, $index): bool => false);
-
-        self::assertNull($result);
-    }
-
-    public function testFirst(): void
-    {
-        $first = $this->createMock(ValueObject::class);
-        $two = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$first, $two]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 3;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        self::assertSame($first, $collection->first());
-    }
-
-    public function testLast(): void
-    {
-        $first = $this->createMock(ValueObject::class);
-        $two = $this->createMock(ValueObject::class);
-
-        $collection = new class ([$first, $two]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
-            {
-                return 0;
-            }
-
-            public static function getMaxLength(): int
-            {
-                return 3;
-            }
-
-
-            public static function getItem(): string
-            {
-                return ValueObject::class;
-            }
-        };
-
-        self::assertSame($two, $collection->last());
     }
 
     public function testTraversable(): void
@@ -276,7 +74,7 @@ final class AbstractCollectionValueObjectTest extends TestCase
             }
 
 
-            public static function getItem(): string
+            public static function getItemType(): string
             {
                 return ValueObject::class;
             }
@@ -305,7 +103,7 @@ final class AbstractCollectionValueObjectTest extends TestCase
             }
 
 
-            public static function getItem(): string
+            public static function getItemType(): string
             {
                 return ValueObject::class;
             }
@@ -331,7 +129,7 @@ final class AbstractCollectionValueObjectTest extends TestCase
             }
 
 
-            public static function getItem(): string
+            public static function getItemType(): string
             {
                 return ValueObject::class;
             }

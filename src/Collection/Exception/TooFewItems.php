@@ -10,7 +10,7 @@ use LessValueObject\Exception\AbstractException;
  */
 final class TooFewItems extends AbstractException
 {
-    public function __construct(public int $min, public int $given)
+    public function __construct(public readonly int $min, public readonly int $given)
     {
         parent::__construct("Too few items, minimal {$min}, given {$given}");
     }
