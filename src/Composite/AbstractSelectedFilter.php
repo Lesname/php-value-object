@@ -17,6 +17,8 @@ abstract class AbstractSelectedFilter extends AbstractCompositeValueObject
      * @param FilterMode $mode
      * @param CollectionValueObject<EnumValueObject|StringValueObject> $selected
      */
-    public function __construct(public FilterMode $mode, public CollectionValueObject $selected)
-    {}
+    public function __construct(
+        public readonly FilterMode $mode,
+        public readonly CollectionValueObject $selected,
+    ) {}
 }
