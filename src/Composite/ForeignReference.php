@@ -14,9 +14,9 @@ use Psr\Http\Message\ServerRequestInterface;
 /**
  * @psalm-immutable
  */
-final class Reference extends AbstractCompositeValueObject
+final class ForeignReference extends AbstractCompositeValueObject
 {
-    public function __construct(public Type $type, public Id $id)
+    public function __construct(public readonly Type $type, public readonly Id $id)
     {}
 
     /**
@@ -55,7 +55,7 @@ final class Reference extends AbstractCompositeValueObject
      *
      * @psalm-suppress ImpureMethodCall getter
      */
-    public static function fromRequest(ServerRequestInterface $request): ?Reference
+    public static function fromRequest(ServerRequestInterface $request): ?ForeignReference
     {
         $identity = $request->getAttribute('identity');
         assert(is_string($identity) || is_null($identity), 'Identity must be string or null');

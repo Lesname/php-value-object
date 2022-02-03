@@ -10,7 +10,7 @@ use LessValueObject\Exception\AbstractException;
  */
 final class CannotParseReference extends AbstractException
 {
-    public function __construct(public string $given)
+    public function __construct(public readonly string $given)
     {
         parent::__construct("Cannot parse '{$given}' as a reference");
     }
