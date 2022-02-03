@@ -14,6 +14,6 @@ final class ContentBodyTest extends TestCase
     public function testConstraints(): void
     {
         self::assertSame(1, ContentBody::getMinLength());
-        self::assertSame(9_999, ContentBody::getMaxLength());
+        self::assertSame(15_000, ContentBody::getMaxLength());
     }
 }
