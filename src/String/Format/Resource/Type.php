@@ -1,21 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format\Reference;
+namespace LessValueObject\String\Format\Resource;
 
 use LessValueObject\String\Format\AbstractRegexpFormattedStringValueObject;
 
 /**
  * @psalm-immutable
  */
-final class Id extends AbstractRegexpFormattedStringValueObject
+final class Type extends AbstractRegexpFormattedStringValueObject
 {
     /**
      * @psalm-pure
      */
     public static function getRegexPattern(): string
     {
-        return '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$';
+        return '^[a-z][a-zA-Z]*(\.[a-z][a-zA-Z]*)*$';
     }
 
     /**
@@ -23,7 +23,7 @@ final class Id extends AbstractRegexpFormattedStringValueObject
      */
     public static function getMinLength(): int
     {
-        return 36;
+        return 1;
     }
 
     /**
@@ -31,6 +31,6 @@ final class Id extends AbstractRegexpFormattedStringValueObject
      */
     public static function getMaxLength(): int
     {
-        return 36;
+        return 40;
     }
 }

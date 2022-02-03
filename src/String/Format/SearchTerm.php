@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
-use LessValueObject\String\Format\Reference\Id;
+use LessValueObject\String\Format\Resource\Id;
 
 /**
  * @psalm-immutable

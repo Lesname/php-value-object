@@ -7,8 +7,8 @@ use LessValueObject\Composite\Exception\CannotParseReference;
 use LessValueObject\String\Exception\TooLong;
 use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Exception\NotFormat;
-use LessValueObject\String\Format\Reference\Id;
-use LessValueObject\String\Format\Reference\Type;
+use LessValueObject\String\Format\Resource\Id;
+use LessValueObject\String\Format\Resource\Type;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**

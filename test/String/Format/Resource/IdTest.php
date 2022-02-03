@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format\Reference;
+namespace LessValueObjectTest\String\Format\Resource;
 
-use LessValueObject\String\Format\Reference\Id;
+use LessValueObject\String\Format\Resource\Id;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Reference\Id
+ * @covers \LessValueObject\String\Format\Resource\Id
  */
 final class IdTest extends TestCase
 {
