@@ -6,37 +6,13 @@ namespace LessValueObject\Enum;
 /**
  * @psalm-immutable
  */
-final class ContentType extends AbstractEnumValueObject
+enum ContentType: string implements EnumValueObject
 {
-    private const MARKDOWN = 'markdown';
-    private const TEXT = 'text';
+    case Markdown = 'markdown';
+    case Text = 'text';
 
-    /**
-     * @return array<string>
-     *
-     * @psalm-pure
-     */
-    public static function cases(): array
+    public function jsonSerialize(): string
     {
-        return [
-            self::MARKDOWN,
-            self::TEXT,
-        ];
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function markdown(): self
-    {
-        return self::from(self::MARKDOWN);
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function text(): self
-    {
-        return self::from(self::TEXT);
+        return $this->value;
     }
 }

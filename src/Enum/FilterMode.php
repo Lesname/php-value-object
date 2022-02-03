@@ -6,37 +6,13 @@ namespace LessValueObject\Enum;
 /**
  * @psalm-immutable
  */
-final class FilterMode extends AbstractEnumValueObject
+enum FilterMode: string implements EnumValueObject
 {
-    private const EXCLUSIVE = 'exclusive';
-    private const INCLUSIVE = 'inclusive';
+    case Exclusive = 'exclusive';
+    case Inclusive = 'inclusive';
 
-    /**
-     * @psalm-pure
-     *
-     * @return array<string>
-     */
-    public static function cases(): array
+    public function jsonSerialize(): string
     {
-        return [
-            self::EXCLUSIVE,
-            self::INCLUSIVE,
-        ];
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function exclusive(): self
-    {
-        return self::from(self::EXCLUSIVE);
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function inclusive(): self
-    {
-        return self::from(self::INCLUSIVE);
+        return $this->value;
     }
 }

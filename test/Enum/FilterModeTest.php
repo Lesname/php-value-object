@@ -11,28 +11,17 @@ use PHPUnit\Framework\TestCase;
  */
 final class FilterModeTest extends TestCase
 {
-    public function testCases(): void
-    {
-        self::assertSame(
-            [
-                'exclusive',
-                'inclusive',
-            ],
-            FilterMode::cases(),
-        );
-    }
-
     public function testInclusive(): void
     {
-        $inc = FilterMode::inclusive();
+        $inc = FilterMode::Inclusive;
 
-        self::assertSame('inclusive', $inc->value);
+        self::assertSame('inclusive', $inc->jsonSerialize());
     }
 
     public function testExclusive(): void
     {
-        $exc = FilterMode::exclusive();
+        $exc = FilterMode::Exclusive;
 
-        self::assertSame('exclusive', $exc->value);
+        self::assertSame('exclusive', $exc->jsonSerialize());
     }
 }
