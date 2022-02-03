@@ -15,7 +15,7 @@ abstract class AbstractStringValueObject implements StringValueObject
      * @throws TooShort
      * @throws TooLong
      */
-    public function __construct(private string $string)
+    public function __construct(private readonly string $string)
     {
         $length = mb_strlen($string);
 
