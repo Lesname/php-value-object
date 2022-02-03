@@ -20,12 +20,12 @@ final class SearchTermTest extends TestCase
         self::assertFalse($term->isEmailAddress());
     }
 
-    public function testIsReferenceId(): void
+    public function testIsResourceId(): void
     {
         $term = new SearchTerm('614dbdee-db49-4690-882d-a6e09037e966');
-        self::assertTrue($term->isReferenceId());
+        self::assertTrue($term->isResourceId());
 
         $term = new SearchTerm('biz');
-        self::assertFalse($term->isReferenceId());
+        self::assertFalse($term->isResourceId());
     }
 }

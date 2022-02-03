@@ -39,7 +39,7 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
         return EmailAddress::isFormat((string)$this);
     }
 
-    public function isReferenceId(): bool
+    public function isResourceId(): bool
     {
         return Id::isFormat((string)$this);
     }
