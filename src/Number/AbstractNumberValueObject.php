@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number;
 
-use Closure;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
@@ -19,7 +18,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @throws MaxOutBounds
      * @throws PrecisionOutBounds
      */
-    public function __construct(private float | int $value)
+    public function __construct(private readonly float | int $value)
     {
         if ($value < static::getMinValue()) {
             throw new MinOutBounds(static::getMinValue(), $value);
