@@ -3,7 +3,7 @@
   "description": "Represent your data",
   "license": "proprietary",
   "require": {
-    "php": "^8.0.0",
+    "php": "^8.1.0",
 
     "ext-json": "*",
 
@@ -23,6 +23,11 @@
   "autoload-dev": {
     "psr-4": {
       "LessValueObjectTest\\": "test/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
     }
   }
 }

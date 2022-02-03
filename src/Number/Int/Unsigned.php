@@ -5,10 +5,8 @@ namespace LessValueObject\Number\Int;
 
 /**
  * @psalm-immutable
- *
- * @deprecated use Unsigned
  */
-final class PositiveInt extends AbstractIntValueObject
+final class Unsigned extends AbstractIntValueObject
 {
     /**
      * @psalm-pure
