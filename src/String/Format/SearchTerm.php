@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
-use LessValueObject\String\Format\Reference\Id;
+use LessValueObject\String\Format\Resource\Id;
 
 /**
  * @psalm-immutable
@@ -39,7 +39,7 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
         return EmailAddress::isFormat((string)$this);
     }
 
-    public function isReferenceId(): bool
+    public function isResourceId(): bool
     {
         return Id::isFormat((string)$this);
     }

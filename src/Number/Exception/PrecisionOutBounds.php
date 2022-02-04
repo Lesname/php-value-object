@@ -11,8 +11,8 @@ use LessValueObject\Exception\AbstractException;
 final class PrecisionOutBounds extends AbstractException
 {
     public function __construct(
-        public int $precision,
-        public float|int $given,
+        public readonly int $precision,
+        public readonly float|int $given,
     ) {
         parent::__construct("Allowed {$precision}, given value {$given}");
     }

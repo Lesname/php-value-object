@@ -1,46 +1,22 @@
 <?php
 declare(strict_types=1);
-
+// phpcs:ignoreFile enum's are/were not supported, so remove when supported
 namespace LessValueObject\Enum;
 
 /**
  * @psalm-immutable
  */
-final class OrderDirection extends AbstractEnumValueObject
+enum OrderDirection: string implements EnumValueObject
 {
-    public const ASCENDING = 'asc';
-    public const DESCENDING = 'desc';
-
-    /**
-     * @psalm-pure
-     *
-     * @return array<string>
-     */
-    public static function cases(): array
-    {
-        return [
-            self::ASCENDING,
-            self::DESCENDING,
-        ];
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function ascending(): self
-    {
-        return self::from(self::ASCENDING);
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function descending(): self
-    {
-        return self::from(self::DESCENDING);
-    }
+    case Ascending = 'asc';
+    case Descending = 'desc';
 
     public function asSQL(): string
+    {
+        return $this->value;
+    }
+
+    public function jsonSerialize(): string
     {
         return $this->value;
     }

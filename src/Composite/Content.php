@@ -11,6 +11,6 @@ use LessValueObject\String\ContentBody;
  */
 final class Content extends AbstractCompositeValueObject
 {
-    public function __construct(public ContentType $type, public ContentBody $body)
+    public function __construct(public readonly ContentType $type, public readonly ContentBody $body)
     {}
 }

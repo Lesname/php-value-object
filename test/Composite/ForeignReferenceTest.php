@@ -4,19 +4,18 @@ declare(strict_types=1);
 namespace LessValueObjectTest\Composite;
 
 use LessValueObject\Composite\Exception\CannotParseReference;
-use LessValueObject\Composite\Reference;
-use LessValueObject\String\Format\Reference\Id;
+use LessValueObject\Composite\ForeignReference;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
- * @covers \LessValueObject\Composite\Reference
+ * @covers \LessValueObject\Composite\ForeignReference
  */
-final class ReferenceTest extends TestCase
+final class ForeignReferenceTest extends TestCase
 {
     public function testFromString(): void
     {
-        $reference = Reference::fromString('foo.bar/9a09326e-340e-4634-a70d-ffe4eb3735a0');
+        $reference = ForeignReference::fromString('foo.bar/9a09326e-340e-4634-a70d-ffe4eb3735a0');
 
         self::assertSame('foo.bar', (string)$reference->type);
         self::assertSame('9a09326e-340e-4634-a70d-ffe4eb3735a0', (string)$reference->id);
@@ -26,12 +25,12 @@ final class ReferenceTest extends TestCase
     {
         $this->expectException(CannotParseReference::class);
 
-        Reference::fromString('abc');
+        ForeignReference::fromString('abc');
     }
 
     public function testFromArray(): void
     {
-        $reference = Reference::fromArray(
+        $reference = ForeignReference::fromArray(
             [
                 'type' => 'foo.bar',
                 'id' => '9a09326e-340e-4634-a70d-ffe4eb3735a0',
@@ -44,7 +43,7 @@ final class ReferenceTest extends TestCase
 
     public function testToString(): void
     {
-        $reference = Reference::fromArray(
+        $reference = ForeignReference::fromArray(
             [
                 'type' => 'foo.bar',
                 'id' => '9a09326e-340e-4634-a70d-ffe4eb3735a0',
@@ -63,7 +62,7 @@ final class ReferenceTest extends TestCase
             ->with('identity')
             ->willReturn('foo.bar/9a09326e-340e-4634-a70d-ffe4eb3735a0');
 
-        $identity = Reference::fromRequest($request);
+        $identity = ForeignReference::fromRequest($request);
 
         self::assertSame('foo.bar', (string)$identity->type);
         self::assertSame('9a09326e-340e-4634-a70d-ffe4eb3735a0', (string)$identity->id);

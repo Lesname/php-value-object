@@ -11,8 +11,8 @@ use LessValueObject\Exception\AbstractException;
 final class MaxOutBounds extends AbstractException
 {
     public function __construct(
-        public float|int $max,
-        public float|int $given,
+        public readonly float|int $max,
+        public readonly float|int $given,
     ) {
         parent::__construct("Max {$max}, given {$given}");
     }

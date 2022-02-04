@@ -10,7 +10,7 @@ use LessValueObject\Number\AbstractNumberValueObject;
  */
 abstract class AbstractIntValueObject extends AbstractNumberValueObject implements IntValueObject
 {
-    public function __construct(private int $value)
+    public function __construct(private readonly int $value)
     {
         parent::__construct($value);
     }

@@ -17,10 +17,12 @@ final class ContentBody extends AbstractStringValueObject
     }
 
     /**
+     * This is based upon sql text with a max size of 2^16 bytes, with utf8 being a max of 4 bytes per character
+     *
      * @psalm-pure
      */
     public static function getMaxLength(): int
     {
-        return 9_999;
+        return 15_000;
     }
 }

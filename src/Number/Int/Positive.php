@@ -6,14 +6,14 @@ namespace LessValueObject\Number\Int;
 /**
  * @psalm-immutable
  */
-final class PositiveInt extends AbstractIntValueObject
+final class Positive extends AbstractIntValueObject
 {
     /**
      * @psalm-pure
      */
     public static function getMinValue(): int
     {
-        return 0;
+        return 1;
     }
 
     /**

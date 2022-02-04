@@ -10,7 +10,7 @@ use LessValueObject\Exception\AbstractException;
  */
 final class TooShort extends AbstractException
 {
-    public function __construct(public int $minimal, public int $given)
+    public function __construct(public readonly int $minimal, public readonly int $given)
     {
         parent::__construct("Minimal {$minimal} characters needed, given {$given}");
     }

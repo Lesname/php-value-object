@@ -11,7 +11,7 @@ use LessValueObject\Number\Int\Paginate\PerPage;
  */
 final class Paginate extends AbstractCompositeValueObject
 {
-    public function __construct(public PerPage $perPage, public Page $page)
+    public function __construct(public readonly PerPage $perPage, public readonly Page $page)
     {}
 
     public function getSkipped(): int

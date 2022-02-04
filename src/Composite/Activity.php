@@ -10,6 +10,6 @@ use LessValueObject\Number\Int\Date\MilliTimestamp;
  */
 final class Activity extends AbstractCompositeValueObject
 {
-    public function __construct(public MilliTimestamp $last)
+    public function __construct(public readonly MilliTimestamp $last)
     {}
 }

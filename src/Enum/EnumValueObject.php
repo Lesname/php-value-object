@@ -10,22 +10,4 @@ use LessValueObject\ValueObject;
  */
 interface EnumValueObject extends ValueObject
 {
-    /**
-     * @return array<string>
-     *
-     * @psalm-pure
-     */
-    public static function cases(): array;
-
-    /**
-     * @psalm-pure
-     */
-    public static function from(string $value): static;
-
-    /**
-     * @psalm-pure
-     */
-    public static function tryFrom(string $value): ?static;
-
-    public function __toString(): string;
 }

@@ -10,7 +10,7 @@ use LessValueObject\Exception\AbstractException;
  */
 final class TooLong extends AbstractException
 {
-    public function __construct(public int $maximal, public int $given)
+    public function __construct(public readonly int $maximal, public readonly int $given)
     {
         parent::__construct("Maximal {$maximal} characters allowed, given {$given}");
     }

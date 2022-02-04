@@ -11,28 +11,17 @@ use PHPUnit\Framework\TestCase;
  */
 final class ContentTypeTest extends TestCase
 {
-    public function testCases(): void
-    {
-        self::assertSame(
-            [
-                'markdown',
-                'text',
-            ],
-            ContentType::cases(),
-        );
-    }
-
     public function testMarkdown(): void
     {
-        $markdown = ContentType::markdown();
+        $markdown = ContentType::Markdown;
 
-        self::assertSame('markdown', $markdown->value);
+        self::assertSame('markdown', $markdown->jsonSerialize());
     }
 
     public function testText(): void
     {
-        $text = ContentType::text();
+        $text = ContentType::Text;
 
-        self::assertSame('text', $text->value);
+        self::assertSame('text', $text->jsonSerialize());
     }
 }

@@ -11,8 +11,10 @@ use LessValueObject\Number\NumberValueObject;
  */
 final class Uncomparable extends AbstractException
 {
-    public function __construct(public NumberValueObject $left, public NumberValueObject $right)
-    {
+    public function __construct(
+        public readonly NumberValueObject $left,
+        public readonly NumberValueObject $right,
+    ) {
         $lClass = $left::class;
         $rClass = $right::class;
 
