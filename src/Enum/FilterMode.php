@@ -8,8 +8,9 @@ namespace LessValueObject\Enum;
  */
 enum FilterMode: string implements EnumValueObject
 {
-    case Exclusive = 'exclusive';
-    case Inclusive = 'inclusive';
+    case All = 'all';
+    case Any = 'any';
+    case None = 'none';
 
     public function jsonSerialize(): string
     {
