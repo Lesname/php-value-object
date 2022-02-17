@@ -5,14 +5,22 @@ namespace LessValueObjectTest\Composite;
 
 use LessValueObject\Composite\Exception\CannotParseReference;
 use LessValueObject\Composite\ForeignReference;
+use LessValueObject\String\Exception\TooLong;
+use LessValueObject\String\Exception\TooShort;
+use LessValueObject\String\Format\Exception\NotFormat;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @covers \LessValueObject\Composite\ForeignReference
  */
 final class ForeignReferenceTest extends TestCase
 {
+    /**
+     * @throws TooShort
+     * @throws TooLong
+     * @throws NotFormat
+     * @throws CannotParseReference
+     */
     public function testFromString(): void
     {
         $reference = ForeignReference::fromString('foo.bar/9a09326e-340e-4634-a70d-ffe4eb3735a0');
@@ -21,6 +29,12 @@ final class ForeignReferenceTest extends TestCase
         self::assertSame('9a09326e-340e-4634-a70d-ffe4eb3735a0', (string)$reference->id);
     }
 
+    /**
+     * @throws CannotParseReference
+     * @throws TooLong
+     * @throws TooShort
+     * @throws NotFormat
+     */
     public function testFromStringInvalidFormat(): void
     {
         $this->expectException(CannotParseReference::class);
@@ -28,6 +42,11 @@ final class ForeignReferenceTest extends TestCase
         ForeignReference::fromString('abc');
     }
 
+    /**
+     * @throws TooShort
+     * @throws TooLong
+     * @throws NotFormat
+     */
     public function testFromArray(): void
     {
         $reference = ForeignReference::fromArray(
@@ -41,6 +60,11 @@ final class ForeignReferenceTest extends TestCase
         self::assertSame('9a09326e-340e-4634-a70d-ffe4eb3735a0', (string)$reference->id);
     }
 
+    /**
+     * @throws TooShort
+     * @throws TooLong
+     * @throws NotFormat
+     */
     public function testToString(): void
     {
         $reference = ForeignReference::fromArray(
@@ -51,20 +75,5 @@ final class ForeignReferenceTest extends TestCase
         );
 
         self::assertSame('foo.bar/9a09326e-340e-4634-a70d-ffe4eb3735a0', (string)$reference);
-    }
-
-    public function testFromRequest(): void
-    {
-        $request = $this->createMock(ServerRequestInterface::class);
-        $request
-            ->expects(self::once())
-            ->method('getAttribute')
-            ->with('identity')
-            ->willReturn('foo.bar/9a09326e-340e-4634-a70d-ffe4eb3735a0');
-
-        $identity = ForeignReference::fromRequest($request);
-
-        self::assertSame('foo.bar', (string)$identity->type);
-        self::assertSame('9a09326e-340e-4634-a70d-ffe4eb3735a0', (string)$identity->id);
     }
 }

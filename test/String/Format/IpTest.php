@@ -6,7 +6,6 @@ namespace LessValueObjectTest\String\Format;
 use LessValueObject\String\Format\Exception\UnknownVersion;
 use LessValueObject\String\Format\Ip;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
 
 /**
  * @covers \LessValueObject\String\Format\Ip
@@ -34,10 +33,13 @@ final class IpTest extends TestCase
         self::assertSame(45, Ip::getMaxLength());
     }
 
+    /**
+     * @throws UnknownVersion
+     */
     public function testLocal(): void
     {
         self::assertSame('127.0.0.1', (string)Ip::local(4));
-        self::assertSame('::1', (string)Ip::local(6));
+        self::assertSame('::1', (string)Ip::local());
     }
 
     public function testLocalUnknownVersion(): void
@@ -45,18 +47,5 @@ final class IpTest extends TestCase
         $this->expectException(UnknownVersion::class);
 
         Ip::local(1);
-    }
-
-    public function testFromRequest(): void
-    {
-        $request = $this->createMock(ServerRequestInterface::class);
-        $request
-            ->expects(self::once())
-            ->method('getServerParams')
-            ->willReturn(['REMOTE_ADDR' => '1.85.170.255']);
-
-        $ip = Ip::fromRequest($request);
-
-        self::assertSame('1.85.170.255', (string)$ip);
     }
 }
