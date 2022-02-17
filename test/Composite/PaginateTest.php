@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace LessValueObjectTest\Composite;
 
 use LessValueObject\Composite\Paginate;
+use LessValueObject\Number\Exception\MaxOutBounds;
+use LessValueObject\Number\Exception\MinOutBounds;
+use LessValueObject\Number\Exception\PrecisionOutBounds;
 use LessValueObject\Number\Int\Paginate\Page;
 use LessValueObject\Number\Int\Paginate\PerPage;
 use PHPUnit\Framework\TestCase;
@@ -13,6 +16,11 @@ use PHPUnit\Framework\TestCase;
  */
 final class PaginateTest extends TestCase
 {
+    /**
+     * @throws PrecisionOutBounds
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     */
     public function testSkipped(): void
     {
         $paginate = new Paginate(

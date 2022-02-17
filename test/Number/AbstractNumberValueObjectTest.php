@@ -30,6 +30,9 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertSame('1.2', $mock->__toString());
     }
 
+    /**
+     * @throws Uncomparable
+     */
     public function testIsGreater(): void
     {
         $mock = $this->makeMock(1.4, 1, 0, 1.5);
@@ -38,6 +41,9 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertFalse($mock->isGreater(1));
     }
 
+    /**
+     * @throws Uncomparable
+     */
     public function testIsLower(): void
     {
         $mock = $this->makeMock(1.2, 1, 0, 1.2);
@@ -46,6 +52,9 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertFalse($mock->isLower(1.3));
     }
 
+    /**
+     * @throws Uncomparable
+     */
     public function testIsSame(): void
     {
         $mock = $this->makeMock(1.2, 1, 0, 1.2);

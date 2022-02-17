@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace LessValueObjectTest\Number\Int;
 
-use LessValueObject\Number\AbstractNumberValueObject;
 use LessValueObject\Number\Int\AbstractIntValueObject;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +20,7 @@ final class AbstractIntValueObjectTest extends TestCase
 
     public function testPrecision(): void
     {
-        $mock = $this->makeMock(2, 0, 2);
+        $mock = $this->makeMock(2, 1, 3);
 
         self::assertSame(0, $mock->getPrecision());
     }

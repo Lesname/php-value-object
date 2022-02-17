@@ -15,7 +15,7 @@ final class Uri extends AbstractFormattedStringValueObject
     {
         $length = mb_strlen($input);
 
-        if ($length < static::getMinLength() || $length > static::getMaxLength()) {
+        if ($length < self::getMinLength() || $length > self::getMaxLength()) {
             return false;
         }
 

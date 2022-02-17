@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace LessValueObjectTest\Number\Int\Date;
 
 use DateTime;
+use LessValueObject\Number\Exception\MaxOutBounds;
+use LessValueObject\Number\Exception\MinOutBounds;
+use LessValueObject\Number\Exception\PrecisionOutBounds;
 use LessValueObject\Number\Int\Date\MilliTimestamp;
 use PHPUnit\Framework\TestCase;
 
@@ -12,6 +15,11 @@ use PHPUnit\Framework\TestCase;
  */
 final class MilliTimestampTest extends TestCase
 {
+    /**
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws PrecisionOutBounds
+     */
     public function testFromDateTime(): void
     {
         $date = new DateTime();
@@ -20,6 +28,11 @@ final class MilliTimestampTest extends TestCase
         self::assertSame($date->format('U.v'), $timestamp->format('U.v'));
     }
 
+    /**
+     * @throws PrecisionOutBounds
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     */
     public function testNow(): void
     {
         $datetime = MilliTimestamp::fromDateTime(new DateTime());
@@ -31,6 +44,11 @@ final class MilliTimestampTest extends TestCase
         self::assertTrue($diff <= 1);
     }
 
+    /**
+     * @throws MinOutBounds
+     * @throws MaxOutBounds
+     * @throws PrecisionOutBounds
+     */
     public function testFormat(): void
     {
         $timestamp = new MilliTimestamp(123456);
@@ -41,6 +59,11 @@ final class MilliTimestampTest extends TestCase
         );
     }
 
+    /**
+     * @throws PrecisionOutBounds
+     * @throws MinOutBounds
+     * @throws MaxOutBounds
+     */
     public function testToMilliTimestamp(): void
     {
         $timestamp = new MilliTimestamp(654321);
