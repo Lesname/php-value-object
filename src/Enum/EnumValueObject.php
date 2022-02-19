@@ -10,4 +10,5 @@ use LessValueObject\ValueObject;
  */
 interface EnumValueObject extends ValueObject
 {
+    public function getValue(): string;
 }

@@ -20,4 +20,9 @@ enum OrderDirection: string implements EnumValueObject
     {
         return $this->value;
     }
+
+    public function getValue(): string
+    {
+        return $this->value;
+    }
 }
