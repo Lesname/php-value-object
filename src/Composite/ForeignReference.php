@@ -7,7 +7,7 @@ use LessValueObject\Composite\Exception\CannotParseReference;
 use LessValueObject\String\Exception\TooLong;
 use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Exception\NotFormat;
-use LessValueObject\String\Format\Resource\Id;
+use LessValueObject\String\Format\Resource\Identifier;
 use LessValueObject\String\Format\Resource\Type;
 
 /**
@@ -15,7 +15,7 @@ use LessValueObject\String\Format\Resource\Type;
  */
 final class ForeignReference extends AbstractCompositeValueObject
 {
-    public function __construct(public readonly Type $type, public readonly Id $id)
+    public function __construct(public readonly Type $type, public readonly Identifier $id)
     {}
 
     /**
@@ -32,7 +32,7 @@ final class ForeignReference extends AbstractCompositeValueObject
             throw new CannotParseReference($string);
         }
 
-        return new self(new Type($matches[1]), new Id($matches[2]));
+        return new self(new Type($matches[1]), new Identifier($matches[2]));
     }
 
     /**
@@ -46,7 +46,7 @@ final class ForeignReference extends AbstractCompositeValueObject
      */
     public static function fromArray(array $array): self
     {
-        return new self(new Type($array['type']), new Id($array['id']));
+        return new self(new Type($array['type']), new Identifier($array['id']));
     }
 
     public function __toString(): string

@@ -8,7 +8,7 @@ use LessValueObject\String\Format\AbstractRegexpFormattedStringValueObject;
 /**
  * @psalm-immutable
  */
-final class Id extends AbstractRegexpFormattedStringValueObject
+final class Identifier extends AbstractRegexpFormattedStringValueObject
 {
     /**
      * @psalm-pure
