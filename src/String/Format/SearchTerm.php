@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
-use LessValueObject\String\Format\Resource\Id;
+use LessValueObject\String\Format\Resource\Identifier;
 
 /**
  * @psalm-immutable
@@ -41,6 +41,6 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
 
     public function isResourceId(): bool
     {
-        return Id::isFormat((string)$this);
+        return Identifier::isFormat((string)$this);
     }
 }

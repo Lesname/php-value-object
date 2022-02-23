@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace LessValueObjectTest\String\Format\Resource;
 
-use LessValueObject\String\Format\Resource\Id;
+use LessValueObject\String\Format\Resource\Identifier;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Resource\Id
+ * @covers \LessValueObject\String\Format\Resource\Identifier
  */
-final class IdTest extends TestCase
+final class IdentifierTest extends TestCase
 {
     public function testSetup(): void
     {
-        $id = new Id('614dbdee-db49-4690-882d-a6e09037e966');
+        $id = new Identifier('614dbdee-db49-4690-882d-a6e09037e966');
 
         self::assertSame('614dbdee-db49-4690-882d-a6e09037e966', (string)$id);
     }
