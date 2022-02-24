@@ -17,4 +17,12 @@ final class IdentifierTest extends TestCase
 
         self::assertSame('614dbdee-db49-4690-882d-a6e09037e966', (string)$id);
     }
+
+    public function testCreate(): void
+    {
+        $first = Identifier::generate();
+        $second = Identifier::generate();
+
+        self::assertNotSame((string)$first, (string)$second);
+    }
 }
