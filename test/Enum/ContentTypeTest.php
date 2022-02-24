@@ -22,6 +22,6 @@ final class ContentTypeTest extends TestCase
     {
         $text = ContentType::Text;
 
-        self::assertSame('text', $text->jsonSerialize());
+        self::assertSame('text', $text->getValue());
     }
 }
