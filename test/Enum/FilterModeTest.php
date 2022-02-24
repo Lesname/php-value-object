@@ -17,4 +17,11 @@ final class FilterModeTest extends TestCase
 
         self::assertSame('all', $inc->jsonSerialize());
     }
+
+    public function testGetValue(): void
+    {
+        $inc = FilterMode::Any;
+
+        self::assertSame('any', $inc->getValue());
+    }
 }

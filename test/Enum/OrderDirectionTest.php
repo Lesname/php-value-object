@@ -22,7 +22,7 @@ final class OrderDirectionTest extends TestCase
     {
         $desc = OrderDirection::Descending;
 
-        self::assertSame('desc', $desc->jsonSerialize());
+        self::assertSame('desc', $desc->getValue());
     }
 
     public function testAsSql(): void
