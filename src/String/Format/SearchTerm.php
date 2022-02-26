@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
+use LessValueObject\String\Exception\TooLong;
+use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Resource\Identifier;
 
 /**
@@ -15,7 +17,7 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
      */
     public static function getRegexPattern(): string
     {
-        return '^.*[a-zA-Z0-9].*$';
+        return '^.*[a-zA-Z0-9]{2}.*$';
     }
 
     /**
@@ -23,7 +25,7 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
      */
     public static function getMinLength(): int
     {
-        return 1;
+        return 2;
     }
 
     /**
@@ -39,8 +41,28 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
         return EmailAddress::isFormat((string)$this);
     }
 
+    /**
+     * @throws Exception\NotFormat
+     * @throws TooLong
+     * @throws TooShort
+     */
+    public function asEmailAddress(): EmailAddress
+    {
+        return new EmailAddress((string)$this);
+    }
+
     public function isResourceId(): bool
     {
         return Identifier::isFormat((string)$this);
+    }
+
+    /**
+     * @throws Exception\NotFormat
+     * @throws TooLong
+     * @throws TooShort
+     */
+    public function asResourceId(): Identifier
+    {
+        return new Identifier((string)$this);
     }
 }
