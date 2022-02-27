@@ -14,6 +14,8 @@ enum Timezone: string implements EnumValueObject
 {
     use EnumValueHelper;
 
+    case UTC = 'utc';
+
     case Europe_Amsterdam = 'Europe/Amsterdam';
     case Europe_Dublin = 'Europe/Dublin';
 
