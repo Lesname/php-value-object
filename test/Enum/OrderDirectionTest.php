@@ -11,20 +11,6 @@ use PHPUnit\Framework\TestCase;
  */
 final class OrderDirectionTest extends TestCase
 {
-    public function testAscending(): void
-    {
-        $asc = OrderDirection::Ascending;
-
-        self::assertSame('asc', $asc->jsonSerialize());
-    }
-
-    public function testDescending(): void
-    {
-        $desc = OrderDirection::Descending;
-
-        self::assertSame('desc', $desc->getValue());
-    }
-
     public function testAsSql(): void
     {
         self::assertSame('asc', OrderDirection::Ascending->asSQL());
