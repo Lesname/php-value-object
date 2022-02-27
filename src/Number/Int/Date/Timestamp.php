@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number\Int\Date;
 
-use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
+use LessValueObject\Enum\Timezone;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
@@ -65,16 +66,17 @@ final class Timestamp extends AbstractIntValueObject
         return new MilliTimestamp($this->getValue() * 1_000);
     }
 
-    public function toDateTime(): DateTimeInterface
+    public function toDateTime(Timezone $timezone): DateTimeInterface
     {
-        return new DateTime('@' . $this->getValue());
+        return (new DateTimeImmutable('@' . $this->getValue()))
+            ->setTimezone($timezone->asDateTimeZone());
     }
 
     /**
      * @psalm-suppress ImpureMethodCall format is pure
      */
-    public function format(string $format): string
+    public function format(string $format, Timezone $timezone): string
     {
-        return $this->toDateTime()->format($format);
+        return $this->toDateTime($timezone)->format($format);
     }
 }
