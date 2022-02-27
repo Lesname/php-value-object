@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace LessValueObjectTest\Number\Int\Date;
 
 use DateTime;
+use LessValueObject\Enum\Timezone;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
@@ -48,7 +49,8 @@ final class TimestampTest extends TestCase
     {
         $timestamp = new Timestamp(120);
 
-        self::assertSame('1970-01-01 00:02:00', $timestamp->format('Y-m-d H:i:s'));
+        self::assertSame('1970-01-01 00:02:00', $timestamp->format('Y-m-d H:i:s', Timezone::UTC));
+        self::assertSame('1970-01-01 01:02:00', $timestamp->format('Y-m-d H:i:s', Timezone::Europe_Amsterdam));
     }
 
     /**

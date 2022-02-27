@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace LessValueObjectTest\Number\Int\Date;
 
 use DateTime;
+use LessValueObject\Enum\Timezone;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
@@ -25,7 +26,10 @@ final class MilliTimestampTest extends TestCase
         $date = new DateTime();
         $timestamp = MilliTimestamp::fromDateTime($date);
 
-        self::assertSame($date->format('U.v'), $timestamp->format('U.v'));
+        self::assertSame(
+            (int)$date->format('Uv'),
+            $timestamp->getValue(),
+        );
     }
 
     /**
@@ -53,10 +57,8 @@ final class MilliTimestampTest extends TestCase
     {
         $timestamp = new MilliTimestamp(123456);
 
-        self::assertSame(
-            '1970-01-01 00:02:03.456',
-            $timestamp->format('Y-m-d H:i:s.v'),
-        );
+        self::assertSame('1970-01-01 01:02:03.456', $timestamp->format('Y-m-d H:i:s.v', Timezone::Europe_Amsterdam));
+        self::assertSame('1970-01-01 00:02:03.456', $timestamp->format('Y-m-d H:i:s.v', Timezone::UTC));
     }
 
     /**

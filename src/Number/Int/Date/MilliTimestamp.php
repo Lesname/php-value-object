@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number\Int\Date;
 
-use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
+use LessValueObject\Enum\Timezone;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
@@ -55,9 +56,10 @@ final class MilliTimestamp extends AbstractIntValueObject
         return PHP_INT_MAX;
     }
 
-    public function toDateTime(): DateTimeInterface
+    public function toDateTime(Timezone $timezone): DateTimeInterface
     {
-        return new DateTime('@' . ($this->getValue() / 1_000));
+        return (new DateTimeImmutable('@' . ($this->getValue() / 1_000)))
+            ->setTimezone($timezone->asDateTimeZone());
     }
 
     /**
@@ -73,8 +75,8 @@ final class MilliTimestamp extends AbstractIntValueObject
     /**
      * @psalm-suppress ImpureMethodCall format is pure
      */
-    public function format(string $format): string
+    public function format(string $format, Timezone $timezone): string
     {
-        return $this->toDateTime()->format($format);
+        return $this->toDateTime($timezone)->format($format);
     }
 }
