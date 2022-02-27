@@ -9,11 +9,10 @@ use LessValueObject\Enum\Helper\EnumValueHelper;
 /**
  * @psalm-immutable
  */
-enum FilterMode: string implements EnumValueObject
+enum Locale: string implements EnumValueObject
 {
     use EnumValueHelper;
 
-    case All = 'all';
-    case Any = 'any';
-    case None = 'none';
+    case nl_NL = 'nl_NL';
+    case en_US = 'en_US';
 }
