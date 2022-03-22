@@ -27,6 +27,13 @@ final class AbstractStringValueObjectTest extends TestCase
         self::assertSame('bar', $mock->jsonSerialize());
     }
 
+    public function testGetValue(): void
+    {
+        $mock = $this->makeMock('bar', 3, 4);
+
+        self::assertSame('bar', $mock->getValue());
+    }
+
     public function testTooShort(): void
     {
         $this->expectException(TooShort::class);

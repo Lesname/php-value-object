@@ -28,6 +28,11 @@ abstract class AbstractStringValueObject implements StringValueObject
         }
     }
 
+    public function getValue(): string
+    {
+        return $this->string;
+    }
+
     public function __toString(): string
     {
         return $this->string;
