@@ -18,7 +18,7 @@ abstract class AbstractRegexpFormattedStringValueObject extends AbstractFormatte
      */
     public static function isFormat(string $input): bool
     {
-        $length = mb_strlen($input);
+        $length = static::getStringLength($input);
 
         if ($length < static::getMinLength() || $length > static::getMaxLength()) {
             return false;

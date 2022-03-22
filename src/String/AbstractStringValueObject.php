@@ -17,7 +17,7 @@ abstract class AbstractStringValueObject implements StringValueObject
      */
     public function __construct(private readonly string $string)
     {
-        $length = mb_strlen($string);
+        $length = static::getStringLength($string);
 
         if ($length < static::getMinLength()) {
             throw new TooShort(static::getMinLength(), $length);
@@ -26,6 +26,18 @@ abstract class AbstractStringValueObject implements StringValueObject
         if ($length > static::getMaxLength()) {
             throw new TooLong(static::getMaxLength(), $length);
         }
+    }
+
+    /**
+     * @psalm-pure
+     */
+    protected static function getStringLength(string $input): int
+    {
+        $length = grapheme_strlen($input);
+
+        return is_int($length)
+            ? $length
+            : strlen($input);
     }
 
     public function getValue(): string
