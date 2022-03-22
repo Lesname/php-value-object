@@ -13,7 +13,7 @@ final class EmailAddress extends AbstractFormattedStringValueObject
      */
     public static function isFormat(string $input): bool
     {
-        $length = mb_strlen($input);
+        $length = self::getStringLength($input);
 
         if ($length < self::getMinLength() || $length > self::getMaxLength()) {
             return false;

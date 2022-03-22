@@ -20,5 +20,7 @@ interface StringValueObject extends ValueObject
      */
     public static function getMaxLength(): int;
 
+    public function getValue(): string;
+
     public function __toString(): string;
 }
