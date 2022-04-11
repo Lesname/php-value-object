@@ -72,6 +72,15 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         return $this->compare($value, static fn (float | int $l, float | int $r): bool => $l === $r);
     }
 
+    public function diff(NumberValueObject|float|int $with): float|int
+    {
+        if ($with instanceof NumberValueObject) {
+            $with = $with->getValue();
+        }
+
+        return $with - $this->getValue();
+    }
+
     /**
      * @psalm-param pure-callable(float | int, float | int): bool $comparor
      *

@@ -95,6 +95,14 @@ final class AbstractNumberValueObjectTest extends TestCase
         $this->makeMock(1.2, 0, 1, 2);
     }
 
+    public function testDiff(): void
+    {
+        $base = $this->makeMock(1, 1, 0, 2);
+        $with = $this->makeMock(2, 1, 0, 2);
+
+        self::assertSame(1, $base->diff($with));
+    }
+
     private function makeMock(float | int $value, int $precision, float | int $min, float | int $max): AbstractNumberValueObject
     {
         return new class ($value, $precision, $min, $max) extends AbstractNumberValueObject {
