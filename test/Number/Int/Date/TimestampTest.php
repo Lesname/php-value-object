@@ -66,4 +66,22 @@ final class TimestampTest extends TestCase
 
         self::assertSame(321_000, $milliTimestamp->getValue());
     }
+
+    public function testAppend(): void
+    {
+        $timestamp = new Timestamp(4);
+        $new = $timestamp->append(6);
+
+        self::assertSame(4, $timestamp->getValue());
+        self::assertSame(10, $new->getValue());
+    }
+
+    public function testSubtract(): void
+    {
+        $timestamp = new Timestamp(9);
+        $new = $timestamp->subtract(7);
+
+        self::assertSame(9, $timestamp->getValue());
+        self::assertSame(2, $new->getValue());
+    }
 }
