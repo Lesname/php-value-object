@@ -33,5 +33,7 @@ interface NumberValueObject extends ValueObject
 
     public function isSame(NumberValueObject | float | int $value): bool;
 
+    public function diff(NumberValueObject | float | int $with): float | int;
+
     public function __toString(): string;
 }

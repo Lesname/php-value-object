@@ -40,6 +40,16 @@ final class Timestamp extends AbstractIntValueObject
         return new self(time());
     }
 
+    public function append(int $amount): self
+    {
+        return new self($this->getValue() + $amount);
+    }
+
+    public function subtract(int $amount): self
+    {
+        return new self($this->getValue() - $amount);
+    }
+
     /**
      * @psalm-pure
      */
