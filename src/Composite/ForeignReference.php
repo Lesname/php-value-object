@@ -12,8 +12,6 @@ use LessValueObject\String\Format\Resource\Type;
 
 /**
  * @psalm-immutable
- *
- * @deprecated will be dropped
  */
 final class ForeignReference extends AbstractCompositeValueObject
 {
