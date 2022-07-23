@@ -53,7 +53,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      */
     public function isGreater(NumberValueObject|float|int $value): bool
     {
-        return $this->compare($value, static fn (float | int $l, float | int $r): bool => $l > $r);
+        return $this->getCompareValue($value) > $this->getValue();
     }
 
     /**
@@ -61,7 +61,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      */
     public function isLower(NumberValueObject|float|int $value): bool
     {
-        return $this->compare($value, static fn (float | int $l, float | int $r): bool => $l < $r);
+        return $this->getCompareValue($value) < $this->getValue();
     }
 
     /**
@@ -69,7 +69,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      */
     public function isSame(NumberValueObject|float|int $value): bool
     {
-        return $this->compare($value, static fn (float | int $l, float | int $r): bool => $l === $r);
+        return $this->getCompareValue($value) === $this->getValue();
     }
 
     public function diff(NumberValueObject|float|int $with): float|int
@@ -88,6 +88,8 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @param callable(float | int, float | int): bool $comparor
      *
      * @throws Uncomparable
+     *
+     * @deprecated will be dropped, use getCompareValue
      */
     protected function compare(NumberValueObject|float|int $with, callable $comparor): bool
     {
@@ -99,6 +101,22 @@ abstract class AbstractNumberValueObject implements NumberValueObject
             throw new Uncomparable($this, $with);
         }
 
-        return $comparor($this->getValue(), $with->getValue());
+        return $comparor($with->getValue(), $this->getValue());
+    }
+
+    /**
+     * @throws Uncomparable
+     */
+    protected function getCompareValue(NumberValueObject|float|int $value): float | int
+    {
+        if (is_float($value) || is_int($value)) {
+            return $value;
+        }
+
+        if ($value::class !== static::class) {
+            throw new Uncomparable($this, $value);
+        }
+
+        return $value->getValue();
     }
 }
