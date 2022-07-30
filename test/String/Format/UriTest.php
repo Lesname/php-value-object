@@ -14,6 +14,7 @@ final class UriTest extends TestCase
     public function testIsFormat(): void
     {
         self::assertTrue(Uri::isFormat('https://www.google.com/fiz#bar'));
+        self::assertFalse(Uri::isFormat('fiz.biz/bar'));
         self::assertFalse(Uri::isFormat('ab'));
         self::assertFalse(Uri::isFormat('://'));
     }
