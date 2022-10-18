@@ -3,19 +3,19 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format\Resource;
 
-use LessValueObject\String\Format\AbstractRegexpFormattedStringValueObject;
+use LessValueObject\String\Format\AbstractRegularExpressionStringValueObject;
 
 /**
  * @psalm-immutable
  */
-final class Identifier extends AbstractRegexpFormattedStringValueObject
+final class Identifier extends AbstractRegularExpressionStringValueObject
 {
     /**
      * @psalm-pure
      */
-    public static function getRegexPattern(): string
+    public static function getRegularExpression(): string
     {
-        return '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$';
+        return '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/';
     }
 
     /**
