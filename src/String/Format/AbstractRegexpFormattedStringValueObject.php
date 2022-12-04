@@ -5,6 +5,8 @@ namespace LessValueObject\String\Format;
 
 /**
  * @psalm-immutable
+ *
+ * @deprekcated use AbstractRegularExpressionStringValueObject
  */
 abstract class AbstractRegexpFormattedStringValueObject extends AbstractFormattedStringValueObject
 {

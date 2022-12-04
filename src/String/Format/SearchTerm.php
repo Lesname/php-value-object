@@ -10,14 +10,14 @@ use LessValueObject\String\Format\Resource\Identifier;
 /**
  * @psalm-immutable
  */
-final class SearchTerm extends AbstractRegexpFormattedStringValueObject
+final class SearchTerm extends AbstractRegularExpressionStringValueObject
 {
     /**
      * @psalm-pure
      */
-    public static function getRegexPattern(): string
+    public static function getRegularExpression(): string
     {
-        return '^.*[a-zA-Z0-9]{2}.*$';
+        return '/^.*[a-zA-Z0-9]{2}.*$/';
     }
 
     /**
