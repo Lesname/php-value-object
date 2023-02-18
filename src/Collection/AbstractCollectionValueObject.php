@@ -29,13 +29,33 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     {
         assert(array_is_list($items));
 
-        if (count($items) < static::getMinlength()) {
-            throw new TooFewItems(static::getMinlength(), count($items));
+        if (count($items) < static::getMinimumLength()) {
+            throw new TooFewItems(static::getMinimumLength(), count($items));
         }
 
-        if (count($items) > static::getMaxLength()) {
-            throw new TooManyItems(static::getMaxLength(), count($items));
+        if (count($items) > static::getMaximumLength()) {
+            throw new TooManyItems(static::getMaximumLength(), count($items));
         }
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMinimumLength(): int
+    {
+        return static::getMinlength();
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMaximumLength(): int
+    {
+        return static::getMaxLength();
     }
 
     /**

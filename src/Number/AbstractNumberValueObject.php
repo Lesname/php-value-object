@@ -14,23 +14,93 @@ use LessValueObject\Number\Exception\Uncomparable;
 abstract class AbstractNumberValueObject implements NumberValueObject
 {
     /**
-     * @throws MinOutBounds
+     * @throws Exception\NotMultipleOf
      * @throws MaxOutBounds
+     * @throws MinOutBounds
      * @throws PrecisionOutBounds
+     *
+     * @psalm-suppress DeprecatedMethod
      */
     public function __construct(private readonly float | int $value)
     {
-        if ($value < static::getMinValue()) {
-            throw new MinOutBounds(static::getMinValue(), $value);
+        if ($value < static::getMinimumValue()) {
+            throw new MinOutBounds(static::getMinimumValue(), $value);
         }
 
-        if ($value > static::getMaxValue()) {
-            throw new MaxOutBounds(static::getMaxValue(), $value);
+        if ($value > static::getMaximumValue()) {
+            throw new MaxOutBounds(static::getMaximumValue(), $value);
         }
 
         if (preg_match('/\.(\d*)$/', (string)$value, $matches) && strlen($matches[1]) > static::getPrecision()) {
             throw new PrecisionOutBounds(static::getPrecision(), $value);
         }
+
+        if (!static::isMultipleOf($this->value, static::getMultipleOf())) {
+            throw new Exception\NotMultipleOf($this->value, static::getMultipleOf());
+        }
+    }
+
+    protected function isMultipleOf(float | int $value, float | int $of): bool
+    {
+        if (is_int($value) && is_int($of) && $value % $of === 0) {
+            return true;
+        }
+
+        if (preg_match('/^(\d+)\.(\d+)$/', (string)$of, $matches)) {
+            $precision = strlen($matches[2]);
+            $of = (int)($matches[1] . $matches[2]);
+            $power = pow(10, $precision);
+        } else {
+            $precision = 0;
+            $power = 1;
+        }
+
+        if (preg_match('/^(\d+)\.(\d+)$/', (string)$value, $matches)) {
+            if (strlen($matches[2]) > $precision) {
+                return false;
+            } else {
+                $float = str_pad($matches[2], $precision, '0');
+                $check = (int)($matches[1] . $float);
+            }
+        } else {
+            $check = $value * $power;
+        }
+
+        if ($check % $of !== 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMultipleOf(): int|float
+    {
+        return 1 / pow(10, static::getPrecision());
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMinimumValue(): float|int
+    {
+        return static::getMinValue();
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMaximumValue(): float|int
+    {
+        return static::getMaxValue();
     }
 
     public function getValue(): float|int

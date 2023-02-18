@@ -20,8 +20,8 @@ abstract class AbstractRegularExpressionStringValueObject extends AbstractFormat
     {
         $length = static::getStringLength($input);
 
-        return $length >= static::getMinLength()
-            && $length <= static::getMaxLength()
+        return $length >= static::getMinimumLength()
+            && $length <= static::getMaximumLength()
             && preg_match(static::getRegularExpression(), $input) === 1;
     }
 }

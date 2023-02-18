@@ -88,7 +88,7 @@ final class AbstractNumberValueObjectTest extends TestCase
         $this->makeMock(3, 0, 1, 2);
     }
 
-    public function testPreviounsOutBounds(): void
+    public function testPrecisionOutBounds(): void
     {
         $this->expectException(PrecisionOutBounds::class);
 
