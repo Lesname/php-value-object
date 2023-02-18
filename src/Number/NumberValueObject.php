@@ -12,18 +12,39 @@ interface NumberValueObject extends ValueObject
 {
     /**
      * @psalm-pure
+     *
+     * @deprecated use getMultipleOf
      */
     public static function getPrecision(): int;
 
     /**
      * @psalm-pure
      */
+    public static function getMultipleOf(): int|float;
+
+    /**
+     * @psalm-pure
+     *
+     * @deprecated use getMinimumValue
+     */
     public static function getMinValue(): float | int;
 
     /**
      * @psalm-pure
+     *
+     * @deprecated use getMaximumValue
      */
     public static function getMaxValue(): float | int;
+
+    /**
+     * @psalm-pure
+     */
+    public static function getMinimumValue(): float | int;
+
+    /**
+     * @psalm-pure
+     */
+    public static function getMaximumValue(): float | int;
 
     public function getValue(): float | int;
 

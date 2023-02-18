@@ -19,12 +19,12 @@ abstract class AbstractStringValueObject implements StringValueObject
     {
         $length = static::getStringLength($string);
 
-        if ($length < static::getMinLength()) {
-            throw new TooShort(static::getMinLength(), $length);
+        if ($length < static::getMinimumLength()) {
+            throw new TooShort(static::getMinimumLength(), $length);
         }
 
-        if ($length > static::getMaxLength()) {
-            throw new TooLong(static::getMaxLength(), $length);
+        if ($length > static::getMaximumLength()) {
+            throw new TooLong(static::getMaximumLength(), $length);
         }
     }
 
@@ -38,6 +38,26 @@ abstract class AbstractStringValueObject implements StringValueObject
         return is_int($length)
             ? $length
             : strlen($input);
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMinimumLength(): int
+    {
+        return static::getMinLength();
+    }
+
+    /**
+     * @psalm-suppress DeprecatedMethod
+     *
+     * @psalm-pure
+     */
+    public static function getMaximumLength(): int
+    {
+        return static::getMaxLength();
     }
 
     public function getValue(): string

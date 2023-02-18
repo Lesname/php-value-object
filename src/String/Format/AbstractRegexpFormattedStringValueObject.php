@@ -22,7 +22,7 @@ abstract class AbstractRegexpFormattedStringValueObject extends AbstractFormatte
     {
         $length = static::getStringLength($input);
 
-        if ($length < static::getMinLength() || $length > static::getMaxLength()) {
+        if ($length < static::getMinimumLength() || $length > static::getMaximumLength()) {
             return false;
         }
 
