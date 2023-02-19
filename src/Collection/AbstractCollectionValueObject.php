@@ -29,12 +29,12 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     {
         assert(array_is_list($items));
 
-        if (count($items) < static::getMinimumLength()) {
-            throw new TooFewItems(static::getMinimumLength(), count($items));
+        if (count($items) < static::getMinimumSize()) {
+            throw new TooFewItems(static::getMinimumSize(), count($items));
         }
 
-        if (count($items) > static::getMaximumLength()) {
-            throw new TooManyItems(static::getMaximumLength(), count($items));
+        if (count($items) > static::getMaximumSize()) {
+            throw new TooManyItems(static::getMaximumSize(), count($items));
         }
     }
 
@@ -43,7 +43,7 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
      *
      * @psalm-pure
      */
-    public static function getMinimumLength(): int
+    public static function getMinimumSize(): int
     {
         return static::getMinlength();
     }
@@ -53,7 +53,7 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
      *
      * @psalm-pure
      */
-    public static function getMaximumLength(): int
+    public static function getMaximumSize(): int
     {
         return static::getMaxLength();
     }
