@@ -121,6 +121,22 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     /**
      * @throws Uncomparable
      */
+    public function isGreaterThan(NumberValueObject|float|int $value): bool
+    {
+        return $this->getValue() > $this->getCompareValue($value);
+    }
+
+    /**
+     * @throws Uncomparable
+     */
+    public function isLowerThan(NumberValueObject|float|int $value): bool
+    {
+        return $this->getValue() < $this->getCompareValue($value);
+    }
+
+    /**
+     * @throws Uncomparable
+     */
     public function isGreater(NumberValueObject|float|int $value): bool
     {
         return $this->getCompareValue($value) > $this->getValue();

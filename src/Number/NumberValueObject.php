@@ -17,7 +17,7 @@ interface NumberValueObject extends ValueObject
      */
     public static function getPrecision(): int;
 
-    /**
+    /**\
      * @psalm-pure
      */
     public static function getMultipleOf(): int|float;
@@ -48,8 +48,18 @@ interface NumberValueObject extends ValueObject
 
     public function getValue(): float | int;
 
+    public function isGreaterThan(NumberValueObject | float | int $value): bool;
+
+    public function isLowerThan(NumberValueObject | float | int $value): bool;
+
+    /**
+     * @deprecated use isLowerThan
+     */
     public function isGreater(NumberValueObject | float | int $value): bool;
 
+    /**
+     * @deprecated use isGreaterThan
+     */
     public function isLower(NumberValueObject | float | int $value): bool;
 
     public function isSame(NumberValueObject | float | int $value): bool;
