@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+<files psalm-version="5.12.0@f90118cdeacd0088e7215e64c0c99ceca819e176">
   <file src="src/Collection/AbstractCollectionValueObject.php">
-    <DeprecatedMethod occurrences="2">
+    <DeprecatedMethod>
       <code>static::getMaxLength()</code>
       <code>static::getMinlength()</code>
     </DeprecatedMethod>
   </file>
   <file src="src/Number/AbstractNumberValueObject.php">
-    <DeprecatedMethod occurrences="5">
+    <DeprecatedMethod>
       <code>static::getMaxValue()</code>
       <code>static::getMinValue()</code>
       <code>static::getPrecision()</code>
@@ -16,113 +16,113 @@
     </DeprecatedMethod>
   </file>
   <file src="src/String/AbstractStringValueObject.php">
-    <DeprecatedMethod occurrences="2">
+    <DeprecatedMethod>
       <code>static::getMaxLength()</code>
       <code>static::getMinLength()</code>
     </DeprecatedMethod>
   </file>
   <file src="src/String/Format/AbstractFormattedStringValueObject.php">
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/AbstractRegexStringFormatValueObject.php">
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>AbstractRegexStringFormatValueObject</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/AbstractRegexpFormattedStringValueObject.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>AbstractRegexpFormattedStringValueObject</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/AbstractRegularExpressionStringValueObject.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>AbstractRegularExpressionStringValueObject</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/AbstractStringFormatValueObject.php">
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>AbstractStringFormatValueObject</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Date.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>Date</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/EmailAddress.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>EmailAddress</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Exception/NotFormat.php">
-    <DeprecatedClass occurrences="1">
-      <code>class-string&lt;FormattedStringValueObject&gt;</code>
-    </DeprecatedClass>
+    <DeprecatedInterface>
+      <code><![CDATA[class-string<FormattedStringValueObject>]]></code>
+    </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Ip.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>Ip</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Resource/Identifier.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractRegularExpressionStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>Identifier</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Resource/Type.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractRegularExpressionStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>Type</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/SearchTerm.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractRegularExpressionStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>SearchTerm</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Uri.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>Uri</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Uri/AbstractUri.php">
-    <DeprecatedClass occurrences="1">
+    <DeprecatedClass>
       <code>AbstractFormattedStringValueObject</code>
     </DeprecatedClass>
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>AbstractUri</code>
     </DeprecatedInterface>
   </file>
   <file src="src/String/Format/Uri/Https.php">
-    <DeprecatedInterface occurrences="1">
+    <DeprecatedInterface>
       <code>Https</code>
     </DeprecatedInterface>
   </file>
