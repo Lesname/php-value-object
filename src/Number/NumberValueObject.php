@@ -66,5 +66,9 @@ interface NumberValueObject extends ValueObject
 
     public function diff(NumberValueObject | float | int $with): float | int;
 
+    public function subtract(NumberValueObject | float | int $value): static;
+
+    public function append(NumberValueObject | float | int $value): static;
+
     public function __toString(): string;
 }

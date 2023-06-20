@@ -6,10 +6,11 @@ namespace LessValueObject\Number;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
-use LessValueObject\Number\Exception\Uncomparable;
 
 /**
  * @psalm-immutable
+ *
+ * @psalm-consistent-constructor
  */
 abstract class AbstractNumberValueObject implements NumberValueObject
 {
@@ -33,8 +34,8 @@ abstract class AbstractNumberValueObject implements NumberValueObject
             throw new PrecisionOutBounds(static::getPrecision(), $value);
         }
 
-        if (!static::isMultipleOf($this->value, static::getMultipleOf())) {
-            throw new Exception\NotMultipleOf($this->value, static::getMultipleOf());
+        if (!static::isMultipleOf($value, static::getMultipleOf())) {
+            throw new Exception\NotMultipleOf($value, static::getMultipleOf());
         }
     }
 
@@ -110,44 +111,29 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         return $this->getValue();
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isGreaterThan(NumberValueObject|float|int $value): bool
     {
-        return $this->getValue() > $this->getCompareValue($value);
+        return $this->getValue() > $this->getUsableValue($value);
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isLowerThan(NumberValueObject|float|int $value): bool
     {
-        return $this->getValue() < $this->getCompareValue($value);
+        return $this->getValue() < $this->getUsableValue($value);
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isGreater(NumberValueObject|float|int $value): bool
     {
-        return $this->getCompareValue($value) > $this->getValue();
+        return $this->getUsableValue($value) > $this->getValue();
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isLower(NumberValueObject|float|int $value): bool
     {
-        return $this->getCompareValue($value) < $this->getValue();
+        return $this->getUsableValue($value) < $this->getValue();
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isSame(NumberValueObject|float|int $value): bool
     {
-        return $this->getCompareValue($value) === $this->getValue();
+        return $this->getUsableValue($value) === $this->getValue();
     }
 
     public function diff(NumberValueObject|float|int $with): float|int
@@ -160,12 +146,32 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     }
 
     /**
+     * @throws Exception\NotMultipleOf
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws PrecisionOutBounds
+     */
+    public function subtract(NumberValueObject|float|int $value): static
+    {
+        return new static($this->getValue() - $this->getUsableValue($value));
+    }
+
+    /**
+     * @throws Exception\NotMultipleOf
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws PrecisionOutBounds
+     */
+    public function append(NumberValueObject|float|int $value): static
+    {
+        return new static($this->getValue() + $this->getUsableValue($value));
+    }
+
+    /**
      * @psalm-param pure-callable(float | int, float | int): bool $comparor
      *
      * @param NumberValueObject|float|int $with
      * @param callable(float | int, float | int): bool $comparor
-     *
-     * @throws Uncomparable
      *
      * @deprecated will be dropped, use getCompareValue
      */
@@ -175,24 +181,13 @@ abstract class AbstractNumberValueObject implements NumberValueObject
             return $comparor($with, $this->getValue());
         }
 
-        if ($with::class !== static::class) {
-            throw new Uncomparable($this, $with);
-        }
-
         return $comparor($with->getValue(), $this->getValue());
     }
 
-    /**
-     * @throws Uncomparable
-     */
-    protected function getCompareValue(NumberValueObject|float|int $value): float | int
+    protected function getUsableValue(NumberValueObject|float|int $value): float | int
     {
         if (is_float($value) || is_int($value)) {
             return $value;
-        }
-
-        if ($value::class !== static::class) {
-            throw new Uncomparable($this, $value);
         }
 
         return $value->getValue();

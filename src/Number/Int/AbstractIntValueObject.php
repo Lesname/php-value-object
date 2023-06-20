@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObject\Number\Int;
 
+use TypeError;
 use LessValueObject\Number\AbstractNumberValueObject;
 
 /**
@@ -10,9 +11,17 @@ use LessValueObject\Number\AbstractNumberValueObject;
  */
 abstract class AbstractIntValueObject extends AbstractNumberValueObject implements IntValueObject
 {
-    public function __construct(private readonly int $value)
+    private readonly int $value;
+
+    public function __construct(float | int $value)
     {
+        if (!is_int($value)) {
+            throw new TypeError('Expected int, got float');
+        }
+
         parent::__construct($value);
+
+        $this->value = $value;
     }
 
     public function getValue(): int

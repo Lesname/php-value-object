@@ -40,16 +40,6 @@ final class MilliTimestamp extends AbstractIntValueObject
         return new self((int)floor(microtime(true) * 1_000));
     }
 
-    public function append(int $amount): self
-    {
-        return new self($this->getValue() + $amount);
-    }
-
-    public function subtract(int $amount): self
-    {
-        return new self($this->getValue() - $amount);
-    }
-
     /**
      * @psalm-pure
      */
