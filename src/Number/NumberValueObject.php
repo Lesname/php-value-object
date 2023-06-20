@@ -17,7 +17,7 @@ interface NumberValueObject extends ValueObject
      */
     public static function getPrecision(): int;
 
-    /**\
+    /**
      * @psalm-pure
      */
     public static function getMultipleOf(): int|float;
