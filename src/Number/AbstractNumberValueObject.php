@@ -18,8 +18,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws PrecisionOutBounds
-     *
-     * @psalm-suppress DeprecatedMethod
      */
     public function __construct(private readonly float | int $value)
     {
@@ -74,8 +72,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMultipleOf(): int|float
@@ -84,8 +80,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMinimumValue(): float|int
@@ -94,8 +88,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMaximumValue(): float|int

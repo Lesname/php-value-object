@@ -39,8 +39,6 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMinimumSize(): int
@@ -49,8 +47,6 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMaximumSize(): int
