@@ -39,7 +39,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         }
     }
 
-    protected function isMultipleOf(float | int $value, float | int $of): bool
+    protected static function isMultipleOf(float | int $value, float | int $of): bool
     {
         if (is_int($value) && is_int($of) && $value % $of === 0) {
             return true;
