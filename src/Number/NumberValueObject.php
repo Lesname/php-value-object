@@ -48,13 +48,27 @@ interface NumberValueObject extends ValueObject
 
     public function getValue(): float | int;
 
+    public function isGreaterThan(NumberValueObject | float | int $value): bool;
+
+    public function isLowerThan(NumberValueObject | float | int $value): bool;
+
+    /**
+     * @deprecated use isLowerThan
+     */
     public function isGreater(NumberValueObject | float | int $value): bool;
 
+    /**
+     * @deprecated use isGreaterThan
+     */
     public function isLower(NumberValueObject | float | int $value): bool;
 
     public function isSame(NumberValueObject | float | int $value): bool;
 
     public function diff(NumberValueObject | float | int $with): float | int;
+
+    public function subtract(NumberValueObject | float | int $value): static;
+
+    public function append(NumberValueObject | float | int $value): static;
 
     public function __toString(): string;
 }

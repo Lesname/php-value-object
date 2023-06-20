@@ -7,8 +7,6 @@ use LessValueObject\Number\AbstractNumberValueObject;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
-use LessValueObject\Number\Exception\Uncomparable;
-use LessValueObject\Number\Int\IntValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -30,9 +28,6 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertSame('1.2', $mock->__toString());
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function testIsGreater(): void
     {
         $mock = $this->makeMock(1.4, 1, 0, 1.5);
@@ -41,9 +36,6 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertFalse($mock->isGreater(1));
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function testIsLower(): void
     {
         $mock = $this->makeMock(1.2, 1, 0, 1.2);
@@ -52,9 +44,6 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertFalse($mock->isLower(1.3));
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function testIsSame(): void
     {
         $mock = $this->makeMock(1.2, 1, 0, 1.2);
@@ -62,16 +51,6 @@ final class AbstractNumberValueObjectTest extends TestCase
         self::assertTrue($mock->isSame($mock));
         self::assertTrue($mock->isSame(1.2));
         self::assertFalse($mock->isSame(1.3));
-    }
-
-    public function testNotComparable(): void
-    {
-        $this->expectException(Uncomparable::class);
-
-        $mock = $this->makeMock(1.2, 1, 0, 2);
-        $other = $this->createMock(IntValueObject::class);
-
-        $mock->isSame($other);
     }
 
     public function testMinOutBounds(): void
@@ -106,9 +85,9 @@ final class AbstractNumberValueObjectTest extends TestCase
     private function makeMock(float | int $value, int $precision, float | int $min, float | int $max): AbstractNumberValueObject
     {
         return new class ($value, $precision, $min, $max) extends AbstractNumberValueObject {
-            private static int $precision;
-            private static float | int $min;
-            private static float | int $max;
+            public static int $precision;
+            public static float | int $min;
+            public static float | int $max;
 
             public function __construct(float | int $value, int $precision, float | int $min, float | int $max)
             {

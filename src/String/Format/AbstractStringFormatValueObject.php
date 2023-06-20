@@ -10,10 +10,8 @@ use LessValueObject\String\Format\Exception\NotFormat;
 
 /**
  * @psalm-immutable
- *
- * @deprecated use AbstractStringFormatValueObject
  */
-abstract class AbstractFormattedStringValueObject extends AbstractStringValueObject implements FormattedStringValueObject
+abstract class AbstractStringFormatValueObject extends AbstractStringValueObject implements FormattedStringValueObject
 {
     /**
      * @throws NotFormat

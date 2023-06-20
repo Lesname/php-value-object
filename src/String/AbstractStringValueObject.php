@@ -41,8 +41,6 @@ abstract class AbstractStringValueObject implements StringValueObject
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMinimumLength(): int
@@ -51,8 +49,6 @@ abstract class AbstractStringValueObject implements StringValueObject
     }
 
     /**
-     * @psalm-suppress DeprecatedMethod
-     *
      * @psalm-pure
      */
     public static function getMaximumLength(): int
