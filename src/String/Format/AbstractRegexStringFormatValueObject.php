@@ -10,6 +10,8 @@ abstract class AbstractRegexStringFormatValueObject extends AbstractStringFormat
 {
     /**
      * @psalm-pure
+     *
+     * @return non-empty-string
      */
     abstract public static function getRegularExpression(): string;
 

@@ -12,6 +12,8 @@ abstract class AbstractRegularExpressionStringValueObject extends AbstractFormat
 {
     /**
      * @psalm-pure
+     *
+     * @return non-empty-string
      */
     abstract public static function getRegularExpression(): string;
 
