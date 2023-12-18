@@ -13,7 +13,7 @@ final class MinuteTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(0, Minute::getMinValue());
-        self::assertSame(59, Minute::getMaxValue());
+        self::assertSame(0, Minute::getMinimumValue());
+        self::assertSame(59, Minute::getMaximumValue());
     }
 }

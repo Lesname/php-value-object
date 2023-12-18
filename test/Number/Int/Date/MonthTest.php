@@ -13,7 +13,7 @@ final class MonthTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(1, Month::getMinValue());
-        self::assertSame(12, Month::getMaxValue());
+        self::assertSame(1, Month::getMinimumValue());
+        self::assertSame(12, Month::getMaximumValue());
     }
 }

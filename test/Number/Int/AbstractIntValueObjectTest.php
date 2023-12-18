@@ -18,13 +18,6 @@ final class AbstractIntValueObjectTest extends TestCase
         self::assertSame(1, $mock->getValue());
     }
 
-    public function testPrecision(): void
-    {
-        $mock = $this->makeMock(2, 1, 3);
-
-        self::assertSame(0, $mock->getPrecision());
-    }
-
     private function makeMock(int $value, int $min, int $max): AbstractIntValueObject
     {
         return new class ($value, $min, $max) extends AbstractIntValueObject {
@@ -39,12 +32,12 @@ final class AbstractIntValueObjectTest extends TestCase
                 parent::__construct($value);
             }
 
-            public static function getMinValue(): int
+            public static function getMinimumValue(): int
             {
                 return self::$min;
             }
 
-            public static function getMaxValue(): int
+            public static function getMaximumValue(): int
             {
                 return self::$max;
             }

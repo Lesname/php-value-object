@@ -10,7 +10,7 @@ use LessValueObject\String\Format\Resource\Identifier;
 /**
  * @psalm-immutable
  */
-final class SearchTerm extends AbstractRegularExpressionStringValueObject
+final class SearchTerm extends AbstractRegexStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -23,7 +23,7 @@ final class SearchTerm extends AbstractRegularExpressionStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 2;
     }
@@ -31,7 +31,7 @@ final class SearchTerm extends AbstractRegularExpressionStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 50;
     }

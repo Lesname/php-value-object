@@ -5,6 +5,7 @@ namespace LessValueObject\Number;
 
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
+use LessValueObject\Number\Exception\NotMultipleOf;
 use LessValueObject\Number\Exception\PrecisionOutBounds;
 
 /**
@@ -18,7 +19,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @throws Exception\NotMultipleOf
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
      */
     public function __construct(private readonly float | int $value)
     {
@@ -28,10 +28,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
 
         if ($value > static::getMaximumValue()) {
             throw new MaxOutBounds(static::getMaximumValue(), $value);
-        }
-
-        if (preg_match('/\.(\d*)$/', (string)$value, $matches) && strlen($matches[1]) > static::getPrecision()) {
-            throw new PrecisionOutBounds(static::getPrecision(), $value);
         }
 
         if (!static::isMultipleOf($value, static::getMultipleOf())) {
@@ -70,30 +66,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         }
 
         return true;
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function getMultipleOf(): int|float
-    {
-        return 1 / pow(10, static::getPrecision());
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function getMinimumValue(): float|int
-    {
-        return static::getMinValue();
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function getMaximumValue(): float|int
-    {
-        return static::getMaxValue();
     }
 
     public function getValue(): float|int
@@ -149,7 +121,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @throws Exception\NotMultipleOf
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
+     * @throws NotMultipleOf
      */
     public function subtract(NumberValueObject|float|int $value): static
     {
@@ -160,28 +132,11 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @throws Exception\NotMultipleOf
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
+     * @throws NotMultipleOf
      */
     public function append(NumberValueObject|float|int $value): static
     {
         return new static($this->getValue() + $this->getUsableValue($value));
-    }
-
-    /**
-     * @psalm-param pure-callable(float | int, float | int): bool $comparor
-     *
-     * @param NumberValueObject|float|int $with
-     * @param callable(float | int, float | int): bool $comparor
-     *
-     * @deprecated will be dropped, use getCompareValue
-     */
-    protected function compare(NumberValueObject|float|int $with, callable $comparor): bool
-    {
-        if (is_float($with) || is_int($with)) {
-            return $comparor($with, $this->getValue());
-        }
-
-        return $comparor($with->getValue(), $this->getValue());
     }
 
     protected function getUsableValue(NumberValueObject|float|int $value): float | int

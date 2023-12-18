@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace LessValueObject\String\Format\Exception;
 
 use LessValueObject\Exception\AbstractException;
-use LessValueObject\String\Format\FormattedStringValueObject;
+use LessValueObject\String\Format\StringFormatValueObject;
 
 /**
  * @psalm-immutable
@@ -12,7 +12,7 @@ use LessValueObject\String\Format\FormattedStringValueObject;
 final class NotFormat extends AbstractException
 {
     /**
-     * @param class-string<FormattedStringValueObject> $expected
+     * @param class-string<StringFormatValueObject> $expected
      * @param string $given
      */
     public function __construct(public readonly string $expected, public readonly string $given)

@@ -16,7 +16,7 @@ final class ForeignReferences extends AbstractCollectionValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinlength(): int
+    public static function getMinimumSize(): int
     {
         return 1;
     }
@@ -24,9 +24,9 @@ final class ForeignReferences extends AbstractCollectionValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumSize(): int
     {
-        return PerPage::getMaxValue();
+        return PerPage::getMaximumValue();
     }
 
     /**

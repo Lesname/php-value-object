@@ -27,20 +27,6 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
     public static function getMaximumSize(): int;
 
     /**
-     * @deprecated use getMinimumSize
-     *
-     * @psalm-pure
-     */
-    public static function getMinlength(): int;
-
-    /**
-     * @deprecated use getMaximumSize
-     *
-     * @psalm-pure
-     */
-    public static function getMaxLength(): int;
-
-    /**
      * @return class-string<T>
      *
      * @psalm-pure

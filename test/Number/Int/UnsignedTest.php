@@ -13,7 +13,7 @@ final class UnsignedTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(0, Unsigned::getMinValue());
-        self::assertSame(PHP_INT_MAX, Unsigned::getMaxValue());
+        self::assertSame(0, Unsigned::getMinimumValue());
+        self::assertSame(PHP_INT_MAX, Unsigned::getMaximumValue());
     }
 }

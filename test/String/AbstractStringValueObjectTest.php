@@ -62,12 +62,12 @@ final class AbstractStringValueObjectTest extends TestCase
                 parent::__construct($string);
             }
 
-            public static function getMinLength(): int
+            public static function getMinimumLength(): int
             {
                 return self::$minLength;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumLength(): int
             {
                 return self::$maxLength;
             }

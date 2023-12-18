@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format\Resource;
 
-use LessValueObject\String\Format\AbstractRegularExpressionStringValueObject;
+use LessValueObject\String\Format\AbstractRegexStringFormatValueObject;
 
 /**
  * @psalm-immutable
  */
-final class Type extends AbstractRegularExpressionStringValueObject
+final class Type extends AbstractRegexStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -21,7 +21,7 @@ final class Type extends AbstractRegularExpressionStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 1;
     }
@@ -29,7 +29,7 @@ final class Type extends AbstractRegularExpressionStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 40;
     }

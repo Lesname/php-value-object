@@ -8,7 +8,7 @@ use RuntimeException;
 /**
  * @psalm-immutable
  */
-final class Date extends AbstractFormattedStringValueObject
+final class Date extends AbstractStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -17,7 +17,7 @@ final class Date extends AbstractFormattedStringValueObject
     {
         $length = self::getStringLength($input);
 
-        if ($length < self::getMinLength() || $length > self::getMaxLength()) {
+        if ($length < self::getMinimumLength() || $length > self::getMaximumLength()) {
             return false;
         }
 
@@ -31,7 +31,7 @@ final class Date extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 8;
     }
@@ -39,7 +39,7 @@ final class Date extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 10;
     }

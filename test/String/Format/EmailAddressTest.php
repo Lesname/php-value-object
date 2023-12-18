@@ -13,8 +13,8 @@ final class EmailAddressTest extends TestCase
 {
     public function testLengthConstraint(): void
     {
-        self::assertSame(5, EmailAddress::getMinLength());
-        self::assertSame(255, EmailAddress::getMaxLength());
+        self::assertSame(5, EmailAddress::getMinimumLength());
+        self::assertSame(255, EmailAddress::getMaximumLength());
     }
 
     public function testFormat(): void
