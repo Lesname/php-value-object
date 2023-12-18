@@ -167,23 +167,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         return new static($this->getValue() + $this->getUsableValue($value));
     }
 
-    /**
-     * @psalm-param pure-callable(float | int, float | int): bool $comparor
-     *
-     * @param NumberValueObject|float|int $with
-     * @param callable(float | int, float | int): bool $comparor
-     *
-     * @deprecated will be dropped, use getCompareValue
-     */
-    protected function compare(NumberValueObject|float|int $with, callable $comparor): bool
-    {
-        if (is_float($with) || is_int($with)) {
-            return $comparor($with, $this->getValue());
-        }
-
-        return $comparor($with->getValue(), $this->getValue());
-    }
-
     protected function getUsableValue(NumberValueObject|float|int $value): float | int
     {
         if (is_float($value) || is_int($value)) {
