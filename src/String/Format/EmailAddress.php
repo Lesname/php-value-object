@@ -6,7 +6,7 @@ namespace LessValueObject\String\Format;
 /**
  * @psalm-immutable
  */
-final class EmailAddress extends AbstractFormattedStringValueObject
+final class EmailAddress extends AbstractStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -15,7 +15,7 @@ final class EmailAddress extends AbstractFormattedStringValueObject
     {
         $length = self::getStringLength($input);
 
-        if ($length < self::getMinLength() || $length > self::getMaxLength()) {
+        if ($length < self::getMinimumLength() || $length > self::getMaximumLength()) {
             return false;
         }
 
@@ -25,7 +25,7 @@ final class EmailAddress extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 5;
     }
@@ -33,7 +33,7 @@ final class EmailAddress extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 255;
     }

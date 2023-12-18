@@ -21,8 +21,8 @@ final class DateTest extends TestCase
 
     public function testLengthConstraint(): void
     {
-        self::assertSame(8, Date::getMinLength());
-        self::assertSame(10, Date::getMaxLength());
+        self::assertSame(8, Date::getMinimumLength());
+        self::assertSame(10, Date::getMaximumLength());
     }
 
     public function testGetters(): void

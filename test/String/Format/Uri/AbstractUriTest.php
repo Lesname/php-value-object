@@ -38,7 +38,7 @@ final class AbstractUriTest extends TestCase
             }
         };
 
-        self::assertSame(5, $class::getMinLength());
-        self::assertSame(999, $class::getMaxLength());
+        self::assertSame(5, $class::getMinimumLength());
+        self::assertSame(999, $class::getMaximumLength());
     }
 }

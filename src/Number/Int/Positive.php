@@ -11,7 +11,7 @@ final class Positive extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinValue(): int
+    public static function getMinimumValue(): int
     {
         return 1;
     }
@@ -19,7 +19,7 @@ final class Positive extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxValue(): int
+    public static function getMaximumValue(): int
     {
         return PHP_INT_MAX;
     }

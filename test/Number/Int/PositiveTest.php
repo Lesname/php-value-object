@@ -13,7 +13,7 @@ final class PositiveTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(1, Positive::getMinValue());
-        self::assertSame(PHP_INT_MAX, Positive::getMaxValue());
+        self::assertSame(1, Positive::getMinimumValue());
+        self::assertSame(PHP_INT_MAX, Positive::getMaximumValue());
     }
 }

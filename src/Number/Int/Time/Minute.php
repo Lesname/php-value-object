@@ -13,7 +13,7 @@ final class Minute extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinValue(): int
+    public static function getMinimumValue(): int
     {
         return 0;
     }
@@ -21,7 +21,7 @@ final class Minute extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxValue(): int
+    public static function getMaximumValue(): int
     {
         return 59;
     }

@@ -40,22 +40,6 @@ abstract class AbstractStringValueObject implements StringValueObject
             : strlen($input);
     }
 
-    /**
-     * @psalm-pure
-     */
-    public static function getMinimumLength(): int
-    {
-        return static::getMinLength();
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function getMaximumLength(): int
-    {
-        return static::getMaxLength();
-    }
-
     public function getValue(): string
     {
         return $this->string;

@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format\Uri;
 
-use LessValueObject\String\Format\AbstractFormattedStringValueObject;
+use LessValueObject\String\Format\AbstractStringFormatValueObject;
 
 /**
  * @psalm-immutable
  */
-abstract class AbstractUri extends AbstractFormattedStringValueObject
+abstract class AbstractUri extends AbstractStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -17,7 +17,7 @@ abstract class AbstractUri extends AbstractFormattedStringValueObject
     {
         $length = self::getStringLength($input);
 
-        if ($length < self::getMinLength() || $length > self::getMaxLength()) {
+        if ($length < self::getMinimumLength() || $length > self::getMaximumLength()) {
             return false;
         }
 
@@ -39,7 +39,7 @@ abstract class AbstractUri extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 5;
     }
@@ -47,7 +47,7 @@ abstract class AbstractUri extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 999;
     }

@@ -39,22 +39,6 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     }
 
     /**
-     * @psalm-pure
-     */
-    public static function getMinimumSize(): int
-    {
-        return static::getMinlength();
-    }
-
-    /**
-     * @psalm-pure
-     */
-    public static function getMaximumSize(): int
-    {
-        return static::getMaxLength();
-    }
-
-    /**
      * @return Traversable<int, T>
      */
     public function getIterator(): Traversable

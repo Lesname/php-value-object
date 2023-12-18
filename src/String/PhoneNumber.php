@@ -11,7 +11,7 @@ final class PhoneNumber extends AbstractStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 5;
     }
@@ -19,7 +19,7 @@ final class PhoneNumber extends AbstractStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 20;
     }
