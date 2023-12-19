@@ -3,11 +3,14 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format\Resource;
 
+use LessValueObject\Attribute\DocExample;
 use LessValueObject\String\Format\AbstractRegexStringFormatValueObject;
 
 /**
  * @psalm-immutable
  */
+#[DocExample('foo')]
+#[DocExample('foo.fizBiz.bar')]
 final class Type extends AbstractRegexStringFormatValueObject
 {
     /**
