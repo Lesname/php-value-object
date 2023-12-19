@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
+use LessValueObject\Attribute\DocExample;
 use LessValueObject\String\Exception\TooLong;
 use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Resource\Identifier;
@@ -10,6 +11,7 @@ use LessValueObject\String\Format\Resource\Identifier;
 /**
  * @psalm-immutable
  */
+#[DocExample('Fiz biz')]
 final class SearchTerm extends AbstractRegexStringFormatValueObject
 {
     /**

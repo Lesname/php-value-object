@@ -3,11 +3,14 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format\Resource;
 
+use LessValueObject\Attribute\DocExample;
 use LessValueObject\String\Format\AbstractRegexStringFormatValueObject;
 
 /**
  * @psalm-immutable
  */
+#[DocExample('7b38d184-a873-4821-bd38-5440752fe91e')]
+#[DocExample('00000000-0000-0000-0000-000000000000')]
 final class Identifier extends AbstractRegexStringFormatValueObject
 {
     /**

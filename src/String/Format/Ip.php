@@ -3,11 +3,14 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
+use LessValueObject\Attribute\DocExample;
 use LessValueObject\String\Format\Exception\UnknownVersion;
 
 /**
  * @psalm-immutable
  */
+#[DocExample('127.0.0.1')]
+#[DocExample('::1')]
 final class Ip extends AbstractStringFormatValueObject
 {
     /**

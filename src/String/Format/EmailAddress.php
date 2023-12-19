@@ -3,9 +3,13 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
+use LessValueObject\Attribute\DocExample;
+
 /**
  * @psalm-immutable
  */
+#[DocExample('foo@example.com')]
+#[DocExample('bar@baz.biz')]
 final class EmailAddress extends AbstractStringFormatValueObject
 {
     /**

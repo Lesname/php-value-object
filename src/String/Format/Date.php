@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace LessValueObject\String\Format;
 
 use RuntimeException;
+use LessValueObject\Attribute\DocExample;
 
 /**
  * @psalm-immutable
  */
+#[DocExample('1970-01-01')]
+#[DocExample('2468-09-15')]
 final class Date extends AbstractStringFormatValueObject
 {
     /**
