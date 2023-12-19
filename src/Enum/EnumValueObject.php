@@ -15,5 +15,7 @@ interface EnumValueObject extends ValueObject
      */
     public static function cases(): array;
 
+    public static function from(string $value): static;
+
     public function getValue(): string;
 }
