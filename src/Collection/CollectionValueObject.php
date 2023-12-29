@@ -27,9 +27,9 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
     public static function getMaximumSize(): int;
 
     /**
-     * @return class-string<T>
+     * @return class-string<T>|array<class-string<T>>
      *
      * @psalm-pure
      */
-    public static function getItemType(): string;
+    public static function getItemType(): string | array;
 }
