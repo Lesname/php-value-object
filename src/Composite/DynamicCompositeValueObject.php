@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 namespace LessValueObject\Composite;
 
+use ArrayAccess;
 use RuntimeException;
 
 /**
  * @psalm-immutable
+ *
+ * @implements ArrayAccess<string, mixed>
  */
-final class DynamicCompositeValueObject extends AbstractCompositeValueObject
+final class DynamicCompositeValueObject extends AbstractCompositeValueObject implements ArrayAccess
 {
     /**
      * @param array<string, mixed> $data
@@ -44,5 +47,25 @@ final class DynamicCompositeValueObject extends AbstractCompositeValueObject
     public function jsonSerialize(): array
     {
         return $this->data;
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return $this->has($offset);
+    }
+
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->get($offset);
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        throw new RuntimeException('Immutable object');
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        throw new RuntimeException('Immutable object');
     }
 }
