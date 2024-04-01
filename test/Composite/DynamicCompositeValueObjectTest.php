@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class DynamicCompositeValueObjectTest extends TestCase
 {
-    public function testHas(): void
+    public function testOffsetExists(): void
     {
         $obj = new DynamicCompositeValueObject(
             [
@@ -21,18 +21,18 @@ class DynamicCompositeValueObjectTest extends TestCase
             ],
         );
 
-        self::assertTrue($obj->has('foo'));
-        self::assertTrue($obj->has('fiz'));
-        self::assertFalse($obj->has('bar'));
+        self::assertTrue($obj->offsetExists('foo'));
+        self::assertTrue($obj->offsetExists('fiz'));
+        self::assertFalse($obj->offsetExists('bar'));
     }
 
-    public function testGet(): void
+    public function testOffsetGet(): void
     {
         $obj = new DynamicCompositeValueObject(
             ['foo' => 'bar',],
         );
 
-        self::assertSame('bar', $obj->get('foo'));
+        self::assertSame('bar', $obj->offsetGet('foo'));
     }
 
     public function testGetNotExists(): void
@@ -43,6 +43,22 @@ class DynamicCompositeValueObjectTest extends TestCase
             ['foo' => 'bar',],
         );
 
-        $obj->get('biz');
+        $obj->offsetGet('biz');
+    }
+
+    public function testOffsetSet(): void
+    {
+        $this->expectException(Throwable::class);
+
+        $obj = new DynamicCompositeValueObject([]);
+        $obj->offsetSet('fiz', 'biz');
+    }
+
+    public function testOffsetUnset(): void
+    {
+        $this->expectException(Throwable::class);
+
+        $obj = new DynamicCompositeValueObject([]);
+        $obj->offsetUnset('fiz');
     }
 }
