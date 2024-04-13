@@ -20,10 +20,7 @@ abstract class AbstractRegexStringFormatValueObject extends AbstractStringFormat
      */
     public static function isFormat(string $input): bool
     {
-        $length = static::getStringLength($input);
-
-        return $length >= static::getMinimumLength()
-            && $length <= static::getMaximumLength()
+        return static::isLengthAllowed($input)
             && preg_match(static::getRegularExpression(), $input) === 1;
     }
 }
