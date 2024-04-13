@@ -26,4 +26,14 @@ abstract class AbstractStringFormatValueObject extends AbstractStringValueObject
             throw new NotFormat(static::class, $string);
         }
     }
+
+    /**
+     * @psalm-pure
+     */
+    protected static function isLengthAllowed(string $input): bool
+    {
+        $length = self::getStringLength($input);
+
+        return $length >= static::getMinimumLength() && $length <= static::getMaximumLength();
+    }
 }
