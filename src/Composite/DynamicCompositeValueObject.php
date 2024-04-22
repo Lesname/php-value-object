@@ -33,6 +33,13 @@ final class DynamicCompositeValueObject extends AbstractCompositeValueObject imp
         return $this->data[$key];
     }
 
+    public function tryGet(string $key, mixed $default): mixed
+    {
+        return $this->has($key)
+            ? $this->data[$key]
+            : $default;
+    }
+
     /**
      * @return array<string, mixed>
      */
