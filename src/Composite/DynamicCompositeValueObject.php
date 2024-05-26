@@ -48,12 +48,9 @@ final class DynamicCompositeValueObject extends AbstractCompositeValueObject imp
         return $this->data;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    public function jsonSerialize(): array
+    public function jsonSerialize(): object
     {
-        return $this->data;
+        return (object)$this->data;
     }
 
     public function offsetExists(mixed $offset): bool
