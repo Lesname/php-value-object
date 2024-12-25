@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace LessValueObject\Number\Int;
 
 use TypeError;
+use LessValueObject\Number\Exception\MinOutBounds;
+use LessValueObject\Number\Exception\MaxOutBounds;
+use LessValueObject\Number\Exception\NotMultipleOf;
 use LessValueObject\Number\AbstractNumberValueObject;
 
 /**
@@ -13,6 +16,11 @@ abstract class AbstractIntValueObject extends AbstractNumberValueObject implemen
 {
     private readonly int $value;
 
+    /**
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
+     */
     public function __construct(float | int $value)
     {
         if (!is_int($value)) {
@@ -30,8 +38,6 @@ abstract class AbstractIntValueObject extends AbstractNumberValueObject implemen
     }
 
     /**
-     * Int is always 0
-     *
      * @psalm-pure
      */
     public static function getMultipleOf(): int

@@ -14,6 +14,8 @@ abstract class AbstractStringValueObject implements StringValueObject
     /**
      * @throws TooShort
      * @throws TooLong
+     *
+     * @psalm-pure
      */
     public function __construct(private readonly string $string)
     {

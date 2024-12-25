@@ -17,6 +17,8 @@ abstract class AbstractStringFormatValueObject extends AbstractStringValueObject
      * @throws NotFormat
      * @throws TooLong
      * @throws TooShort
+     *
+     * @psalm-pure
      */
     public function __construct(string $string)
     {

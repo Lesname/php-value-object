@@ -17,17 +17,13 @@ use LessValueObject\Number\Int\AbstractIntValueObject;
 final class MilliTimestamp extends AbstractIntValueObject
 {
     /**
-     * @psalm-pure
-     *
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
-     *
-     * @psalm-suppress ImpureMethodCall getTimestamp and format are pure
      */
     public static function fromDateTime(DateTimeInterface $dateTime): self
     {
-        return new self((int)($dateTime->getTimestamp() . $dateTime->format('v')));
+        return new self((int)$dateTime->format('Uv'));
     }
 
     /**

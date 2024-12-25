@@ -21,6 +21,7 @@ abstract class AbstractRegexStringFormatValueObject extends AbstractStringFormat
     public static function isFormat(string $input): bool
     {
         return static::isLengthAllowed($input)
+            // @phpstan-ignore possiblyImpure.functionCall
             && preg_match(static::getRegularExpression(), $input) === 1;
     }
 }

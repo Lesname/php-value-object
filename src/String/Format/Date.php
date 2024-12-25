@@ -24,6 +24,7 @@ final class Date extends AbstractStringFormatValueObject
             return false;
         }
 
+        // @phpstan-ignore possiblyImpure.functionCall
         if (preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', $input, $matches) !== 1) {
             return false;
         }

@@ -15,6 +15,9 @@ use LessValueObject\String\Format\Resource\Type;
  */
 final class ForeignReference extends AbstractCompositeValueObject
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly Type $type, public readonly Identifier $id)
     {}
 
@@ -28,11 +31,13 @@ final class ForeignReference extends AbstractCompositeValueObject
      */
     public static function fromString(string $string): self
     {
-        if (!preg_match('#(.*)/(.*)#', $string, $matches)) {
+        $parts = explode('/', $string);
+
+        if (count($parts) !== 2) {
             throw new CannotParseReference($string);
         }
 
-        return new self(new Type($matches[1]), new Identifier($matches[2]));
+        return new self(new Type($parts[0]), new Identifier($parts[1]));
     }
 
     /**

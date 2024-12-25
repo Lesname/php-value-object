@@ -17,13 +17,9 @@ use LessValueObject\Number\Int\AbstractIntValueObject;
 final class Timestamp extends AbstractIntValueObject
 {
     /**
-     * @psalm-pure
-     *
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
-     *
-     * @psalm-suppress ImpureMethodCall getTimestamp
      */
     public static function fromDateTime(DateTimeInterface $dateTime): self
     {
