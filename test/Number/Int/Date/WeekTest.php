@@ -13,7 +13,7 @@ final class WeekTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(1, Week::getMinValue());
-        self::assertSame(53, Week::getMaxValue());
+        self::assertSame(1, Week::getMinimumValue());
+        self::assertSame(53, Week::getMaximumValue());
     }
 }

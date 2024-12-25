@@ -13,7 +13,7 @@ final class YearTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(1, Year::getMinValue());
-        self::assertSame(9999, Year::getMaxValue());
+        self::assertSame(1, Year::getMinimumValue());
+        self::assertSame(9999, Year::getMaximumValue());
     }
 }

@@ -13,7 +13,7 @@ final class SecondTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(0, Second::getMinValue());
-        self::assertSame(59, Second::getMaxValue());
+        self::assertSame(0, Second::getMinimumValue());
+        self::assertSame(59, Second::getMaximumValue());
     }
 }

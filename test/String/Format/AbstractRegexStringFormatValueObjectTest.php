@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace LessValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\AbstractRegexpFormattedStringValueObject;
+use LessValueObject\String\Format\AbstractRegexStringFormatValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\AbstractRegexpFormattedStringValueObject
+ * @covers \LessValueObject\String\Format\AbstractRegexStringFormatValueObject
  */
-final class AbstractRegexpFormattedStringValueObjectTest extends TestCase
+final class AbstractRegexStringFormatValueObjectTest extends TestCase
 {
     public function testFormat(): void
     {
@@ -22,20 +22,20 @@ final class AbstractRegexpFormattedStringValueObjectTest extends TestCase
         self::assertFalse($mock->isFormat('d'));
     }
 
-    private function makeMock(): AbstractRegexpFormattedStringValueObject
+    private function makeMock(): AbstractRegexStringFormatValueObject
     {
-        return new class ('abc') extends AbstractRegexpFormattedStringValueObject {
-            public static function getRegexPattern(): string
+        return new class ('abc') extends AbstractRegexStringFormatValueObject {
+            public static function getRegularExpression(): string
             {
-                return '^[a-c]{1,3}$';
+                return '/^[a-c]{1,3}$/';
             }
 
-            public static function getMinLength(): int
+            public static function getMinimumLength(): int
             {
                 return 1;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumLength(): int
             {
                 return 3;
             }

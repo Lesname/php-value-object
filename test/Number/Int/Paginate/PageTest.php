@@ -13,7 +13,7 @@ final class PageTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(1, Page::getMinValue());
-        self::assertSame(PHP_INT_MAX, Page::getMaxValue());
+        self::assertSame(1, Page::getMinimumValue());
+        self::assertSame(PHP_INT_MAX, Page::getMaximumValue());
     }
 }

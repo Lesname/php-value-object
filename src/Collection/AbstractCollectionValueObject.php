@@ -29,12 +29,12 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     {
         assert(array_is_list($items));
 
-        if (count($items) < static::getMinlength()) {
-            throw new TooFewItems(static::getMinlength(), count($items));
+        if (count($items) < static::getMinimumSize()) {
+            throw new TooFewItems(static::getMinimumSize(), count($items));
         }
 
-        if (count($items) > static::getMaxLength()) {
-            throw new TooManyItems(static::getMaxLength(), count($items));
+        if (count($items) > static::getMaximumSize()) {
+            throw new TooManyItems(static::getMaximumSize(), count($items));
         }
     }
 

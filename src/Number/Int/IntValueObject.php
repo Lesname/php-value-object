@@ -13,12 +13,12 @@ interface IntValueObject extends NumberValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinValue(): int;
+    public static function getMinimumValue(): int;
 
     /**
      * @psalm-pure
      */
-    public static function getMaxValue(): int;
+    public static function getMaximumValue(): int;
 
     public function getValue(): int;
 }

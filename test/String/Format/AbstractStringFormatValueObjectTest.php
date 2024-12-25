@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace LessValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\AbstractFormattedStringValueObject;
+use LessValueObject\String\Format\AbstractStringFormatValueObject;
 use LessValueObject\String\Format\Exception\NotFormat;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\AbstractFormattedStringValueObject
+ * @covers \LessValueObject\String\Format\AbstractStringFormatValueObject
  */
-final class AbstractFormattedStringValueObjectTest extends TestCase
+final class AbstractStringFormatValueObjectTest extends TestCase
 {
     public function testIsFormat(): void
     {
@@ -26,9 +26,9 @@ final class AbstractFormattedStringValueObjectTest extends TestCase
         $this->makeMock('fiz', false);
     }
 
-    public function makeMock(string $string, bool $isFormat): AbstractFormattedStringValueObject
+    public function makeMock(string $string, bool $isFormat): AbstractStringFormatValueObject
     {
-        return new class ($string, $isFormat) extends AbstractFormattedStringValueObject {
+        return new class ($string, $isFormat) extends AbstractStringFormatValueObject {
             private static bool $isFormat;
 
             public function __construct(string $input, bool $isFormat)
@@ -43,12 +43,12 @@ final class AbstractFormattedStringValueObjectTest extends TestCase
                 return self::$isFormat;
             }
 
-            public static function getMinLength(): int
+            public static function getMinimumLength(): int
             {
                 return 0;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumLength(): int
             {
                 return 100;
             }

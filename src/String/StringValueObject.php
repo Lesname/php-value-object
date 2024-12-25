@@ -13,12 +13,12 @@ interface StringValueObject extends ValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int;
+    public static function getMinimumLength(): int;
 
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int;
+    public static function getMaximumLength(): int;
 
     public function getValue(): string;
 

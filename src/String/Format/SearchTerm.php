@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
+use LessValueObject\Attribute\DocExample;
 use LessValueObject\String\Exception\TooLong;
 use LessValueObject\String\Exception\TooShort;
 use LessValueObject\String\Format\Resource\Identifier;
@@ -10,20 +11,21 @@ use LessValueObject\String\Format\Resource\Identifier;
 /**
  * @psalm-immutable
  */
-final class SearchTerm extends AbstractRegexpFormattedStringValueObject
+#[DocExample('Fiz biz')]
+final class SearchTerm extends AbstractRegexStringFormatValueObject
 {
     /**
      * @psalm-pure
      */
-    public static function getRegexPattern(): string
+    public static function getRegularExpression(): string
     {
-        return '^.*[a-zA-Z0-9]{2}.*$';
+        return '/^.*[a-zA-Z0-9]{2}.*$/';
     }
 
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 2;
     }
@@ -31,7 +33,7 @@ final class SearchTerm extends AbstractRegexpFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 50;
     }

@@ -19,17 +19,17 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
     /**
      * @psalm-pure
      */
-    public static function getMinlength(): int;
+    public static function getMinimumSize(): int;
 
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int;
+    public static function getMaximumSize(): int;
 
     /**
-     * @return class-string<T>
+     * @return class-string<T>|array<class-string<T>>
      *
      * @psalm-pure
      */
-    public static function getItemType(): string;
+    public static function getItemType(): string | array;
 }

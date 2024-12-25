@@ -14,17 +14,19 @@ abstract class AbstractStringValueObject implements StringValueObject
     /**
      * @throws TooShort
      * @throws TooLong
+     *
+     * @psalm-pure
      */
     public function __construct(private readonly string $string)
     {
         $length = static::getStringLength($string);
 
-        if ($length < static::getMinLength()) {
-            throw new TooShort(static::getMinLength(), $length);
+        if ($length < static::getMinimumLength()) {
+            throw new TooShort(static::getMinimumLength(), $length);
         }
 
-        if ($length > static::getMaxLength()) {
-            throw new TooLong(static::getMaxLength(), $length);
+        if ($length > static::getMaximumLength()) {
+            throw new TooLong(static::getMaximumLength(), $length);
         }
     }
 

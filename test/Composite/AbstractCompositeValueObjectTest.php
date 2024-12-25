@@ -19,8 +19,8 @@ final class AbstractCompositeValueObjectTest extends TestCase
             public int $bar = 1;
         };
 
-        self::assertSame(
-            [
+        self::assertEquals(
+            (object)[
                 'fiz' => 'foo',
                 'bar' => 1,
             ],

@@ -8,7 +8,7 @@ use DateTimeInterface;
 use LessValueObject\Enum\Timezone;
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\PrecisionOutBounds;
+use LessValueObject\Number\Exception\NotMultipleOf;
 use LessValueObject\Number\Int\AbstractIntValueObject;
 
 /**
@@ -17,13 +17,9 @@ use LessValueObject\Number\Int\AbstractIntValueObject;
 final class Timestamp extends AbstractIntValueObject
 {
     /**
-     * @psalm-pure
-     *
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
-     *
-     * @psalm-suppress ImpureMethodCall getTimestamp
+     * @throws NotMultipleOf
      */
     public static function fromDateTime(DateTimeInterface $dateTime): self
     {
@@ -33,27 +29,17 @@ final class Timestamp extends AbstractIntValueObject
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
+     * @throws NotMultipleOf
      */
     public static function now(): self
     {
         return new self(time());
     }
 
-    public function append(int $amount): self
-    {
-        return new self($this->getValue() + $amount);
-    }
-
-    public function subtract(int $amount): self
-    {
-        return new self($this->getValue() - $amount);
-    }
-
     /**
      * @psalm-pure
      */
-    public static function getMinValue(): int
+    public static function getMinimumValue(): int
     {
         return 0;
     }
@@ -61,7 +47,7 @@ final class Timestamp extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxValue(): int
+    public static function getMaximumValue(): int
     {
         return PHP_INT_MAX;
     }
@@ -69,7 +55,7 @@ final class Timestamp extends AbstractIntValueObject
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
+     * @throws NotMultipleOf
      */
     public function toMilliTimestamp(): MilliTimestamp
     {

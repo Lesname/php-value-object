@@ -8,11 +8,8 @@ namespace LessValueObject\Composite;
  */
 abstract class AbstractCompositeValueObject implements CompositeValueObject
 {
-    /**
-     * @return array<string, mixed>
-     */
-    public function jsonSerialize(): array
+    public function jsonSerialize(): object
     {
-        return get_object_vars($this);
+        return (object)get_object_vars($this);
     }
 }

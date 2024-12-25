@@ -13,7 +13,7 @@ final class PhoneNumberTest extends TestCase
 {
     public function testConstraints(): void
     {
-        self::assertSame(5, PhoneNumber::getMinLength());
-        self::assertSame(20, PhoneNumber::getMaxLength());
+        self::assertSame(5, PhoneNumber::getMinimumLength());
+        self::assertSame(20, PhoneNumber::getMaximumLength());
     }
 }

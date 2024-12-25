@@ -10,5 +10,12 @@ use LessValueObject\ValueObject;
  */
 interface EnumValueObject extends ValueObject
 {
+    /**
+     * @return array<static>
+     */
+    public static function cases(): array;
+
+    public static function from(string $value): static;
+
     public function getValue(): string;
 }

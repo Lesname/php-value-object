@@ -13,27 +13,31 @@ interface NumberValueObject extends ValueObject
     /**
      * @psalm-pure
      */
-    public static function getPrecision(): int;
+    public static function getMultipleOf(): int|float;
 
     /**
      * @psalm-pure
      */
-    public static function getMinValue(): float | int;
+    public static function getMinimumValue(): float | int;
 
     /**
      * @psalm-pure
      */
-    public static function getMaxValue(): float | int;
+    public static function getMaximumValue(): float | int;
 
     public function getValue(): float | int;
 
-    public function isGreater(NumberValueObject | float | int $value): bool;
+    public function isGreaterThan(NumberValueObject | float | int $value): bool;
 
-    public function isLower(NumberValueObject | float | int $value): bool;
+    public function isLowerThan(NumberValueObject | float | int $value): bool;
 
     public function isSame(NumberValueObject | float | int $value): bool;
 
     public function diff(NumberValueObject | float | int $with): float | int;
+
+    public function subtract(NumberValueObject | float | int $value): static;
+
+    public function append(NumberValueObject | float | int $value): static;
 
     public function __toString(): string;
 }

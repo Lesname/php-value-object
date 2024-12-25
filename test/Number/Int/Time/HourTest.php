@@ -13,7 +13,7 @@ final class HourTest extends TestCase
 {
     public function testRange(): void
     {
-        self::assertSame(0, Hour::getMinValue());
-        self::assertSame(23, Hour::getMaxValue());
+        self::assertSame(0, Hour::getMinimumValue());
+        self::assertSame(23, Hour::getMaximumValue());
     }
 }

@@ -19,12 +19,12 @@ final class AbstractCollectionValueObjectTest extends TestCase
         $this->expectException(TooFewItems::class);
 
         new class ([]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
+            public static function getMinimumSize(): int
             {
                 return 1;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumSize(): int
             {
                 return 2;
             }
@@ -41,12 +41,12 @@ final class AbstractCollectionValueObjectTest extends TestCase
         $this->expectException(TooManyItems::class);
 
         new class ([1]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
+            public static function getMinimumSize(): int
             {
                 return 0;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumSize(): int
             {
                 return 0;
             }
@@ -63,12 +63,12 @@ final class AbstractCollectionValueObjectTest extends TestCase
         $first = $this->createMock(ValueObject::class);
 
         $collection = new class ([$first]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
+            public static function getMinimumSize(): int
             {
                 return 0;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumSize(): int
             {
                 return 3;
             }
@@ -92,12 +92,12 @@ final class AbstractCollectionValueObjectTest extends TestCase
         $two = $this->createMock(ValueObject::class);
 
         $collection = new class ([$first, $two]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
+            public static function getMinimumSize(): int
             {
                 return 0;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumSize(): int
             {
                 return 3;
             }
@@ -118,12 +118,12 @@ final class AbstractCollectionValueObjectTest extends TestCase
         $two = $this->createMock(ValueObject::class);
 
         $collection = new class ([$first, $two]) extends AbstractCollectionValueObject {
-            public static function getMinlength(): int
+            public static function getMinimumSize(): int
             {
                 return 0;
             }
 
-            public static function getMaxLength(): int
+            public static function getMaximumSize(): int
             {
                 return 3;
             }

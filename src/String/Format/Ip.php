@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 namespace LessValueObject\String\Format;
 
+use LessValueObject\Attribute\DocExample;
 use LessValueObject\String\Format\Exception\UnknownVersion;
 
 /**
  * @psalm-immutable
  */
-final class Ip extends AbstractFormattedStringValueObject
+#[DocExample('127.0.0.1')]
+#[DocExample('::1')]
+final class Ip extends AbstractStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -17,7 +20,7 @@ final class Ip extends AbstractFormattedStringValueObject
     {
         $length = self::getStringLength($input);
 
-        if ($length < self::getMinLength() || $length > self::getMaxLength()) {
+        if ($length < self::getMinimumLength() || $length > self::getMaximumLength()) {
             return false;
         }
 
@@ -41,7 +44,7 @@ final class Ip extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMinLength(): int
+    public static function getMinimumLength(): int
     {
         return 2;
     }
@@ -49,7 +52,7 @@ final class Ip extends AbstractFormattedStringValueObject
     /**
      * @psalm-pure
      */
-    public static function getMaxLength(): int
+    public static function getMaximumLength(): int
     {
         return 45;
     }

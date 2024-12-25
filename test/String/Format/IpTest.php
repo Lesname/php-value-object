@@ -29,8 +29,8 @@ final class IpTest extends TestCase
 
     public function testLengthConstraint(): void
     {
-        self::assertSame(2, Ip::getMinLength());
-        self::assertSame(45, Ip::getMaxLength());
+        self::assertSame(2, Ip::getMinimumLength());
+        self::assertSame(45, Ip::getMaximumLength());
     }
 
     /**

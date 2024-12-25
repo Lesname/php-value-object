@@ -13,7 +13,7 @@ final class PerPageTest extends TestCase
 {
     public function testSetup(): void
     {
-        self::assertSame(0, PerPage::getMinValue());
-        self::assertSame(100, PerPage::getMaxValue());
+        self::assertSame(0, PerPage::getMinimumValue());
+        self::assertSame(100, PerPage::getMaximumValue());
     }
 }

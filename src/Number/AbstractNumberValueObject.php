@@ -5,32 +5,72 @@ namespace LessValueObject\Number;
 
 use LessValueObject\Number\Exception\MaxOutBounds;
 use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\PrecisionOutBounds;
-use LessValueObject\Number\Exception\Uncomparable;
+use LessValueObject\Number\Exception\NotMultipleOf;
 
 /**
  * @psalm-immutable
+ *
+ * @psalm-consistent-constructor
  */
 abstract class AbstractNumberValueObject implements NumberValueObject
 {
     /**
-     * @throws MinOutBounds
+     * @throws Exception\NotMultipleOf
      * @throws MaxOutBounds
-     * @throws PrecisionOutBounds
+     * @throws MinOutBounds
      */
     public function __construct(private readonly float | int $value)
     {
-        if ($value < static::getMinValue()) {
-            throw new MinOutBounds(static::getMinValue(), $value);
+        if ($value < static::getMinimumValue()) {
+            throw new MinOutBounds(static::getMinimumValue(), $value);
         }
 
-        if ($value > static::getMaxValue()) {
-            throw new MaxOutBounds(static::getMaxValue(), $value);
+        if ($value > static::getMaximumValue()) {
+            throw new MaxOutBounds(static::getMaximumValue(), $value);
         }
 
-        if (preg_match('/\.(\d*)$/', (string)$value, $matches) && strlen($matches[1]) > static::getPrecision()) {
-            throw new PrecisionOutBounds(static::getPrecision(), $value);
+        if (!static::isMultipleOf($value, static::getMultipleOf())) {
+            throw new Exception\NotMultipleOf($value, static::getMultipleOf());
         }
+    }
+
+    /**
+     * @psalm-pure
+     */
+    protected static function isMultipleOf(float | int $value, float | int $of): bool
+    {
+        if (is_int($value) && is_int($of) && $value % $of === 0) {
+            return true;
+        }
+
+        if (is_float($of)) {
+            $ofParts = explode('.', (string)$of);
+            $precision = strlen($ofParts[1]);
+            $of = (int)($ofParts[0] . $ofParts[1]);
+            $power = pow(10, $precision);
+        } else {
+            $precision = 0;
+            $power = 1;
+        }
+
+        if (is_float($value)) {
+            $valueParts = explode('.', (string)$value);
+
+            if (strlen($valueParts[1]) > $precision) {
+                return false;
+            } else {
+                $float = str_pad($valueParts[1], $precision, '0');
+                $check = (int)($valueParts[0] . $float);
+            }
+        } else {
+            $check = $value * $power;
+        }
+
+        if ($check % $of !== 0) {
+            return false;
+        }
+
+        return true;
     }
 
     public function getValue(): float|int
@@ -48,28 +88,29 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         return $this->getValue();
     }
 
-    /**
-     * @throws Uncomparable
-     */
+    public function isGreaterThan(NumberValueObject|float|int $value): bool
+    {
+        return $this->getValue() > $this->getUsableValue($value);
+    }
+
+    public function isLowerThan(NumberValueObject|float|int $value): bool
+    {
+        return $this->getValue() < $this->getUsableValue($value);
+    }
+
     public function isGreater(NumberValueObject|float|int $value): bool
     {
-        return $this->getCompareValue($value) > $this->getValue();
+        return $this->getUsableValue($value) > $this->getValue();
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isLower(NumberValueObject|float|int $value): bool
     {
-        return $this->getCompareValue($value) < $this->getValue();
+        return $this->getUsableValue($value) < $this->getValue();
     }
 
-    /**
-     * @throws Uncomparable
-     */
     public function isSame(NumberValueObject|float|int $value): bool
     {
-        return $this->getCompareValue($value) === $this->getValue();
+        return $this->getUsableValue($value) === $this->getValue();
     }
 
     public function diff(NumberValueObject|float|int $with): float|int
@@ -82,39 +123,31 @@ abstract class AbstractNumberValueObject implements NumberValueObject
     }
 
     /**
-     * @psalm-param pure-callable(float | int, float | int): bool $comparor
-     *
-     * @param NumberValueObject|float|int $with
-     * @param callable(float | int, float | int): bool $comparor
-     *
-     * @throws Uncomparable
-     *
-     * @deprecated will be dropped, use getCompareValue
+     * @throws Exception\NotMultipleOf
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
      */
-    protected function compare(NumberValueObject|float|int $with, callable $comparor): bool
+    public function subtract(NumberValueObject|float|int $value): static
     {
-        if (is_float($with) || is_int($with)) {
-            return $comparor($with, $this->getValue());
-        }
-
-        if ($with::class !== static::class) {
-            throw new Uncomparable($this, $with);
-        }
-
-        return $comparor($with->getValue(), $this->getValue());
+        return new static($this->getValue() - $this->getUsableValue($value));
     }
 
     /**
-     * @throws Uncomparable
+     * @throws Exception\NotMultipleOf
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
      */
-    protected function getCompareValue(NumberValueObject|float|int $value): float | int
+    public function append(NumberValueObject|float|int $value): static
+    {
+        return new static($this->getValue() + $this->getUsableValue($value));
+    }
+
+    protected function getUsableValue(NumberValueObject|float|int $value): float | int
     {
         if (is_float($value) || is_int($value)) {
             return $value;
-        }
-
-        if ($value::class !== static::class) {
-            throw new Uncomparable($this, $value);
         }
 
         return $value->getValue();

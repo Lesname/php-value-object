@@ -10,6 +10,9 @@ use LessValueObject\Exception\AbstractException;
  */
 final class UnknownVersion extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly int $version)
     {
         parent::__construct("Version {$version} is unknown");
