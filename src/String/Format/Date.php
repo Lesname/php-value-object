@@ -50,21 +50,27 @@ final class Date extends AbstractStringFormatValueObject
 
     public function getYear(): int
     {
-        assert(preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', (string)$this, $matches) === 1, new RuntimeException());
+        if (preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', (string)$this, $matches) !== 1) {
+            throw new RuntimeException();
+        }
 
         return (int)$matches['year'];
     }
 
     public function getMonth(): int
     {
-        assert(preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', (string)$this, $matches) === 1, new RuntimeException());
+        if (preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', (string)$this, $matches) !== 1) {
+            throw new RuntimeException();
+        }
 
         return (int)$matches['month'];
     }
 
     public function getDay(): int
     {
-        assert(preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', (string)$this, $matches) === 1, new RuntimeException());
+        if (preg_match('/^(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})$/', (string)$this, $matches) !== 1) {
+            throw new RuntimeException();
+        }
 
         return (int)$matches['day'];
     }
