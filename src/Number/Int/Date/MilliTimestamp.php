@@ -54,7 +54,7 @@ final class MilliTimestamp extends AbstractIntValueObject
 
     public function toDateTime(Timezone $timezone): DateTimeInterface
     {
-        return (new DateTimeImmutable('@' . ($this->getValue() / 1_000)))
+        return (new DateTimeImmutable('@' . ($this->value / 1_000)))
             ->setTimezone($timezone->asDateTimeZone());
     }
 

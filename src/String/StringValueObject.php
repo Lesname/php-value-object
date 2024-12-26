@@ -10,6 +10,9 @@ use LessValueObject\ValueObject;
  */
 interface StringValueObject extends ValueObject
 {
+    // phpcs:ignore
+    public string $value { get; }
+
     /**
      * @psalm-pure
      */
@@ -20,6 +23,9 @@ interface StringValueObject extends ValueObject
      */
     public static function getMaximumLength(): int;
 
+    /**
+     * @deprecated use value property
+     */
     public function getValue(): string;
 
     public function __toString(): string;

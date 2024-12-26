@@ -10,6 +10,9 @@ use LessValueObject\ValueObject;
  */
 interface EnumValueObject extends ValueObject
 {
+    // phpcs:ignore
+    public string $value { get; }
+
     /**
      * @return array<static>
      */
@@ -17,5 +20,8 @@ interface EnumValueObject extends ValueObject
 
     public static function from(string $value): static;
 
+    /**
+     * @deprecated use value property
+     */
     public function getValue(): string;
 }

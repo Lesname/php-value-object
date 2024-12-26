@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int;
+namespace LessValueObject\Number\Float;
 
 use LessValueObject\Number\NumberValueObject;
 use LessValueObject\Number\Exception\MinOutBounds;
@@ -13,14 +13,14 @@ use LessValueObject\Number\Exception\NotMultipleOf;
  *
  * @phpstan-consistent-constructor
  */
-abstract class AbstractIntValueObject implements IntValueObject
+abstract class AbstractFloatValueObject implements NumberValueObject
 {
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
-    public function __construct(public readonly int $value)
+    public function __construct(public readonly int | float $value)
     {
         if ($value < static::getMinimumValue()) {
             throw new MinOutBounds(static::getMinimumValue(), $value);
@@ -30,20 +30,54 @@ abstract class AbstractIntValueObject implements IntValueObject
             throw new MaxOutBounds(static::getMaximumValue(), $value);
         }
 
-        if ($value % static::getMultipleOf() !== 0) {
+        if (!static::isMultipleOf($value, static::getMultipleOf())) {
             throw new NotMultipleOf($value, static::getMultipleOf());
         }
     }
 
-    public static function getMultipleOf(): int|float
+    /**
+     * @psalm-pure
+     */
+    protected static function isMultipleOf(float | int $value, float | int $of): bool
     {
-        return 1;
+        if (is_int($value) && is_int($of) && $value % $of === 0) {
+            return true;
+        }
+
+        if (is_float($of)) {
+            $ofParts = explode('.', (string)$of);
+            $precision = strlen($ofParts[1]);
+            $of = (int)($ofParts[0] . $ofParts[1]);
+            $power = pow(10, $precision);
+        } else {
+            $precision = 0;
+            $power = 1;
+        }
+
+        if (is_float($value)) {
+            $valueParts = explode('.', (string)$value);
+
+            if (strlen($valueParts[1]) > $precision) {
+                return false;
+            } else {
+                $float = str_pad($valueParts[1], $precision, '0');
+                $check = (int)($valueParts[0] . $float);
+            }
+        } else {
+            $check = $value * $power;
+        }
+
+        if ($check % $of !== 0) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
      * @deprecated
      */
-    public function getValue(): int
+    public function getValue(): float|int
     {
         return $this->value;
     }
@@ -110,14 +144,4 @@ abstract class AbstractIntValueObject implements IntValueObject
 
         return $value->value;
     }
-
-    /**
-     * @psalm-pure
-     */
-    abstract public static function getMinimumValue(): int;
-
-    /**
-     * @psalm-pure
-     */
-    abstract public static function getMaximumValue(): int;
 }
