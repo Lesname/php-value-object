@@ -10,6 +10,9 @@ use LessValueObject\Number\NumberValueObject;
  */
 interface IntValueObject extends NumberValueObject
 {
+    // phpcs:ignore
+    public int $value { get; }
+
     /**
      * @psalm-pure
      */
@@ -20,5 +23,8 @@ interface IntValueObject extends NumberValueObject
      */
     public static function getMaximumValue(): int;
 
+    /**
+     * @deprecated use value property
+     */
     public function getValue(): int;
 }

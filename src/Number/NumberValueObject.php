@@ -10,6 +10,9 @@ use LessValueObject\ValueObject;
  */
 interface NumberValueObject extends ValueObject
 {
+    // phpcs:ignore
+    public float | int $value { get; }
+
     /**
      * @psalm-pure
      */
@@ -25,6 +28,9 @@ interface NumberValueObject extends ValueObject
      */
     public static function getMaximumValue(): float | int;
 
+    /**
+     * @deprecated use value property
+     */
     public function getValue(): float | int;
 
     public function isGreaterThan(NumberValueObject | float | int $value): bool;
