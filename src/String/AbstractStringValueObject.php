@@ -17,9 +17,9 @@ abstract class AbstractStringValueObject implements StringValueObject
      *
      * @psalm-pure
      */
-    public function __construct(private readonly string $string)
+    public function __construct(public readonly string $value)
     {
-        $length = static::getStringLength($string);
+        $length = static::getStringLength($value);
 
         if ($length < static::getMinimumLength()) {
             throw new TooShort(static::getMinimumLength(), $length);
@@ -42,18 +42,21 @@ abstract class AbstractStringValueObject implements StringValueObject
             : strlen($input);
     }
 
+    /**
+     * @deprecated
+     */
     public function getValue(): string
     {
-        return $this->string;
+        return $this->value;
     }
 
     public function __toString(): string
     {
-        return $this->string;
+        return $this->value;
     }
 
     public function jsonSerialize(): string
     {
-        return $this->string;
+        return $this->value;
     }
 }

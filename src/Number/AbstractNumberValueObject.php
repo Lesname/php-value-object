@@ -11,6 +11,8 @@ use LessValueObject\Number\Exception\NotMultipleOf;
  * @psalm-immutable
  *
  * @psalm-consistent-constructor
+ *
+ * @deprecated use AbstractFloatNumberValueObject or AbstractIntValueObject
  */
 abstract class AbstractNumberValueObject implements NumberValueObject
 {
@@ -19,7 +21,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      * @throws MaxOutBounds
      * @throws MinOutBounds
      */
-    public function __construct(private readonly float | int $value)
+    public function __construct(public readonly float | int $value)
     {
         if ($value < static::getMinimumValue()) {
             throw new MinOutBounds(static::getMinimumValue(), $value);
@@ -73,6 +75,9 @@ abstract class AbstractNumberValueObject implements NumberValueObject
         return true;
     }
 
+    /**
+     * @deprecated
+     */
     public function getValue(): float|int
     {
         return $this->value;
@@ -130,7 +135,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      */
     public function subtract(NumberValueObject|float|int $value): static
     {
-        return new static($this->getValue() - $this->getUsableValue($value));
+        return new static($this->value - $this->getUsableValue($value));
     }
 
     /**
@@ -141,7 +146,7 @@ abstract class AbstractNumberValueObject implements NumberValueObject
      */
     public function append(NumberValueObject|float|int $value): static
     {
-        return new static($this->getValue() + $this->getUsableValue($value));
+        return new static($this->value + $this->getUsableValue($value));
     }
 
     protected function getUsableValue(NumberValueObject|float|int $value): float | int
@@ -150,6 +155,6 @@ abstract class AbstractNumberValueObject implements NumberValueObject
             return $value;
         }
 
-        return $value->getValue();
+        return $value->value;
     }
 }

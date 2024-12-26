@@ -8,6 +8,9 @@ namespace LessValueObject\Enum\Helper;
  */
 trait EnumValueHelper
 {
+    /**
+     * @deprecated use property
+     */
     public function getValue(): string
     {
         return $this->value;
