@@ -443,7 +443,6 @@ enum Timezone: string implements EnumValueObject
     case Pacific_Wake = 'Pacific/Wake';
     case Pacific_Wallis = 'Pacific/Wallis';
 
-
     public function asDateTimeZone(): DateTimeZone
     {
         return new DateTimeZone($this->value);

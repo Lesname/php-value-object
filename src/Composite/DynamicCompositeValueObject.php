@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Composite;
 
+use Override;
 use ArrayAccess;
 use RuntimeException;
 
@@ -48,26 +49,31 @@ final class DynamicCompositeValueObject extends AbstractCompositeValueObject imp
         return $this->data;
     }
 
+    #[Override]
     public function jsonSerialize(): object
     {
         return (object)$this->data;
     }
 
+    #[Override]
     public function offsetExists(mixed $offset): bool
     {
         return $this->has($offset);
     }
 
+    #[Override]
     public function offsetGet(mixed $offset): mixed
     {
         return $this->get($offset);
     }
 
+    #[Override]
     public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new RuntimeException('Immutable object');
     }
 
+    #[Override]
     public function offsetUnset(mixed $offset): void
     {
         throw new RuntimeException('Immutable object');

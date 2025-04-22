@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\String;
 
+use Override;
 use LesValueObject\ValueObject;
 
 /**
@@ -23,5 +24,6 @@ interface StringValueObject extends ValueObject
      */
     public static function getMaximumLength(): int;
 
+    #[Override]
     public function __toString(): string;
 }

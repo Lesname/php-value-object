@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Number\Int\Date;
 
+use Override;
 use DateTimeImmutable;
 use DateTimeInterface;
 use LesValueObject\Enum\Timezone;
@@ -39,6 +40,7 @@ final class Timestamp extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int
     {
         return 0;
@@ -47,6 +49,7 @@ final class Timestamp extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int
     {
         return PHP_INT_MAX;

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Number\Int;
 
+use Override;
 use LesValueObject\Number\NumberValueObject;
 
 /**
@@ -16,10 +17,12 @@ interface IntValueObject extends NumberValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int;
 
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int;
 }

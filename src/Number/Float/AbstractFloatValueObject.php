@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Number\Float;
 
+use Override;
 use LesValueObject\Number\NumberValueObject;
 use LesValueObject\Number\Exception\MinOutBounds;
 use LesValueObject\Number\Exception\MaxOutBounds;
@@ -74,31 +75,37 @@ abstract class AbstractFloatValueObject implements NumberValueObject
         return true;
     }
 
+    #[Override]
     public function __toString(): string
     {
         return (string)$this->value;
     }
 
+    #[Override]
     public function jsonSerialize(): float | int
     {
         return $this->value;
     }
 
+    #[Override]
     public function isGreaterThan(NumberValueObject|float|int $value): bool
     {
-        return $this->getValue() > $this->getUsableValue($value);
+        return $this->value > $this->getUsableValue($value);
     }
 
+    #[Override]
     public function isLowerThan(NumberValueObject|float|int $value): bool
     {
-        return $this->getValue() < $this->getUsableValue($value);
+        return $this->value < $this->getUsableValue($value);
     }
 
+    #[Override]
     public function isSame(NumberValueObject|float|int $value): bool
     {
-        return $this->getUsableValue($value) === $this->getValue();
+        return $this->getUsableValue($value) === $this->value;
     }
 
+    #[Override]
     public function diff(NumberValueObject|float|int $with): float|int
     {
         if ($with instanceof NumberValueObject) {
@@ -113,6 +120,7 @@ abstract class AbstractFloatValueObject implements NumberValueObject
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
+    #[Override]
     public function subtract(NumberValueObject|float|int $value): static
     {
         return new static($this->value - $this->getUsableValue($value));
@@ -123,6 +131,7 @@ abstract class AbstractFloatValueObject implements NumberValueObject
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
+    #[Override]
     public function append(NumberValueObject|float|int $value): static
     {
         return new static($this->value + $this->getUsableValue($value));

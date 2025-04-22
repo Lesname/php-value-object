@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\String\Format\Uri;
 
+use Override;
 use LesValueObject\Attribute\DocExample;
 
 /**
@@ -15,6 +16,7 @@ final class Https extends AbstractUri
     /**
      * @psalm-pure
      */
+    #[Override]
     protected static function isSupportedScheme(string $scheme): bool
     {
         return $scheme === 'https';

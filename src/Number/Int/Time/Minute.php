@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Number\Int\Time;
 
+use Override;
 use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
@@ -13,6 +14,7 @@ final class Minute extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int
     {
         return 0;
@@ -21,6 +23,7 @@ final class Minute extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int
     {
         return 59;

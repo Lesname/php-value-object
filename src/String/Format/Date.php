@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\String\Format;
 
+use Override;
 use RuntimeException;
 use LesValueObject\Attribute\DocExample;
 
@@ -16,6 +17,7 @@ final class Date extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function isFormat(string $input): bool
     {
         $length = self::getStringLength($input);
@@ -35,6 +37,7 @@ final class Date extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumLength(): int
     {
         return 8;
@@ -43,6 +46,7 @@ final class Date extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumLength(): int
     {
         return 10;

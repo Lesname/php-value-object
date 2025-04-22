@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace LesValueObject\String;
 
+use Override;
+
 /**
  * @psalm-immutable
  */
@@ -11,6 +13,7 @@ final class ContentBody extends AbstractStringValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumLength(): int
     {
         return 1;
@@ -21,6 +24,7 @@ final class ContentBody extends AbstractStringValueObject
      *
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumLength(): int
     {
         return 15_000;

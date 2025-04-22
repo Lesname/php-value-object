@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\String\Format;
 
+use Override;
 use LesValueObject\Attribute\DocExample;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
@@ -17,6 +18,7 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getRegularExpression(): string
     {
         return '/^.*[a-zA-Z0-9]{2}.*$/';
@@ -25,6 +27,7 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumLength(): int
     {
         return 2;
@@ -33,6 +36,7 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumLength(): int
     {
         return 50;

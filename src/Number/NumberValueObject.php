@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Number;
 
+use Override;
 use LesValueObject\ValueObject;
 
 /**
@@ -40,5 +41,6 @@ interface NumberValueObject extends ValueObject
 
     public function append(NumberValueObject | float | int $value): static;
 
+    #[Override]
     public function __toString(): string;
 }

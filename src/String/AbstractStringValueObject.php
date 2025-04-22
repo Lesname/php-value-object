@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\String;
 
+use Override;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
 
@@ -42,11 +43,13 @@ abstract class AbstractStringValueObject implements StringValueObject
             : strlen($input);
     }
 
+    #[Override]
     public function __toString(): string
     {
         return $this->value;
     }
 
+    #[Override]
     public function jsonSerialize(): string
     {
         return $this->value;

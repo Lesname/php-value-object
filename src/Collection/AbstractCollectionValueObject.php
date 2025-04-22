@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Collection;
 
+use Override;
 use ArrayIterator;
 use IteratorAggregate;
 use LesValueObject\Collection\Exception\TooFewItems;
@@ -41,11 +42,13 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     /**
      * @return Traversable<int, T>
      */
+    #[Override]
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->items);
     }
 
+    #[Override]
     public function count(): int
     {
         return count($this->items);
@@ -54,6 +57,7 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     /**
      * @return array<T>
      */
+    #[Override]
     public function jsonSerialize(): array
     {
         return $this->items;

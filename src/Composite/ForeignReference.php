@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Composite;
 
+use Override;
 use LesValueObject\Composite\Exception\CannotParseReference;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
@@ -54,6 +55,7 @@ final class ForeignReference extends AbstractCompositeValueObject
         return new self(new Type($array['type']), new Identifier($array['id']));
     }
 
+    #[Override]
     public function __toString(): string
     {
         return "{$this->type}/{$this->id}";
