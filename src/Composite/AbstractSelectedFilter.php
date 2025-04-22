@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Composite;
+namespace LesValueObject\Composite;
 
-use LessValueObject\Collection\CollectionValueObject;
-use LessValueObject\Enum\EnumValueObject;
-use LessValueObject\Number\NumberValueObject;
-use LessValueObject\String\StringValueObject;
-use LessValueObject\Enum\FilterMode;
+use LesValueObject\Collection\CollectionValueObject;
+use LesValueObject\Enum\EnumValueObject;
+use LesValueObject\Number\NumberValueObject;
+use LesValueObject\String\StringValueObject;
+use LesValueObject\Enum\FilterMode;
 
 /**
  * @psalm-immutable

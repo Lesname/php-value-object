@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Collection;
+namespace LesValueObjectTest\Collection;
 
-use LessValueObject\Collection\AbstractCollectionValueObject;
-use LessValueObject\Collection\Exception\TooFewItems;
-use LessValueObject\Collection\Exception\TooManyItems;
-use LessValueObject\ValueObject;
+use LesValueObject\Collection\AbstractCollectionValueObject;
+use LesValueObject\Collection\Exception\TooFewItems;
+use LesValueObject\Collection\Exception\TooManyItems;
+use LesValueObject\ValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Collection\AbstractCollectionValueObject
+ * @covers \LesValueObject\Collection\AbstractCollectionValueObject
  */
 final class AbstractCollectionValueObjectTest extends TestCase
 {

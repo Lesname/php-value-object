@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String;
+namespace LesValueObject\String;
 
-use LessValueObject\ValueObject;
+use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable

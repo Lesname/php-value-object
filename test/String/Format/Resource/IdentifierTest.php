@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format\Resource;
+namespace LesValueObjectTest\String\Format\Resource;
 
-use LessValueObject\String\Format\Resource\Identifier;
+use LesValueObject\String\Format\Resource\Identifier;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Resource\Identifier
+ * @covers \LesValueObject\String\Format\Resource\Identifier
  */
 final class IdentifierTest extends TestCase
 {

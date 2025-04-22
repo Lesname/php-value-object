@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int\Time;
+namespace LesValueObject\Number\Int\Time;
 
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
  * @psalm-immutable

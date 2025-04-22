@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format\Uri;
+namespace LesValueObject\String\Format\Uri;
 
-use LessValueObject\Attribute\DocExample;
+use LesValueObject\Attribute\DocExample;
 
 /**
  * @psalm-immutable

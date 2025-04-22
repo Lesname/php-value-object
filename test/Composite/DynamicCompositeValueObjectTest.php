@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Composite;
+namespace LesValueObjectTest\Composite;
 
 use Throwable;
-use LessValueObject\Composite\DynamicCompositeValueObject;
+use LesValueObject\Composite\DynamicCompositeValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Composite\DynamicCompositeValueObject
+ * @covers \LesValueObject\Composite\DynamicCompositeValueObject
  */
 class DynamicCompositeValueObjectTest extends TestCase
 {

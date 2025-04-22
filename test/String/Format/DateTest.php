@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format;
+namespace LesValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\Date;
+use LesValueObject\String\Format\Date;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Date
+ * @covers \LesValueObject\String\Format\Date
  */
 final class DateTest extends TestCase
 {

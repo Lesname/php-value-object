@@ -1,5 +1,5 @@
 {
-  "name": "lessname/value-object",
+  "name": "lesname/value-object",
   "license": "MIT",
   "require": {
     "php": "^8.4.0",
@@ -13,12 +13,12 @@
   },
   "autoload": {
     "psr-4": {
-      "LessValueObject\\": "src/"
+      "LesValueObject\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LessValueObjectTest\\": "test/"
+      "LesValueObjectTest\\": "test/"
     }
   }
 }

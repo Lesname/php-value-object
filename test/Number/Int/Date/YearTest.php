@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int\Date;
+namespace LesValueObjectTest\Number\Int\Date;
 
-use LessValueObject\Number\Int\Date\Year;
+use LesValueObject\Number\Int\Date\Year;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Date\Year
+ * @covers \LesValueObject\Number\Int\Date\Year
  */
 final class YearTest extends TestCase
 {

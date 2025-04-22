@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Float;
+namespace LesValueObject\Number\Float;
 
-use LessValueObject\Number\NumberValueObject;
-use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\NotMultipleOf;
+use LesValueObject\Number\NumberValueObject;
+use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\NotMultipleOf;
 
 /**
  * @psalm-immutable

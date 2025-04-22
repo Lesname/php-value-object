@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String;
+namespace LesValueObject\String;
 
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
 
 /**
  * @psalm-immutable

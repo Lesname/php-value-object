@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format\Resource;
+namespace LesValueObjectTest\String\Format\Resource;
 
-use LessValueObject\String\Format\Resource\Type;
+use LesValueObject\String\Format\Resource\Type;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Resource\Type
+ * @covers \LesValueObject\String\Format\Resource\Type
  */
 final class TypeTest extends TestCase
 {

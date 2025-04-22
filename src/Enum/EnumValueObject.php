@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Enum;
+namespace LesValueObject\Enum;
 
-use LessValueObject\ValueObject;
+use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable

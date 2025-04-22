@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int\Paginate;
+namespace LesValueObjectTest\Number\Int\Paginate;
 
-use LessValueObject\Number\Int\Paginate\PerPage;
+use LesValueObject\Number\Int\Paginate\PerPage;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Paginate\PerPage
+ * @covers \LesValueObject\Number\Int\Paginate\PerPage
  */
 final class PerPageTest extends TestCase
 {

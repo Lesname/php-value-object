@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number;
+namespace LesValueObject\Number;
 
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\NotMultipleOf;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\NotMultipleOf;
 
 /**
  * @psalm-immutable

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Collection;
+namespace LesValueObject\Collection;
 
-use LessValueObject\Composite\ForeignReference;
-use LessValueObject\Number\Int\Paginate\PerPage;
+use LesValueObject\Composite\ForeignReference;
+use LesValueObject\Number\Int\Paginate\PerPage;
 
 /**
  * @extends AbstractCollectionValueObject<ForeignReference>

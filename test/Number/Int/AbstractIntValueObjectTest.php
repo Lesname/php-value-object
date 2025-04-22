@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int;
+namespace LesValueObjectTest\Number\Int;
 
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\AbstractIntValueObject
+ * @covers \LesValueObject\Number\Int\AbstractIntValueObject
  */
 final class AbstractIntValueObjectTest extends TestCase
 {

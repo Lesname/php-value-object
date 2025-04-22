@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int\Date;
+namespace LesValueObject\Number\Int\Date;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use LessValueObject\Enum\Timezone;
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\NotMultipleOf;
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Enum\Timezone;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\NotMultipleOf;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
  * @psalm-immutable

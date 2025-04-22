@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Composite;
+namespace LesValueObjectTest\Composite;
 
-use LessValueObject\Composite\AbstractCompositeValueObject;
+use LesValueObject\Composite\AbstractCompositeValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Composite\AbstractCompositeValueObject
+ * @covers \LesValueObject\Composite\AbstractCompositeValueObject
  */
 final class AbstractCompositeValueObjectTest extends TestCase
 {

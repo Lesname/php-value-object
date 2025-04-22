@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int\Paginate;
+namespace LesValueObject\Number\Int\Paginate;
 
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
  * @psalm-immutable

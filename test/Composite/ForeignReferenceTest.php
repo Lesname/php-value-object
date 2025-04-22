@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Composite;
+namespace LesValueObjectTest\Composite;
 
-use LessValueObject\Composite\Exception\CannotParseReference;
-use LessValueObject\Composite\ForeignReference;
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
-use LessValueObject\String\Format\Exception\NotFormat;
+use LesValueObject\Composite\Exception\CannotParseReference;
+use LesValueObject\Composite\ForeignReference;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
+use LesValueObject\String\Format\Exception\NotFormat;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Composite\ForeignReference
+ * @covers \LesValueObject\Composite\ForeignReference
  */
 final class ForeignReferenceTest extends TestCase
 {

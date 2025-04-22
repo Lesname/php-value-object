@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String;
+namespace LesValueObjectTest\String;
 
-use LessValueObject\String\PhoneNumber;
+use LesValueObject\String\PhoneNumber;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\PhoneNumber
+ * @covers \LesValueObject\String\PhoneNumber
  */
 final class PhoneNumberTest extends TestCase
 {

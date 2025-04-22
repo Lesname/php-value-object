@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int\Date;
+namespace LesValueObjectTest\Number\Int\Date;
 
-use LessValueObject\Number\Int\Date\Month;
+use LesValueObject\Number\Int\Date\Month;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Date\Month
+ * @covers \LesValueObject\Number\Int\Date\Month
  */
 final class MonthTest extends TestCase
 {

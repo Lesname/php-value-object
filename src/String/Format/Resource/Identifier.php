@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format\Resource;
+namespace LesValueObject\String\Format\Resource;
 
-use LessValueObject\Attribute\DocExample;
-use LessValueObject\String\Format\AbstractRegexStringFormatValueObject;
+use LesValueObject\Attribute\DocExample;
+use LesValueObject\String\Format\AbstractRegexStringFormatValueObject;
 
 /**
  * @psalm-immutable

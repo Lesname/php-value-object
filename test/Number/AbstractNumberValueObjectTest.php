@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number;
+namespace LesValueObjectTest\Number;
 
-use LessValueObject\Number\Exception\NotMultipleOf;
-use LessValueObject\Number\AbstractNumberValueObject;
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\NotMultipleOf;
+use LesValueObject\Number\AbstractNumberValueObject;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\AbstractNumberValueObject
+ * @covers \LesValueObject\Number\AbstractNumberValueObject
  */
 final class AbstractNumberValueObjectTest extends TestCase
 {

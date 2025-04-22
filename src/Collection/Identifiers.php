@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Collection;
+namespace LesValueObject\Collection;
 
-use LessValueObject\Number\Int\Paginate\PerPage;
-use LessValueObject\String\Format\Resource\Identifier;
+use LesValueObject\Number\Int\Paginate\PerPage;
+use LesValueObject\String\Format\Resource\Identifier;
 
 /**
  * @extends AbstractCollectionValueObject<Identifier>

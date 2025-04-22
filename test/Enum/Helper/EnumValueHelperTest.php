@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Enum\Helper;
+namespace LesValueObjectTest\Enum\Helper;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Enum\Helper\EnumValueHelper
+ * @covers \LesValueObject\Enum\Helper\EnumValueHelper
  */
 final class EnumValueHelperTest extends TestCase
 {

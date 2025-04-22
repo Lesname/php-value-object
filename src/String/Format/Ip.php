@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format;
+namespace LesValueObject\String\Format;
 
-use LessValueObject\Attribute\DocExample;
-use LessValueObject\String\Format\Exception\UnknownVersion;
+use LesValueObject\Attribute\DocExample;
+use LesValueObject\String\Format\Exception\UnknownVersion;
 
 /**
  * @psalm-immutable

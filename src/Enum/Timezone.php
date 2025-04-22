@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Enum;
+namespace LesValueObject\Enum;
 
 use DateTimeZone;
-use LessValueObject\Enum\Helper\EnumValueHelper;
+use LesValueObject\Enum\Helper\EnumValueHelper;
 
 /**
  * @psalm-immutable

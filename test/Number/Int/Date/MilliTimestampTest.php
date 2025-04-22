@@ -1,18 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int\Date;
+namespace LesValueObjectTest\Number\Int\Date;
 
 use DateTime;
-use LessValueObject\Enum\Timezone;
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\PrecisionOutBounds;
-use LessValueObject\Number\Int\Date\MilliTimestamp;
+use LesValueObject\Enum\Timezone;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\PrecisionOutBounds;
+use LesValueObject\Number\Int\Date\MilliTimestamp;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Date\MilliTimestamp
+ * @covers \LesValueObject\Number\Int\Date\MilliTimestamp
  */
 final class MilliTimestampTest extends TestCase
 {

@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format;
+namespace LesValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\AbstractRegexStringFormatValueObject;
+use LesValueObject\String\Format\AbstractRegexStringFormatValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\AbstractRegexStringFormatValueObject
+ * @covers \LesValueObject\String\Format\AbstractRegexStringFormatValueObject
  */
 final class AbstractRegexStringFormatValueObjectTest extends TestCase
 {

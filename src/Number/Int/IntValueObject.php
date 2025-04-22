@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int;
+namespace LesValueObject\Number\Int;
 
-use LessValueObject\Number\NumberValueObject;
+use LesValueObject\Number\NumberValueObject;
 
 /**
  * @psalm-immutable

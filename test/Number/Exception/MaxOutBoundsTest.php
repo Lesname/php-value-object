@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Exception;
+namespace LesValueObjectTest\Number\Exception;
 
-use LessValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MaxOutBounds;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Exception\MaxOutBounds
+ * @covers \LesValueObject\Number\Exception\MaxOutBounds
  */
 final class MaxOutBoundsTest extends TestCase
 {

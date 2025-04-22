@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Composite;
+namespace LesValueObject\Composite;
 
-use LessValueObject\Composite\Exception\CannotParseReference;
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
-use LessValueObject\String\Format\Exception\NotFormat;
-use LessValueObject\String\Format\Resource\Identifier;
-use LessValueObject\String\Format\Resource\Type;
+use LesValueObject\Composite\Exception\CannotParseReference;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
+use LesValueObject\String\Format\Exception\NotFormat;
+use LesValueObject\String\Format\Resource\Identifier;
+use LesValueObject\String\Format\Resource\Type;
 
 /**
  * @psalm-immutable

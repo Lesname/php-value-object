@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int;
+namespace LesValueObjectTest\Number\Int;
 
-use LessValueObject\Number\Int\Unsigned;
+use LesValueObject\Number\Int\Unsigned;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Unsigned
+ * @covers \LesValueObject\Number\Int\Unsigned
  */
 final class UnsignedTest extends TestCase
 {

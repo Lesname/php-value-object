@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int;
+namespace LesValueObjectTest\Number\Int;
 
-use LessValueObject\Number\Int\Negative;
+use LesValueObject\Number\Int\Negative;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Negative
+ * @covers \LesValueObject\Number\Int\Negative
  */
 final class NegativeTest extends TestCase
 {

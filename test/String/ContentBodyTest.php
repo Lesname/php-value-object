@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String;
+namespace LesValueObjectTest\String;
 
-use LessValueObject\String\ContentBody;
+use LesValueObject\String\ContentBody;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\ContentBody
+ * @covers \LesValueObject\String\ContentBody
  */
 final class ContentBodyTest extends TestCase
 {

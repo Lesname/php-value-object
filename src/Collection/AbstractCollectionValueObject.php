@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Collection;
+namespace LesValueObject\Collection;
 
 use ArrayIterator;
 use IteratorAggregate;
-use LessValueObject\Collection\Exception\TooFewItems;
-use LessValueObject\Collection\Exception\TooManyItems;
+use LesValueObject\Collection\Exception\TooFewItems;
+use LesValueObject\Collection\Exception\TooManyItems;
 use Traversable;
 
 /**
  * @implements IteratorAggregate<int, T>
  * @implements CollectionValueObject<T>
  *
- * @template T of \LessValueObject\ValueObject
+ * @template T of \LesValueObject\ValueObject
  *
  * @psalm-immutable
  */
