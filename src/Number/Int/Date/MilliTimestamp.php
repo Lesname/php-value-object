@@ -65,7 +65,7 @@ final class MilliTimestamp extends AbstractIntValueObject
      */
     public function toTimestamp(): Timestamp
     {
-        return new Timestamp((int) floor($this->getValue() / 1_000));
+        return new Timestamp((int) floor($this->value / 1_000));
     }
 
     /**

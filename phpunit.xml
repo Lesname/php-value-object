@@ -4,7 +4,7 @@
     <ini name="assert.exception" value="1"/>
   </php>
   <testsuites>
-    <testsuite>
+    <testsuite name="Test">
       <directory>test/</directory>
     </testsuite>
   </testsuites>

@@ -14,7 +14,7 @@ final class EnumValueHelperTest extends TestCase
     {
         $stub = new EnumValueHelperStub();
 
-        self::assertSame('fiz', $stub->getValue());
+        self::assertSame('fiz', $stub->value);
         self::assertSame('fiz', $stub->jsonSerialize());
     }
 }

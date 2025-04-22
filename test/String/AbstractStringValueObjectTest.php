@@ -31,7 +31,7 @@ final class AbstractStringValueObjectTest extends TestCase
     {
         $mock = $this->makeMock('bar', 3, 4);
 
-        self::assertSame('bar', $mock->getValue());
+        self::assertSame('bar', $mock->value);
     }
 
     public function testTooShort(): void

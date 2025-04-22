@@ -15,7 +15,7 @@ final class AbstractIntValueObjectTest extends TestCase
     {
         $mock = $this->makeMock(1, 0, 2);
 
-        self::assertSame(1, $mock->getValue());
+        self::assertSame(1, $mock->value);
     }
 
     private function makeMock(int $value, int $min, int $max): AbstractIntValueObject

@@ -16,6 +16,6 @@ final class Paginate extends AbstractCompositeValueObject
 
     public function getSkipped(): int
     {
-        return ($this->page->getValue() - 1) * $this->perPage->getValue();
+        return ($this->page->value - 1) * $this->perPage->value;
     }
 }

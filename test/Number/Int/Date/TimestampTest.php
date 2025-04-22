@@ -7,6 +7,7 @@ use DateTime;
 use LesValueObject\Enum\Timezone;
 use LesValueObject\Number\Exception\MaxOutBounds;
 use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\NotMultipleOf;
 use LesValueObject\Number\Exception\PrecisionOutBounds;
 use LesValueObject\Number\Int\Date\Timestamp;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +20,7 @@ final class TimestampTest extends TestCase
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
-     * @throws PrecisionOutBounds
+     * @throws NotMultipleOf
      */
     public function testFromDateTime(): void
     {
@@ -27,23 +28,23 @@ final class TimestampTest extends TestCase
 
         $timestamp = Timestamp::fromDateTime($date);
 
-        self::assertSame($date->getTimestamp(), $timestamp->getValue());
+        self::assertSame($date->getTimestamp(), $timestamp->value);
     }
 
     /**
-     * @throws MinOutBounds
      * @throws MaxOutBounds
-     * @throws PrecisionOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
      */
     public function testNow(): void
     {
-        self::assertSame(time(), Timestamp::now()->getValue());
+        self::assertSame(time(), Timestamp::now()->value);
     }
 
     /**
-     * @throws MinOutBounds
      * @throws MaxOutBounds
-     * @throws PrecisionOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
      */
     public function testFormat(): void
     {
@@ -54,9 +55,9 @@ final class TimestampTest extends TestCase
     }
 
     /**
-     * @throws PrecisionOutBounds
-     * @throws MinOutBounds
      * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
      */
     public function testToMilliTimestamp(): void
     {
@@ -64,24 +65,34 @@ final class TimestampTest extends TestCase
 
         $milliTimestamp = $timestamp->toMilliTimestamp();
 
-        self::assertSame(321_000, $milliTimestamp->getValue());
+        self::assertSame(321_000, $milliTimestamp->value);
     }
 
+    /**
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
+     */
     public function testAppend(): void
     {
         $timestamp = new Timestamp(4);
         $new = $timestamp->append(6);
 
-        self::assertSame(4, $timestamp->getValue());
-        self::assertSame(10, $new->getValue());
+        self::assertSame(4, $timestamp->value);
+        self::assertSame(10, $new->value);
     }
 
+    /**
+     * @throws MaxOutBounds
+     * @throws MinOutBounds
+     * @throws NotMultipleOf
+     */
     public function testSubtract(): void
     {
         $timestamp = new Timestamp(9);
         $new = $timestamp->subtract(7);
 
-        self::assertSame(9, $timestamp->getValue());
-        self::assertSame(2, $new->getValue());
+        self::assertSame(9, $timestamp->value);
+        self::assertSame(2, $new->value);
     }
 }

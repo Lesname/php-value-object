@@ -6,10 +6,10 @@ namespace LesValueObjectTest\Composite;
 use LesValueObject\Composite\Paginate;
 use LesValueObject\Number\Exception\MaxOutBounds;
 use LesValueObject\Number\Exception\MinOutBounds;
-use LesValueObject\Number\Exception\PrecisionOutBounds;
 use LesValueObject\Number\Int\Paginate\Page;
 use LesValueObject\Number\Int\Paginate\PerPage;
 use PHPUnit\Framework\TestCase;
+use LesValueObject\Number\Exception\NotMultipleOf;
 
 /**
  * @covers \LesValueObject\Composite\Paginate
@@ -17,8 +17,8 @@ use PHPUnit\Framework\TestCase;
 final class PaginateTest extends TestCase
 {
     /**
-     * @throws PrecisionOutBounds
      * @throws MaxOutBounds
+     * @throws NotMultipleOf
      * @throws MinOutBounds
      */
     public function testSkipped(): void
