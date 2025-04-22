@@ -1,19 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Collection;
+namespace LesValueObject\Collection;
 
+use Override;
 use ArrayIterator;
 use IteratorAggregate;
-use LessValueObject\Collection\Exception\TooFewItems;
-use LessValueObject\Collection\Exception\TooManyItems;
+use LesValueObject\Collection\Exception\TooFewItems;
+use LesValueObject\Collection\Exception\TooManyItems;
 use Traversable;
 
 /**
  * @implements IteratorAggregate<int, T>
  * @implements CollectionValueObject<T>
  *
- * @template T of \LessValueObject\ValueObject
+ * @template T of \LesValueObject\ValueObject
  *
  * @psalm-immutable
  */
@@ -41,11 +42,13 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     /**
      * @return Traversable<int, T>
      */
+    #[Override]
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->items);
     }
 
+    #[Override]
     public function count(): int
     {
         return count($this->items);
@@ -54,6 +57,7 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     /**
      * @return array<T>
      */
+    #[Override]
     public function jsonSerialize(): array
     {
         return $this->items;

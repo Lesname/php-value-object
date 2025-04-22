@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String;
+namespace LesValueObject\String;
 
-use LessValueObject\ValueObject;
+use Override;
+use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable
@@ -23,10 +24,6 @@ interface StringValueObject extends ValueObject
      */
     public static function getMaximumLength(): int;
 
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): string;
-
+    #[Override]
     public function __toString(): string;
 }

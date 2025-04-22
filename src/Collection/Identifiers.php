@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Collection;
+namespace LesValueObject\Collection;
 
-use LessValueObject\Number\Int\Paginate\PerPage;
-use LessValueObject\String\Format\Resource\Identifier;
+use Override;
+use LesValueObject\Number\Int\Paginate\PerPage;
+use LesValueObject\String\Format\Resource\Identifier;
 
 /**
  * @extends AbstractCollectionValueObject<Identifier>
@@ -16,6 +17,7 @@ final class Identifiers extends AbstractCollectionValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumSize(): int
     {
         return 1;
@@ -24,6 +26,7 @@ final class Identifiers extends AbstractCollectionValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumSize(): int
     {
         return PerPage::getMaximumValue();
@@ -32,6 +35,7 @@ final class Identifiers extends AbstractCollectionValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getItemType(): string
     {
         return Identifier::class;

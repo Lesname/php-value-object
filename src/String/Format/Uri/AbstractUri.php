@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format\Uri;
+namespace LesValueObject\String\Format\Uri;
 
-use LessValueObject\String\Format\AbstractStringFormatValueObject;
+use Override;
+use LesValueObject\String\Format\AbstractStringFormatValueObject;
 
 /**
  * @psalm-immutable
@@ -13,6 +14,7 @@ abstract class AbstractUri extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function isFormat(string $input): bool
     {
         $length = self::getStringLength($input);
@@ -39,6 +41,7 @@ abstract class AbstractUri extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumLength(): int
     {
         return 5;
@@ -47,6 +50,7 @@ abstract class AbstractUri extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumLength(): int
     {
         return 999;

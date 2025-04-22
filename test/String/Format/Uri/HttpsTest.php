@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format\Uri;
+namespace LesValueObjectTest\String\Format\Uri;
 
-use LessValueObject\String\Format\Uri\Https;
+use LesValueObject\String\Format\Uri\Https;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Uri\Https
+ * @covers \LesValueObject\String\Format\Uri\Https
  */
 final class HttpsTest extends TestCase
 {

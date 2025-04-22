@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int;
+namespace LesValueObject\Number\Int;
 
-use LessValueObject\Number\NumberValueObject;
+use Override;
+use LesValueObject\Number\NumberValueObject;
 
 /**
  * @psalm-immutable
@@ -16,15 +17,12 @@ interface IntValueObject extends NumberValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int;
 
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int;
-
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): int;
 }

@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Exception;
+namespace LesValueObjectTest\Number\Exception;
 
-use LessValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Exception\MinOutBounds
+ * @covers \LesValueObject\Number\Exception\MinOutBounds
  */
 final class MinOutBoundsTest extends TestCase
 {

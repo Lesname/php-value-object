@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String;
+namespace LesValueObject\String;
 
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
+use Override;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
 
 /**
  * @psalm-immutable
@@ -42,19 +43,13 @@ abstract class AbstractStringValueObject implements StringValueObject
             : strlen($input);
     }
 
-    /**
-     * @deprecated
-     */
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
+    #[Override]
     public function __toString(): string
     {
         return $this->value;
     }
 
+    #[Override]
     public function jsonSerialize(): string
     {
         return $this->value;

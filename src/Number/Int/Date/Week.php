@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int\Date;
+namespace LesValueObject\Number\Int\Date;
 
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use Override;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
  * @psalm-immutable
@@ -13,6 +14,7 @@ final class Week extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int
     {
         return 1;
@@ -21,6 +23,7 @@ final class Week extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int
     {
         return 53;

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format;
+namespace LesValueObject\String\Format;
 
-use LessValueObject\String\AbstractStringValueObject;
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
-use LessValueObject\String\Format\Exception\NotFormat;
+use LesValueObject\String\AbstractStringValueObject;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
+use LesValueObject\String\Format\Exception\NotFormat;
 
 /**
  * @psalm-immutable

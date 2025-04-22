@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format\Uri;
+namespace LesValueObject\String\Format\Uri;
 
-use LessValueObject\Attribute\DocExample;
+use Override;
+use LesValueObject\Attribute\DocExample;
 
 /**
  * @psalm-immutable
@@ -15,6 +16,7 @@ final class Https extends AbstractUri
     /**
      * @psalm-pure
      */
+    #[Override]
     protected static function isSupportedScheme(string $scheme): bool
     {
         return $scheme === 'https';

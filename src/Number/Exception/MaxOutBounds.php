@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Exception;
+namespace LesValueObject\Number\Exception;
 
-use LessValueObject\Exception\AbstractException;
+use LesValueObject\Exception\AbstractException;
 
 /**
  * @psalm-immutable

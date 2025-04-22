@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Enum;
+namespace LesValueObjectTest\Enum;
 
-use LessValueObject\Enum\OrderDirection;
+use LesValueObject\Enum\OrderDirection;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Enum\OrderDirection
+ * @covers \LesValueObject\Enum\OrderDirection
  */
 final class OrderDirectionTest extends TestCase
 {

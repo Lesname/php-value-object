@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Enum;
+namespace LesValueObject\Enum;
 
-use LessValueObject\ValueObject;
+use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable
@@ -19,9 +19,4 @@ interface EnumValueObject extends ValueObject
     public static function cases(): array;
 
     public static function from(string $value): static;
-
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): string;
 }

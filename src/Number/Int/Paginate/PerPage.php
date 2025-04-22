@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int\Paginate;
+namespace LesValueObject\Number\Int\Paginate;
 
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use Override;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
  * @psalm-immutable
@@ -13,6 +14,7 @@ final class PerPage extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int
     {
         return 0;
@@ -21,6 +23,7 @@ final class PerPage extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int
     {
         return 100;

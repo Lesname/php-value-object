@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int;
+namespace LesValueObjectTest\Number\Int;
 
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\AbstractIntValueObject
+ * @covers \LesValueObject\Number\Int\AbstractIntValueObject
  */
 final class AbstractIntValueObjectTest extends TestCase
 {
@@ -15,7 +15,7 @@ final class AbstractIntValueObjectTest extends TestCase
     {
         $mock = $this->makeMock(1, 0, 2);
 
-        self::assertSame(1, $mock->getValue());
+        self::assertSame(1, $mock->value);
     }
 
     private function makeMock(int $value, int $min, int $max): AbstractIntValueObject

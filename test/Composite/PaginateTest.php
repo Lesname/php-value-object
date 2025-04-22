@@ -1,24 +1,24 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Composite;
+namespace LesValueObjectTest\Composite;
 
-use LessValueObject\Composite\Paginate;
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\PrecisionOutBounds;
-use LessValueObject\Number\Int\Paginate\Page;
-use LessValueObject\Number\Int\Paginate\PerPage;
+use LesValueObject\Composite\Paginate;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Int\Paginate\Page;
+use LesValueObject\Number\Int\Paginate\PerPage;
 use PHPUnit\Framework\TestCase;
+use LesValueObject\Number\Exception\NotMultipleOf;
 
 /**
- * @covers \LessValueObject\Composite\Paginate
+ * @covers \LesValueObject\Composite\Paginate
  */
 final class PaginateTest extends TestCase
 {
     /**
-     * @throws PrecisionOutBounds
      * @throws MaxOutBounds
+     * @throws NotMultipleOf
      * @throws MinOutBounds
      */
     public function testSkipped(): void

@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format;
+namespace LesValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\AbstractStringFormatValueObject;
-use LessValueObject\String\Format\Exception\NotFormat;
+use LesValueObject\String\Format\AbstractStringFormatValueObject;
+use LesValueObject\String\Format\Exception\NotFormat;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\AbstractStringFormatValueObject
+ * @covers \LesValueObject\String\Format\AbstractStringFormatValueObject
  */
 final class AbstractStringFormatValueObjectTest extends TestCase
 {

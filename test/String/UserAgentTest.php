@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String;
+namespace LesValueObjectTest\String;
 
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
-use LessValueObject\String\UserAgent;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
+use LesValueObject\String\UserAgent;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\UserAgent
+ * @covers \LesValueObject\String\UserAgent
  */
 final class UserAgentTest extends TestCase
 {

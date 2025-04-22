@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Enum\Helper;
+namespace LesValueObjectTest\Enum\Helper;
 
-use LessValueObject\Enum\Helper\EnumValueHelper;
+use LesValueObject\Enum\Helper\EnumValueHelper;
 
 final class EnumValueHelperStub
 {

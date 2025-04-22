@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Composite;
+namespace LesValueObject\Composite;
 
-use LessValueObject\Number\Int\Paginate\Page;
-use LessValueObject\Number\Int\Paginate\PerPage;
+use LesValueObject\Number\Int\Paginate\Page;
+use LesValueObject\Number\Int\Paginate\PerPage;
 
 /**
  * @psalm-immutable
@@ -16,6 +16,6 @@ final class Paginate extends AbstractCompositeValueObject
 
     public function getSkipped(): int
     {
-        return ($this->page->getValue() - 1) * $this->perPage->getValue();
+        return ($this->page->value - 1) * $this->perPage->value;
     }
 }

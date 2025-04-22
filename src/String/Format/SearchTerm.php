@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format;
+namespace LesValueObject\String\Format;
 
-use LessValueObject\Attribute\DocExample;
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
-use LessValueObject\String\Format\Resource\Identifier;
+use Override;
+use LesValueObject\Attribute\DocExample;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
+use LesValueObject\String\Format\Resource\Identifier;
 
 /**
  * @psalm-immutable
@@ -17,6 +18,7 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getRegularExpression(): string
     {
         return '/^.*[a-zA-Z0-9]{2}.*$/';
@@ -25,6 +27,7 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumLength(): int
     {
         return 2;
@@ -33,6 +36,7 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumLength(): int
     {
         return 50;

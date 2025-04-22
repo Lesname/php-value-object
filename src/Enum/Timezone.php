@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Enum;
+namespace LesValueObject\Enum;
 
 use DateTimeZone;
-use LessValueObject\Enum\Helper\EnumValueHelper;
+use LesValueObject\Enum\Helper\EnumValueHelper;
 
 /**
  * @psalm-immutable
@@ -442,7 +442,6 @@ enum Timezone: string implements EnumValueObject
     case Pacific_Tongatapu = 'Pacific/Tongatapu';
     case Pacific_Wake = 'Pacific/Wake';
     case Pacific_Wallis = 'Pacific/Wallis';
-
 
     public function asDateTimeZone(): DateTimeZone
     {

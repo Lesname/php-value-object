@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Exception;
+namespace LesValueObject\Exception;
 
 use Exception;
 use Throwable;

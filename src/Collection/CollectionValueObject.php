@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Collection;
+namespace LesValueObject\Collection;
 
 use Countable;
-use LessValueObject\ValueObject;
+use LesValueObject\ValueObject;
 use Traversable;
 
 /**

@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number;
+namespace LesValueObject\Number;
 
-use LessValueObject\ValueObject;
+use Override;
+use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable
@@ -28,11 +29,6 @@ interface NumberValueObject extends ValueObject
      */
     public static function getMaximumValue(): float | int;
 
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): float | int;
-
     public function isGreaterThan(NumberValueObject | float | int $value): bool;
 
     public function isLowerThan(NumberValueObject | float | int $value): bool;
@@ -45,5 +41,6 @@ interface NumberValueObject extends ValueObject
 
     public function append(NumberValueObject | float | int $value): static;
 
+    #[Override]
     public function __toString(): string;
 }

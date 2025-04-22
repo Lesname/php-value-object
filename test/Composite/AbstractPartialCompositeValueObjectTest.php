@@ -3,25 +3,23 @@ declare(strict_types=1);
 
 namespace LesValueObjectTest\Composite;
 
-use LesValueObject\Composite\AbstractCompositeValueObject;
+use LesValueObject\Composite\AbstractPartialCompositeValueObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LesValueObject\Composite\AbstractCompositeValueObject
+ * @covers \LesValueObject\Composite\AbstractPartialCompositeValueObject
  */
-final class AbstractCompositeValueObjectTest extends TestCase
+class AbstractPartialCompositeValueObjectTest extends TestCase
 {
     public function testJson(): void
     {
-        $mock = new class extends AbstractCompositeValueObject {
-            public string $fiz = 'foo';
-
+        $mock = new class extends AbstractPartialCompositeValueObject {
             public int $bar = 1;
+            public ?int $fiz = null;
         };
 
         self::assertEquals(
             (object)[
-                'fiz' => 'foo',
                 'bar' => 1,
             ],
             $mock->jsonSerialize(),

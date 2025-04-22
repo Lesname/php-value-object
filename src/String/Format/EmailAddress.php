@@ -1,9 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format;
+namespace LesValueObject\String\Format;
 
-use LessValueObject\Attribute\DocExample;
+use Override;
+use LesValueObject\Attribute\DocExample;
 
 /**
  * @psalm-immutable
@@ -15,6 +16,7 @@ final class EmailAddress extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function isFormat(string $input): bool
     {
         $length = self::getStringLength($input);
@@ -29,6 +31,7 @@ final class EmailAddress extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumLength(): int
     {
         return 5;
@@ -37,6 +40,7 @@ final class EmailAddress extends AbstractStringFormatValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumLength(): int
     {
         return 255;

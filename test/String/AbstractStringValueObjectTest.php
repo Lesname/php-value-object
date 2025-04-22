@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String;
+namespace LesValueObjectTest\String;
 
-use LessValueObject\String\AbstractStringValueObject;
-use LessValueObject\String\Exception\TooLong;
-use LessValueObject\String\Exception\TooShort;
+use LesValueObject\String\AbstractStringValueObject;
+use LesValueObject\String\Exception\TooLong;
+use LesValueObject\String\Exception\TooShort;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\AbstractStringValueObject
+ * @covers \LesValueObject\String\AbstractStringValueObject
  */
 final class AbstractStringValueObjectTest extends TestCase
 {
@@ -31,7 +31,7 @@ final class AbstractStringValueObjectTest extends TestCase
     {
         $mock = $this->makeMock('bar', 3, 4);
 
-        self::assertSame('bar', $mock->getValue());
+        self::assertSame('bar', $mock->value);
     }
 
     public function testTooShort(): void

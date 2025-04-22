@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format;
+namespace LesValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\EmailAddress;
+use LesValueObject\String\Format\EmailAddress;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\EmailAddress
+ * @covers \LesValueObject\String\Format\EmailAddress
  */
 final class EmailAddressTest extends TestCase
 {

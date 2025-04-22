@@ -1,15 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Number\Int\Date;
+namespace LesValueObject\Number\Int\Date;
 
+use Override;
 use DateTimeImmutable;
 use DateTimeInterface;
-use LessValueObject\Enum\Timezone;
-use LessValueObject\Number\Exception\MaxOutBounds;
-use LessValueObject\Number\Exception\MinOutBounds;
-use LessValueObject\Number\Exception\NotMultipleOf;
-use LessValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Enum\Timezone;
+use LesValueObject\Number\Exception\MaxOutBounds;
+use LesValueObject\Number\Exception\MinOutBounds;
+use LesValueObject\Number\Exception\NotMultipleOf;
+use LesValueObject\Number\Int\AbstractIntValueObject;
 
 /**
  * @psalm-immutable
@@ -39,6 +40,7 @@ final class MilliTimestamp extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMinimumValue(): int
     {
         return 0;
@@ -47,6 +49,7 @@ final class MilliTimestamp extends AbstractIntValueObject
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function getMaximumValue(): int
     {
         return PHP_INT_MAX;
@@ -65,7 +68,7 @@ final class MilliTimestamp extends AbstractIntValueObject
      */
     public function toTimestamp(): Timestamp
     {
-        return new Timestamp((int) floor($this->getValue() / 1_000));
+        return new Timestamp((int) floor($this->value / 1_000));
     }
 
     /**

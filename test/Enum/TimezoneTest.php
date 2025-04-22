@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Enum;
+namespace LesValueObjectTest\Enum;
 
-use LessValueObject\Enum\Timezone;
+use LesValueObject\Enum\Timezone;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Enum\Timezone
+ * @covers \LesValueObject\Enum\Timezone
  */
 final class TimezoneTest extends TestCase
 {

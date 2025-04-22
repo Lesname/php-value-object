@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Exception;
+namespace LesValueObjectTest\String\Exception;
 
-use LessValueObject\String\Exception\TooShort;
+use LesValueObject\String\Exception\TooShort;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Exception\TooShort
+ * @covers \LesValueObject\String\Exception\TooShort
  */
 final class TooShortTest extends TestCase
 {

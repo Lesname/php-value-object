@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format\Exception;
+namespace LesValueObjectTest\String\Format\Exception;
 
-use LessValueObject\String\Format\Exception\UnknownVersion;
+use LesValueObject\String\Format\Exception\UnknownVersion;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Exception\UnknownVersion
+ * @covers \LesValueObject\String\Format\Exception\UnknownVersion
  */
 final class UnknownVersionTest extends TestCase
 {

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Composite;
+namespace LesValueObject\Composite;
 
-use LessValueObject\Number\Int\Date\MilliTimestamp;
+use LesValueObject\Number\Int\Date\MilliTimestamp;
 
 /**
  * @psalm-immutable

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Composite;
+namespace LesValueObject\Composite;
 
-use LessValueObject\Enum\ContentType;
-use LessValueObject\String\ContentBody;
+use LesValueObject\Enum\ContentType;
+use LesValueObject\String\ContentBody;
 
 /**
  * @psalm-immutable

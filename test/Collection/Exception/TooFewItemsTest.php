@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Collection\Exception;
+namespace LesValueObjectTest\Collection\Exception;
 
-use LessValueObject\Collection\Exception\TooFewItems;
+use LesValueObject\Collection\Exception\TooFewItems;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Collection\Exception\TooFewItems
+ * @covers \LesValueObject\Collection\Exception\TooFewItems
  */
 final class TooFewItemsTest extends TestCase
 {

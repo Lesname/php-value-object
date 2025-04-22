@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format;
+namespace LesValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\EmailAddress;
-use LessValueObject\String\Format\Resource\Identifier;
-use LessValueObject\String\Format\SearchTerm;
+use LesValueObject\String\Format\EmailAddress;
+use LesValueObject\String\Format\Resource\Identifier;
+use LesValueObject\String\Format\SearchTerm;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\SearchTerm
+ * @covers \LesValueObject\String\Format\SearchTerm
  */
 final class SearchTermTest extends TestCase
 {

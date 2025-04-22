@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\String\Format;
+namespace LesValueObject\String\Format;
+
+use Override;
 
 /**
  * @psalm-immutable
@@ -18,6 +20,7 @@ abstract class AbstractRegexStringFormatValueObject extends AbstractStringFormat
     /**
      * @psalm-pure
      */
+    #[Override]
     public static function isFormat(string $input): bool
     {
         return static::isLengthAllowed($input)

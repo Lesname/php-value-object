@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObject\Attribute;
+namespace LesValueObject\Attribute;
 
 use Attribute;
 

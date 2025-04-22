@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\Number\Int\Time;
+namespace LesValueObjectTest\Number\Int\Time;
 
-use LessValueObject\Number\Int\Time\Second;
+use LesValueObject\Number\Int\Time\Second;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\Number\Int\Time\Second
+ * @covers \LesValueObject\Number\Int\Time\Second
  */
 final class SecondTest extends TestCase
 {

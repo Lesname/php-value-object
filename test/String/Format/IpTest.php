@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-namespace LessValueObjectTest\String\Format;
+namespace LesValueObjectTest\String\Format;
 
-use LessValueObject\String\Format\Exception\UnknownVersion;
-use LessValueObject\String\Format\Ip;
+use LesValueObject\String\Format\Exception\UnknownVersion;
+use LesValueObject\String\Format\Ip;
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \LessValueObject\String\Format\Ip
+ * @covers \LesValueObject\String\Format\Ip
  */
 final class IpTest extends TestCase
 {
