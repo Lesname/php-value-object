@@ -19,9 +19,4 @@ interface EnumValueObject extends ValueObject
     public static function cases(): array;
 
     public static function from(string $value): static;
-
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): string;
 }

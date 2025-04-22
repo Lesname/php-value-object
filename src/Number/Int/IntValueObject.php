@@ -22,9 +22,4 @@ interface IntValueObject extends NumberValueObject
      * @psalm-pure
      */
     public static function getMaximumValue(): int;
-
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): int;
 }

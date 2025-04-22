@@ -8,14 +8,6 @@ namespace LesValueObject\Enum\Helper;
  */
 trait EnumValueHelper
 {
-    /**
-     * @deprecated use property
-     */
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
     public function jsonSerialize(): string
     {
         return $this->value;

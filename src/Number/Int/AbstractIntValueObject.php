@@ -40,14 +40,6 @@ abstract class AbstractIntValueObject implements IntValueObject
         return 1;
     }
 
-    /**
-     * @deprecated
-     */
-    public function getValue(): int
-    {
-        return $this->value;
-    }
-
     public function __toString(): string
     {
         return (string)$this->value;

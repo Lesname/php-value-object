@@ -42,14 +42,6 @@ abstract class AbstractStringValueObject implements StringValueObject
             : strlen($input);
     }
 
-    /**
-     * @deprecated
-     */
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
     public function __toString(): string
     {
         return $this->value;

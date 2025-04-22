@@ -74,14 +74,6 @@ abstract class AbstractFloatValueObject implements NumberValueObject
         return true;
     }
 
-    /**
-     * @deprecated
-     */
-    public function getValue(): float|int
-    {
-        return $this->value;
-    }
-
     public function __toString(): string
     {
         return (string)$this->value;

@@ -23,10 +23,5 @@ interface StringValueObject extends ValueObject
      */
     public static function getMaximumLength(): int;
 
-    /**
-     * @deprecated use value property
-     */
-    public function getValue(): string;
-
     public function __toString(): string;
 }
