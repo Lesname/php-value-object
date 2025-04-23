@@ -11,6 +11,8 @@ use LesValueObject\String\Format\Resource\Identifier;
  * @extends AbstractCollectionValueObject<Identifier>
  *
  * @psalm-immutable
+ *
+ * @deprecated
  */
 final class Identifiers extends AbstractCollectionValueObject
 {
