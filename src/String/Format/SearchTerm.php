@@ -42,6 +42,30 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
         return 50;
     }
 
+    /**
+     * @param class-string<StringFormatValueObject> $format
+     *
+     */
+    public function matchesFormat(string $format): bool
+    {
+        return $format::isFormat((string)$this);
+    }
+
+    /**
+     * @param class-string<T> $format
+     *
+     * @return T
+     *
+     * @template T of StringFormatValueObject
+     */
+    public function toFormat(string $format): object
+    {
+        return new $format((string)$this);
+    }
+
+    /**
+     * @deprecated use matchesFormat
+     */
     public function isEmailAddress(): bool
     {
         return EmailAddress::isFormat((string)$this);
@@ -51,12 +75,17 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
      * @throws Exception\NotFormat
      * @throws TooLong
      * @throws TooShort
+     *
+     * @deprecated use toFormat
      */
     public function asEmailAddress(): EmailAddress
     {
         return new EmailAddress((string)$this);
     }
 
+    /**
+     * @deprecated use matchesFormat
+     */
     public function isResourceId(): bool
     {
         return Identifier::isFormat((string)$this);
@@ -66,6 +95,8 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
      * @throws Exception\NotFormat
      * @throws TooLong
      * @throws TooShort
+     *
+     * @deprecated use toFormat
      */
     public function asResourceId(): Identifier
     {
