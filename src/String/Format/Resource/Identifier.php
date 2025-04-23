@@ -12,11 +12,9 @@ use LesValueObject\String\Format\AbstractRegexStringFormatValueObject;
  * - uuid
  * - digits
  *
- * Use the format used directly
+ * Recommended to use formats directly where possible
  *
  * @psalm-immutable
- *
- * @internal
  */
 #[DocExample('7b38d184-a873-4821-bd38-5440752fe91e')]
 #[DocExample('123')]
