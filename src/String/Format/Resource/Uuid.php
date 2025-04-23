@@ -8,19 +8,10 @@ use LesValueObject\Attribute\DocExample;
 use LesValueObject\String\Format\AbstractRegexStringFormatValueObject;
 
 /**
- * Identifier is a collection for various identifier formats
- * - uuid
- * - digits
- *
- * Use the format used directly
- *
  * @psalm-immutable
- *
- * @internal
  */
 #[DocExample('7b38d184-a873-4821-bd38-5440752fe91e')]
-#[DocExample('123')]
-final class Identifier extends AbstractRegexStringFormatValueObject
+final class Uuid extends AbstractRegexStringFormatValueObject
 {
     /**
      * @psalm-pure
@@ -28,7 +19,7 @@ final class Identifier extends AbstractRegexStringFormatValueObject
     #[Override]
     public static function getRegularExpression(): string
     {
-        return '/^([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|[1-9][0-9]*)$/';
+        return '/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/';
     }
 
     /**
@@ -37,7 +28,7 @@ final class Identifier extends AbstractRegexStringFormatValueObject
     #[Override]
     public static function getMinimumLength(): int
     {
-        return 1;
+        return 36;
     }
 
     /**
