@@ -11,6 +11,8 @@ use LesValueObject\Number\Int\Paginate\PerPage;
  * @extends AbstractCollectionValueObject<ForeignReference>
  *
  * @psalm-immutable
+ *
+ * @deprecated
  */
 final class ForeignReferences extends AbstractCollectionValueObject
 {
