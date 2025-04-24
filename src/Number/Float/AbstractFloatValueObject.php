@@ -57,6 +57,7 @@ abstract class AbstractFloatValueObject implements NumberValueObject
 
         if (is_float($value)) {
             $valueParts = explode('.', (string)$value);
+            $valueParts[1] ??= '0';
 
             if (strlen($valueParts[1]) > $precision) {
                 return false;
