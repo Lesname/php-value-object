@@ -36,6 +36,9 @@ abstract class AbstractIntValueObject implements IntValueObject
         }
     }
 
+    /**
+     * @psalm-pure
+     */
     #[Override]
     public static function getMultipleOf(): int|float
     {
