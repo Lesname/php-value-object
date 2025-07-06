@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace LesValueObject\Composite\Signature;
 
 use Override;
+use Exception;
+use Traversable;
+use ArrayIterator;
 use IteratorAggregate;
 use LesValueObject\ValueObject;
 use LesValueObject\ValueObject as T;
@@ -22,8 +25,17 @@ abstract class AbstractSignatureCompositeValueObject implements IteratorAggregat
     /**
      * @param array<string, T> $data
      */
-    public function __construct(private readonly array $data)
+    public function __construct(protected readonly array $data)
     {}
+
+    /**
+     * @return Traversable<string, T>
+     */
+    #[Override]
+    public function getIterator(): Traversable
+    {
+        return new ArrayIterator($this->data);
+    }
 
     #[Override]
     public function count(): int
