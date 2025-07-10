@@ -10,6 +10,7 @@ use ArrayIterator;
 use IteratorAggregate;
 use LesValueObject\ValueObject;
 use LesValueObject\ValueObject as T;
+use LesValueObject\Composite\WrappedCompositeValueObject;
 use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
 
 /**
@@ -20,11 +21,12 @@ use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
  * @implements SignatureCompositeValueObject<T>
  * @implements IteratorAggregate<T>
  */
-abstract class AbstractSignatureCompositeValueObject implements IteratorAggregate, SignatureCompositeValueObject
+abstract class AbstractSignatureCompositeValueObject implements IteratorAggregate, SignatureCompositeValueObject, WrappedCompositeValueObject
 {
     /**
      * @param array<string, T> $data
      */
+    #[Override]
     public function __construct(protected readonly array $data)
     {}
 

@@ -12,11 +12,12 @@ use RuntimeException;
  *
  * @implements ArrayAccess<string, mixed>
  */
-final class DynamicCompositeValueObject extends AbstractCompositeValueObject implements ArrayAccess
+final class DynamicCompositeValueObject extends AbstractCompositeValueObject implements ArrayAccess, WrappedCompositeValueObject
 {
     /**
      * @param array<string, mixed> $data
      */
+    #[Override]
     public function __construct(public readonly array $data)
     {}
 
