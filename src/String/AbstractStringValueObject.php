@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace LesValueObject\String;
 
 use Override;
+use RuntimeException;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
 
@@ -34,13 +35,15 @@ abstract class AbstractStringValueObject implements StringValueObject
     /**
      * @psalm-pure
      */
-    protected static function getStringLength(string $input): int
+    public static function getStringLength(string $input): int
     {
         $length = grapheme_strlen($input);
 
-        return is_int($length)
-            ? $length
-            : strlen($input);
+        if (!is_int($length)) {
+            throw new RuntimeException();
+        }
+
+        return $length;
     }
 
     #[Override]
