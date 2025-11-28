@@ -6,9 +6,6 @@ namespace LesValueObject\String\Format;
 
 use Override;
 use LesValueObject\Attribute\DocExample;
-use LesValueObject\String\Exception\TooLong;
-use LesValueObject\String\Exception\TooShort;
-use LesValueObject\String\Format\Resource\Identifier;
 
 /**
  * @psalm-immutable
@@ -62,45 +59,5 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     public function toFormat(string $format): object
     {
         return new $format((string)$this);
-    }
-
-    /**
-     * @deprecated use matchesFormat
-     */
-    public function isEmailAddress(): bool
-    {
-        return EmailAddress::isFormat((string)$this);
-    }
-
-    /**
-     * @throws Exception\NotFormat
-     * @throws TooLong
-     * @throws TooShort
-     *
-     * @deprecated use toFormat
-     */
-    public function asEmailAddress(): EmailAddress
-    {
-        return new EmailAddress((string)$this);
-    }
-
-    /**
-     * @deprecated use matchesFormat
-     */
-    public function isResourceId(): bool
-    {
-        return Identifier::isFormat((string)$this);
-    }
-
-    /**
-     * @throws Exception\NotFormat
-     * @throws TooLong
-     * @throws TooShort
-     *
-     * @deprecated use toFormat
-     */
-    public function asResourceId(): Identifier
-    {
-        return new Identifier((string)$this);
     }
 }
