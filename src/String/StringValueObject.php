@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace LesValueObject\String;
 
 use Override;
+use Stringable;
 use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable
  */
-interface StringValueObject extends ValueObject
+interface StringValueObject extends ValueObject, Stringable
 {
     public string $value { get; }
+
+    public function __construct(Stringable|string $value);
 
     /**
      * @psalm-pure

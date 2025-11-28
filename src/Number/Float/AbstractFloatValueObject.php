@@ -15,15 +15,22 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  *
  * @phpstan-consistent-constructor
  */
-abstract class AbstractFloatValueObject implements NumberValueObject
+abstract class AbstractFloatValueObject implements FloatValueObject
 {
+    public readonly float $value;
+
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
-    public function __construct(public readonly int | float $value)
+    #[Override]
+    public function __construct(FloatValueObject | float $value)
     {
+        if ($value instanceof FloatValueObject) {
+            $value = $value->value;
+        }
+
         if ($value < static::getMinimumValue()) {
             throw new MinOutBounds(static::getMinimumValue(), $value);
         }
@@ -35,6 +42,8 @@ abstract class AbstractFloatValueObject implements NumberValueObject
         if (!static::isMultipleOf($value, static::getMultipleOf())) {
             throw new NotMultipleOf($value, static::getMultipleOf());
         }
+
+        $this->value = $value;
     }
 
     /**

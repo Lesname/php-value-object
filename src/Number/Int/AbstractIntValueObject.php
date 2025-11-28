@@ -17,13 +17,20 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  */
 abstract class AbstractIntValueObject implements IntValueObject
 {
+    public readonly int $value;
+
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
-    public function __construct(public readonly int $value)
+    #[Override]
+    public function __construct(IntValueObject|int $value)
     {
+        if ($value instanceof IntValueObject) {
+            $value = $value->value;
+        }
+
         if ($value < static::getMinimumValue()) {
             throw new MinOutBounds(static::getMinimumValue(), $value);
         }
@@ -33,8 +40,10 @@ abstract class AbstractIntValueObject implements IntValueObject
         }
 
         if ($value % static::getMultipleOf() !== 0) {
-            throw new NotMultipleOf($value, static::getMultipleOf());
+            throw new NotMultipleOf(static::getMultipleOf(), $value);
         }
+
+        $this->value = $value;
     }
 
     /**

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LesValueObject\String;
 
 use Override;
+use Stringable;
 use RuntimeException;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
@@ -14,14 +15,17 @@ use LesValueObject\String\Exception\TooShort;
  */
 abstract class AbstractStringValueObject implements StringValueObject
 {
+    public readonly string $value;
+
     /**
      * @throws TooShort
      * @throws TooLong
-     *
-     * @psalm-pure
      */
-    public function __construct(public readonly string $value)
+    #[Override]
+    public function __construct(Stringable|string $value)
     {
+        $value = (string)$value;
+
         $length = static::getStringLength($value);
 
         if ($length < static::getMinimumLength()) {
@@ -31,6 +35,8 @@ abstract class AbstractStringValueObject implements StringValueObject
         if ($length > static::getMaximumLength()) {
             throw new TooLong(static::getMaximumLength(), $length);
         }
+
+        $this->value = $value;
     }
 
     /**

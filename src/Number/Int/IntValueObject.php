@@ -14,6 +14,8 @@ interface IntValueObject extends NumberValueObject
 {
     public int $value { get; }
 
+    public function __construct(IntValueObject|int $value);
+
     /**
      * @psalm-pure
      */

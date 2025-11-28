@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LesValueObjectTest\String;
 
+use Stringable;
 use LesValueObject\String\AbstractStringValueObject;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
@@ -55,7 +56,7 @@ final class AbstractStringValueObjectTest extends TestCase
             private static int $minLength;
             private static int $maxLength;
 
-            public function __construct(string $string, int $minLength, int $maxLength)
+            public function __construct(Stringable|string $string, int $minLength = 1, int $maxLength = 2)
             {
                 self::$minLength = $minLength;
                 self::$maxLength = $maxLength;

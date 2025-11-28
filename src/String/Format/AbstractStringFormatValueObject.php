@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace LesValueObject\String\Format;
 
+use Override;
+use Stringable;
 use LesValueObject\String\AbstractStringValueObject;
 use LesValueObject\String\Exception\TooLong;
 use LesValueObject\String\Exception\TooShort;
@@ -18,15 +20,14 @@ abstract class AbstractStringFormatValueObject extends AbstractStringValueObject
      * @throws NotFormat
      * @throws TooLong
      * @throws TooShort
-     *
-     * @psalm-pure
      */
-    public function __construct(string $string)
+    #[Override]
+    public function __construct(Stringable|string $value)
     {
-        parent::__construct($string);
+        parent::__construct($value);
 
-        if (!static::isFormat($string)) {
-            throw new NotFormat(static::class, $string);
+        if (!static::isFormat($this->value)) {
+            throw new NotFormat(static::class, $this->value);
         }
     }
 
