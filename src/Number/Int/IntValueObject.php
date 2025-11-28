@@ -12,7 +12,6 @@ use LesValueObject\Number\NumberValueObject;
  */
 interface IntValueObject extends NumberValueObject
 {
-    // phpcs:ignore
     public int $value { get; }
 
     /**

@@ -9,7 +9,6 @@ use LesValueObject\Enum\Timezone;
 use LesValueObject\Number\Exception\MaxOutBounds;
 use LesValueObject\Number\Exception\MinOutBounds;
 use LesValueObject\Number\Exception\NotMultipleOf;
-use LesValueObject\Number\Exception\PrecisionOutBounds;
 use LesValueObject\Number\Int\Date\Timestamp;
 use PHPUnit\Framework\TestCase;
 
@@ -80,7 +79,7 @@ final class TimestampTest extends TestCase
         $new = $timestamp->append(6);
 
         self::assertSame(4, $timestamp->value);
-        self::assertSame(10, $new->value);
+        self::assertSame(10, $new);
     }
 
     /**
@@ -94,6 +93,6 @@ final class TimestampTest extends TestCase
         $new = $timestamp->subtract(7);
 
         self::assertSame(9, $timestamp->value);
-        self::assertSame(2, $new->value);
+        self::assertSame(2, $new);
     }
 }

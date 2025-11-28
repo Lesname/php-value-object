@@ -117,26 +117,16 @@ abstract class AbstractFloatValueObject implements NumberValueObject
         return $with - $this->value;
     }
 
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     #[Override]
-    public function subtract(NumberValueObject|float|int $value): static
+    public function subtract(NumberValueObject|float|int $value): float | int
     {
-        return new static($this->value - $this->getUsableValue($value));
+        return $this->value - $this->getUsableValue($value);
     }
 
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     #[Override]
-    public function append(NumberValueObject|float|int $value): static
+    public function append(NumberValueObject|float|int $value): float | int
     {
-        return new static($this->value + $this->getUsableValue($value));
+        return $this->value + $this->getUsableValue($value);
     }
 
     protected function getUsableValue(NumberValueObject|float|int $value): float | int

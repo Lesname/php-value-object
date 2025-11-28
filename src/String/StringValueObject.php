@@ -12,7 +12,6 @@ use LesValueObject\ValueObject;
  */
 interface StringValueObject extends ValueObject
 {
-    // phpcs:ignore
     public string $value { get; }
 
     /**
