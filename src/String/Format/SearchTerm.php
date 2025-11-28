@@ -6,9 +6,6 @@ namespace LesValueObject\String\Format;
 
 use Override;
 use LesValueObject\Attribute\DocExample;
-use LesValueObject\String\Exception\TooLong;
-use LesValueObject\String\Exception\TooShort;
-use LesValueObject\String\Format\Resource\Identifier;
 
 /**
  * @psalm-immutable
