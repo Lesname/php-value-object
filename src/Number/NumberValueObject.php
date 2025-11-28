@@ -9,8 +9,6 @@ use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable
- *
- * @internal
  */
 interface NumberValueObject extends ValueObject
 {
