@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Composite\Signature;
@@ -23,12 +24,21 @@ use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
  */
 abstract class AbstractSignatureCompositeValueObject implements IteratorAggregate, SignatureCompositeValueObject, WrappedCompositeValueObject
 {
+    /** @var array<string, T>  */
+    protected readonly array $data;
+
     /**
-     * @param array<string, T> $data
+     * @param iterable<string, T> $data
      */
     #[Override]
-    public function __construct(protected readonly array $data)
-    {}
+    public function __construct(iterable $data)
+    {
+        if (!is_array($data)) {
+            $this->data = iterator_to_array($data);
+        } else {
+            $this->data = $data;
+        }
+    }
 
     /**
      * @return Traversable<string, T>

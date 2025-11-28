@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\String\Format;
@@ -30,8 +31,6 @@ final class Ip extends AbstractStringFormatValueObject
     }
 
     /**
-     * @psalm-pure
-     *
      * @throws UnknownVersion
      */
     public static function local(int $version = 6): self

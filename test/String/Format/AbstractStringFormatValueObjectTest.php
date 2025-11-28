@@ -1,8 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObjectTest\String\Format;
 
+use Stringable;
 use LesValueObject\String\Format\AbstractStringFormatValueObject;
 use LesValueObject\String\Format\Exception\NotFormat;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +33,7 @@ final class AbstractStringFormatValueObjectTest extends TestCase
         return new class ($string, $isFormat) extends AbstractStringFormatValueObject {
             private static bool $isFormat;
 
-            public function __construct(string $input, bool $isFormat)
+            public function __construct(Stringable|string $input, bool $isFormat = true)
             {
                 self::$isFormat = $isFormat;
 

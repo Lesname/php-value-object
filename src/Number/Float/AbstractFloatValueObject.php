@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Number\Float;
@@ -14,15 +15,22 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  *
  * @phpstan-consistent-constructor
  */
-abstract class AbstractFloatValueObject implements NumberValueObject
+abstract class AbstractFloatValueObject implements FloatValueObject
 {
+    public readonly float $value;
+
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
-    public function __construct(public readonly int | float $value)
+    #[Override]
+    public function __construct(FloatValueObject | float $value)
     {
+        if ($value instanceof FloatValueObject) {
+            $value = $value->value;
+        }
+
         if ($value < static::getMinimumValue()) {
             throw new MinOutBounds(static::getMinimumValue(), $value);
         }
@@ -34,6 +42,8 @@ abstract class AbstractFloatValueObject implements NumberValueObject
         if (!static::isMultipleOf($value, static::getMultipleOf())) {
             throw new NotMultipleOf($value, static::getMultipleOf());
         }
+
+        $this->value = $value;
     }
 
     /**
@@ -116,26 +126,16 @@ abstract class AbstractFloatValueObject implements NumberValueObject
         return $with - $this->value;
     }
 
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     #[Override]
-    public function subtract(NumberValueObject|float|int $value): static
+    public function subtract(NumberValueObject|float|int $value): float | int
     {
-        return new static($this->value - $this->getUsableValue($value));
+        return $this->value - $this->getUsableValue($value);
     }
 
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     #[Override]
-    public function append(NumberValueObject|float|int $value): static
+    public function append(NumberValueObject|float|int $value): float | int
     {
-        return new static($this->value + $this->getUsableValue($value));
+        return $this->value + $this->getUsableValue($value);
     }
 
     protected function getUsableValue(NumberValueObject|float|int $value): float | int

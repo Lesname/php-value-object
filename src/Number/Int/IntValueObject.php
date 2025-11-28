@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Number\Int;
@@ -11,8 +12,9 @@ use LesValueObject\Number\NumberValueObject;
  */
 interface IntValueObject extends NumberValueObject
 {
-    // phpcs:ignore
     public int $value { get; }
+
+    public function __construct(IntValueObject|int $value);
 
     /**
      * @psalm-pure

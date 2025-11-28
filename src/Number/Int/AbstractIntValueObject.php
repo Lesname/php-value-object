@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Number\Int;
@@ -16,13 +17,20 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  */
 abstract class AbstractIntValueObject implements IntValueObject
 {
+    public readonly int $value;
+
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
-    public function __construct(public readonly int $value)
+    #[Override]
+    public function __construct(IntValueObject|int $value)
     {
+        if ($value instanceof IntValueObject) {
+            $value = $value->value;
+        }
+
         if ($value < static::getMinimumValue()) {
             throw new MinOutBounds(static::getMinimumValue(), $value);
         }
@@ -32,8 +40,10 @@ abstract class AbstractIntValueObject implements IntValueObject
         }
 
         if ($value % static::getMultipleOf() !== 0) {
-            throw new NotMultipleOf($value, static::getMultipleOf());
+            throw new NotMultipleOf(static::getMultipleOf(), $value);
         }
+
+        $this->value = $value;
     }
 
     /**
@@ -85,26 +95,16 @@ abstract class AbstractIntValueObject implements IntValueObject
         return $with - $this->value;
     }
 
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     #[Override]
-    public function subtract(NumberValueObject|float|int $value): static
+    public function subtract(NumberValueObject|float|int $value): float | int
     {
-        return new static($this->value - $this->getUsableValue($value));
+        return $this->value - $this->getUsableValue($value);
     }
 
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     #[Override]
-    public function append(NumberValueObject|float|int $value): static
+    public function append(NumberValueObject|float|int $value): float | int
     {
-        return new static($this->value + $this->getUsableValue($value));
+        return $this->value + $this->getUsableValue($value);
     }
 
     protected function getUsableValue(NumberValueObject|float|int $value): float | int

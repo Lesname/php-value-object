@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Number\Exception;
@@ -10,9 +11,6 @@ use LesValueObject\Exception\AbstractException;
  */
 final class MinOutBounds extends AbstractException
 {
-    /**
-     * @psalm-pure
-     */
     public function __construct(
         public readonly float|int $precision,
         public readonly float|int $given,

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Enum;
@@ -10,7 +11,6 @@ use LesValueObject\ValueObject;
  */
 interface EnumValueObject extends ValueObject
 {
-    // phpcs:ignore
     public string $value { get; }
 
     /**

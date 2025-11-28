@@ -1,10 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Collection;
 
 use Override;
 use ArrayIterator;
+use RuntimeException;
 use IteratorAggregate;
 use LesValueObject\Collection\Exception\TooFewItems;
 use LesValueObject\Collection\Exception\TooManyItems;
@@ -20,15 +22,23 @@ use Traversable;
  */
 abstract class AbstractCollectionValueObject implements IteratorAggregate, CollectionValueObject
 {
+    /** @var array<T> */
+    private readonly array $items;
+
     /**
-     * @param array<int, T> $items
+     * @param iterable<int, T> $items
      *
      * @throws TooFewItems
      * @throws TooManyItems
      */
-    public function __construct(private readonly array $items)
+    #[Override]
+    public function __construct(iterable $items)
     {
-        assert(array_is_list($items));
+        if (!is_array($items)) {
+            $items = iterator_to_array($items, false);
+        } elseif (!array_is_list($items)) {
+            throw new RuntimeException();
+        }
 
         if (count($items) < static::getMinimumSize()) {
             throw new TooFewItems(static::getMinimumSize(), count($items));
@@ -37,6 +47,8 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
         if (count($items) > static::getMaximumSize()) {
             throw new TooManyItems(static::getMaximumSize(), count($items));
         }
+
+        $this->items = $items;
     }
 
     /**
@@ -52,6 +64,15 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     public function count(): int
     {
         return count($this->items);
+    }
+
+    /**
+     * @return array<int, T>
+     */
+    #[Override]
+    public function toArray(): array
+    {
+        return $this->items;
     }
 
     /**

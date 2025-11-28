@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Number\Exception;
@@ -10,7 +11,7 @@ use LesValueObject\Exception\AbstractException;
  */
 final class NotMultipleOf extends AbstractException
 {
-    public function __construct(public readonly float | int $value, public readonly float | int $of)
+    public function __construct(public readonly float | int $of, public readonly float | int $value)
     {
         parent::__construct("Value {$value} is not multiple of {$of}");
     }

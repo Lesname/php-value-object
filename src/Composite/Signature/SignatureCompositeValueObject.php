@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Composite\Signature;
@@ -18,6 +19,9 @@ use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
  */
 interface SignatureCompositeValueObject extends CompositeValueObject, Countable, Traversable
 {
+    /** @param iterable<string, T> $data */
+    public function __construct(iterable $data);
+
     /**
      * @throws PropertyNotFound
      *

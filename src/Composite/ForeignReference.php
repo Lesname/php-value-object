@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Composite;
@@ -16,15 +17,10 @@ use LesValueObject\String\Format\Resource\Type;
  */
 final class ForeignReference extends AbstractCompositeValueObject
 {
-    /**
-     * @psalm-pure
-     */
     public function __construct(public readonly Type $type, public readonly Identifier $id)
     {}
 
     /**
-     * @psalm-pure
-     *
      * @throws TooShort
      * @throws NotFormat
      * @throws TooLong
@@ -43,8 +39,6 @@ final class ForeignReference extends AbstractCompositeValueObject
 
     /**
      * @param array{type: string, id: string} $array
-     *
-     * @psalm-pure
      *
      * @throws TooShort
      * @throws NotFormat

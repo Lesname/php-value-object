@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace LesValueObject\Number;
@@ -8,10 +9,11 @@ use LesValueObject\ValueObject;
 
 /**
  * @psalm-immutable
+ *
+ * @internal
  */
 interface NumberValueObject extends ValueObject
 {
-    // phpcs:ignore
     public float | int $value { get; }
 
     /**
@@ -37,9 +39,9 @@ interface NumberValueObject extends ValueObject
 
     public function diff(NumberValueObject | float | int $with): float | int;
 
-    public function subtract(NumberValueObject | float | int $value): static;
+    public function subtract(NumberValueObject | float | int $value): float | int;
 
-    public function append(NumberValueObject | float | int $value): static;
+    public function append(NumberValueObject | float | int $value): float | int;
 
     #[Override]
     public function __toString(): string;
