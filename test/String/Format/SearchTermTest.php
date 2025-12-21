@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class SearchTermTest extends TestCase
 {
-    public function testIsEmailAddress(): void
+    public function testMatchesFormat(): void
     {
         $term = new SearchTerm('foo@bar.nl');
         self::assertTrue($term->matchesFormat(EmailAddress::class));
@@ -22,9 +22,18 @@ final class SearchTermTest extends TestCase
         self::assertFalse($term->matchesFormat(EmailAddress::class));
     }
 
-    public function testAsEmailAddress(): void
+    public function testToFormat(): void
     {
         $term = new SearchTerm('foo@bar.nl');
         self::assertInstanceOf(EmailAddress::class, $term->toFormat(EmailAddress::class));
+    }
+
+    public function testMatchesRegex(): void
+    {
+        $term = new SearchTerm('foo@bar.nl');
+
+        self::assertTrue($term->matchesRegex('/@/'));
+        self::assertTrue($term->matchesRegex('/^foo/'));
+        self::assertFalse($term->matchesRegex('/^bar/'));
     }
 }
