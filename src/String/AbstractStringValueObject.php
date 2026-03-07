@@ -39,6 +39,12 @@ abstract class AbstractStringValueObject implements StringValueObject
         $this->value = $value;
     }
 
+    #[Override]
+    public function isEqual(Stringable|string $value): bool
+    {
+        return $this->value === (string)$value;
+    }
+
     /**
      * @psalm-pure
      */
@@ -53,12 +59,18 @@ abstract class AbstractStringValueObject implements StringValueObject
         return $length;
     }
 
+    /**
+     * @psalm-pure
+     */
     #[Override]
     public function __toString(): string
     {
         return $this->value;
     }
 
+    /**
+     * @psalm-pure
+     */
     #[Override]
     public function jsonSerialize(): string
     {

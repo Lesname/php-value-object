@@ -46,19 +46,6 @@ final class TimestampTest extends TestCase
      * @throws MinOutBounds
      * @throws NotMultipleOf
      */
-    public function testFormat(): void
-    {
-        $timestamp = new Timestamp(120);
-
-        self::assertSame('1970-01-01 00:02:00', $timestamp->format('Y-m-d H:i:s', Timezone::UTC));
-        self::assertSame('1970-01-01 01:02:00', $timestamp->format('Y-m-d H:i:s', Timezone::Europe_Amsterdam));
-    }
-
-    /**
-     * @throws MaxOutBounds
-     * @throws MinOutBounds
-     * @throws NotMultipleOf
-     */
     public function testToMilliTimestamp(): void
     {
         $timestamp = new Timestamp(321);

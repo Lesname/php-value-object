@@ -50,6 +50,15 @@ abstract class AbstractIntValueObject implements IntValueObject
      * @psalm-pure
      */
     #[Override]
+    public function format(string $thousandSeparator = ','): string
+    {
+        return number_format($this->value, 0, thousands_separator: $thousandSeparator);
+    }
+
+    /**
+     * @psalm-pure
+     */
+    #[Override]
     public static function getMultipleOf(): int|float
     {
         return 1;

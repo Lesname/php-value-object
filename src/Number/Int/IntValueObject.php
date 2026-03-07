@@ -19,6 +19,11 @@ interface IntValueObject extends NumberValueObject
     /**
      * @psalm-pure
      */
+    public function format(string $thousandSeparator = ','): string;
+
+    /**
+     * @psalm-pure
+     */
     #[Override]
     public static function getMinimumValue(): int;
 

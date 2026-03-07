@@ -50,6 +50,14 @@ final class SearchTerm extends AbstractRegexStringFormatValueObject
     }
 
     /**
+     * @param string $regex
+     */
+    public function matchesRegex(string $regex): bool
+    {
+        return preg_match($regex, (string)$this) === 1;
+    }
+
+    /**
      * @param class-string<T> $format
      *
      * @return T

@@ -17,6 +17,8 @@ interface StringValueObject extends ValueObject, Stringable
 
     public function __construct(Stringable|string $value);
 
+    public function isEqual(Stringable|string $value): bool;
+
     /**
      * @psalm-pure
      */
