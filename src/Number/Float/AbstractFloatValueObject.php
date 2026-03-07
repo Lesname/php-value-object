@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LesValueObject\Number\Float;
 
 use Override;
+use RoundingMode;
 use LesValueObject\Number\NumberValueObject;
 use LesValueObject\Number\Exception\MinOutBounds;
 use LesValueObject\Number\Exception\MaxOutBounds;
@@ -44,6 +45,24 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         }
 
         $this->value = $value;
+    }
+
+    /**
+     * @psalm-pure
+     */
+    #[Override]
+    public function round(int $precision = 0, RoundingMode $mode = RoundingMode::HalfAwayFromZero): float
+    {
+        return round($this->value, $precision, $mode);
+    }
+
+    /**
+     * @psalm-pure
+     */
+    #[Override]
+    public function format(int $decimals, string $decimalSeparator = '.', string $thousandSeparator = ','): string
+    {
+        return number_format($this->value, $decimals, $decimalSeparator, $thousandSeparator);
     }
 
     /**
