@@ -16,6 +16,9 @@ interface IntValueObject extends NumberValueObject
 
     public function __construct(IntValueObject|int $value);
 
+    /**
+     * @psalm-pure
+     */
     public function format(string $thousandSeparator = ','): string;
 
     /**

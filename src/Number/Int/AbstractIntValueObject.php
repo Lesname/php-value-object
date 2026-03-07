@@ -46,6 +46,10 @@ abstract class AbstractIntValueObject implements IntValueObject
         $this->value = $value;
     }
 
+    /**
+     * @psalm-pure
+     */
+    #[Override]
     public function format(string $thousandSeparator = ','): string
     {
         return number_format($this->value, 0, thousands_separator: $thousandSeparator);
