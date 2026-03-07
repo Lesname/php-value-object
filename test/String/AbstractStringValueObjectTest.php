@@ -50,6 +50,14 @@ final class AbstractStringValueObjectTest extends TestCase
         $this->makeMock('biz', 0, 2);
     }
 
+    public function testIsEqual(): void
+    {
+        $mock = $this->makeMock('biz', 0, 3);
+
+        self::assertTrue($mock->isEqual('biz'));
+        self::assertFalse($mock->isEqual('foo'));
+    }
+
     private function makeMock(string $string, int $minLength, int $maxLength): AbstractStringValueObject
     {
         return new class ($string, $minLength, $maxLength) extends AbstractStringValueObject {
