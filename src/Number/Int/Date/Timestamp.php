@@ -71,12 +71,4 @@ final class Timestamp extends AbstractIntValueObject
         return (new DateTimeImmutable('@' . $this->value))
             ->setTimezone($timezone->asDateTimeZone());
     }
-
-    /**
-     * @psalm-suppress ImpureMethodCall format is pure
-     */
-    public function format(string $format, Timezone $timezone): string
-    {
-        return $this->toDateTime($timezone)->format($format);
-    }
 }

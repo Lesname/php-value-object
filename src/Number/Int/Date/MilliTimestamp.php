@@ -71,12 +71,4 @@ final class MilliTimestamp extends AbstractIntValueObject
     {
         return new Timestamp((int) floor($this->value / 1_000));
     }
-
-    /**
-     * @psalm-suppress ImpureMethodCall format is pure
-     */
-    public function format(string $format, Timezone $timezone): string
-    {
-        return $this->toDateTime($timezone)->format($format);
-    }
 }
