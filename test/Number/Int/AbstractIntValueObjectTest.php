@@ -28,4 +28,23 @@ final class AbstractIntValueObjectTest extends TestCase
 
         self::assertSame(1, $mock->value);
     }
+
+    public function testFormat(): void
+    {
+        $mock = new class (999_999_999) extends AbstractIntValueObject {
+            public static function getMinimumValue(): int
+            {
+                return 0;
+            }
+
+            public static function getMaximumValue(): int
+            {
+                return 999_999_999;
+            }
+        };
+
+        self::assertSame('999,999,999', $mock->format());
+        self::assertSame('999999999', $mock->format(''));
+        self::assertSame('999.999.999', $mock->format('.'));
+    }
 }
