@@ -9,6 +9,8 @@ use LesValueObject\ValueObject;
 use Traversable;
 
 /**
+ * @todo drop array from item type, use a discriminated composite instead
+ *
  * @extends Traversable<int, T>
  *
  * @template-covariant T of ValueObject
