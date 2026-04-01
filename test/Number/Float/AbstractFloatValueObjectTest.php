@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace LesValueObjectTest\Number\Float;
 
-use LesValueObject\Number\Int\AbstractIntValueObject;
+use LesValueObject\Number\Exception\NotMultipleOf;
 use LesValueObject\Number\Float\AbstractFloatValueObject;
 use PHPUnit\Framework\TestCase;
 
@@ -33,6 +33,50 @@ class AbstractFloatValueObjectTest extends TestCase
         };
 
         self::assertSame(3.0, $mock->value);
+    }
+
+    public function testMultipleOfFloatENotationValid(): void
+    {
+        $mock = new class (3.00001) extends AbstractFloatValueObject {
+            public static function getMultipleOf(): int|float
+            {
+                return .00001;
+            }
+
+            public static function getMinimumValue(): float
+            {
+                return 1.0;
+            }
+
+            public static function getMaximumValue(): float
+            {
+                return 5.0;
+            }
+        };
+
+        self::assertSame(3.00001, $mock->value);
+    }
+
+    public function testMultipleOfFloatENotationInvalid(): void
+    {
+        $this->expectException(NotMultipleOf::class);
+
+        new class (3.00001) extends AbstractFloatValueObject {
+            public static function getMultipleOf(): int|float
+            {
+                return .00002;
+            }
+
+            public static function getMinimumValue(): float
+            {
+                return 1.0;
+            }
+
+            public static function getMaximumValue(): float
+            {
+                return 5.0;
+            }
+        };
     }
 
     public function testFormat(): void
