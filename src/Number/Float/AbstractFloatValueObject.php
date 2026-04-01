@@ -65,9 +65,6 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return number_format($this->value, $decimals, $decimalSeparator, $thousandSeparator);
     }
 
-    /**
-     * @psalm-pure
-     */
     protected static function isMultipleOf(float | int $value, float | int $of): bool
     {
         if (is_int($value) && is_int($of) && $value % $of === 0) {
@@ -75,7 +72,7 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         }
 
         if (is_float($of)) {
-            $ofParts = explode('.', (string)$of);
+            $ofParts = explode('.', self::toFloatString($of));
             $precision = strlen($ofParts[1]);
             $of = (int)($ofParts[0] . $ofParts[1]);
             $power = pow(10, $precision);
@@ -85,7 +82,7 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         }
 
         if (is_float($value)) {
-            $valueParts = explode('.', (string)$value);
+            $valueParts = explode('.', self::toFloatString($value));
             $valueParts[1] ??= '0';
 
             if (strlen($valueParts[1]) > $precision) {
@@ -103,6 +100,17 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         }
 
         return true;
+    }
+
+    private static function toFloatString(float $float): string
+    {
+        $string = (string)$float;
+
+        if (preg_match('/0E-(?<size>\d+)$/', $string, $matches) === 1) {
+            return sprintf("%.{$matches['size']}f", $float);
+        }
+
+        return $string;
     }
 
     #[Override]
