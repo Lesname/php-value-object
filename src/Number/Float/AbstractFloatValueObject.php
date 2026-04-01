@@ -65,9 +65,6 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return number_format($this->value, $decimals, $decimalSeparator, $thousandSeparator);
     }
 
-    /**
-     * @psalm-pure
-     */
     protected static function isMultipleOf(float | int $value, float | int $of): bool
     {
         if (is_int($value) && is_int($of) && $value % $of === 0) {
@@ -105,10 +102,6 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return true;
     }
 
-
-    /**
-     * @psalm-pure
-     */
     private static function toFloatString(float $float): string
     {
         $string = (string)$float;
