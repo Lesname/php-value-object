@@ -18,6 +18,7 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  */
 abstract class AbstractFloatValueObject implements FloatValueObject
 {
+    #[Override]
     public readonly float $value;
 
     /**

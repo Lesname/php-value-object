@@ -13,6 +13,7 @@ use LesValueObject\Number\NumberValueObject;
  */
 interface FloatValueObject extends NumberValueObject
 {
+    #[Override]
     public float $value { get; }
 
     public function __construct(FloatValueObject|float $value);

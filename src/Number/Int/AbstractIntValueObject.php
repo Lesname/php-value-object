@@ -17,6 +17,7 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  */
 abstract class AbstractIntValueObject implements IntValueObject
 {
+    #[Override]
     public readonly int $value;
 
     /**

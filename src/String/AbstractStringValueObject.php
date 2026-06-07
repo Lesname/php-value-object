@@ -15,6 +15,7 @@ use LesValueObject\String\Exception\TooShort;
  */
 abstract class AbstractStringValueObject implements StringValueObject
 {
+    #[Override]
     public readonly string $value;
 
     /**
@@ -59,18 +60,12 @@ abstract class AbstractStringValueObject implements StringValueObject
         return $length;
     }
 
-    /**
-     * @psalm-pure
-     */
     #[Override]
     public function __toString(): string
     {
         return $this->value;
     }
 
-    /**
-     * @psalm-pure
-     */
     #[Override]
     public function jsonSerialize(): string
     {
