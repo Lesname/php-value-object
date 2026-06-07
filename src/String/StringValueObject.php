@@ -28,7 +28,4 @@ interface StringValueObject extends ValueObject, Stringable
      * @psalm-pure
      */
     public static function getMaximumLength(): int;
-
-    #[Override]
-    public function __toString(): string;
 }
