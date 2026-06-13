@@ -17,6 +17,6 @@ final class NotFormat extends AbstractException
      */
     public function __construct(public readonly string $expected, public readonly string $given)
     {
-        parent::__construct("Expected '{$expected}', given `{$given}`");
+        parent::__construct("Expected '{$expected}', given '{$given}'");
     }
 }
