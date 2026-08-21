@@ -9,8 +9,6 @@ use LesValueObject\ValueObject;
 use Traversable;
 
 /**
- * @todo drop array from item type, use a discriminated composite instead
- *
  * @extends Traversable<int, T>
  *
  * @template-covariant T of ValueObject
@@ -44,9 +42,9 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
     public function toArray(): array;
 
     /**
-     * @return class-string<T>|array<class-string<T>>
+     * @return class-string<T>
      *
      * @psalm-pure
      */
-    public static function getItemType(): string | array;
+    public static function getItemType(): string;
 }
