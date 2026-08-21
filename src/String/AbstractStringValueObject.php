@@ -21,9 +21,12 @@ abstract class AbstractStringValueObject implements StringValueObject
     /**
      * @throws TooShort
      * @throws TooLong
+     *
+     * @psalm-pure
+     *
+     * @phpstan-ignore method.missingOverride
      */
-    #[Override]
-    public function __construct(Stringable|string $value)
+    public function __construct(StringValueObject|string $value)
     {
         $value = (string)$value;
 

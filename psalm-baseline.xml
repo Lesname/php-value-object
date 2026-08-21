@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="7.0.0-beta19@7e751c06a756fa64dc4c759c09fe4a173afcb433">
+  <file src="src/Collection/AbstractCollectionValueObject.php">
+    <MixedArgument>
+      <code><![CDATA[static::getMaximumSize()]]></code>
+      <code><![CDATA[static::getMinimumSize()]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Composite/DynamicCompositeValueObject.php">
+    <InvalidOverride>
+      <code><![CDATA[#[Override]]]></code>
+    </InvalidOverride>
+  </file>
+  <file src="src/Composite/Signature/AbstractSignatureCompositeValueObject.php">
+    <InvalidOverride>
+      <code><![CDATA[#[Override]]]></code>
+    </InvalidOverride>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$data]]></code>
+    </MoreSpecificImplementedParamType>
+  </file>
+  <file src="src/Number/Float/AbstractFloatValueObject.php">
+    <InvalidAttribute>
+      <code><![CDATA[Override]]></code>
+    </InvalidAttribute>
+    <InvalidOperand>
+      <code><![CDATA[$this->value + $this->getUsableValue($value)]]></code>
+      <code><![CDATA[$this->value - $this->getUsableValue($value)]]></code>
+      <code><![CDATA[$with - $this->value]]></code>
+    </InvalidOperand>
+    <InvalidOverride>
+      <code><![CDATA[#[Override]]]></code>
+    </InvalidOverride>
+    <MixedArgument>
+      <code><![CDATA[static::getMaximumValue()]]></code>
+      <code><![CDATA[static::getMinimumValue()]]></code>
+      <code><![CDATA[static::getMultipleOf()]]></code>
+      <code><![CDATA[static::getMultipleOf()]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Number/Int/AbstractIntValueObject.php">
+    <InvalidAttribute>
+      <code><![CDATA[Override]]></code>
+    </InvalidAttribute>
+    <InvalidOperand>
+      <code><![CDATA[$this->value + $this->getUsableValue($value)]]></code>
+      <code><![CDATA[$this->value - $this->getUsableValue($value)]]></code>
+      <code><![CDATA[$value % static::getMultipleOf()]]></code>
+      <code><![CDATA[$with - $this->value]]></code>
+    </InvalidOperand>
+  </file>
+  <file src="src/Number/Int/Date/MilliTimestamp.php">
+    <InvalidOperand>
+      <code><![CDATA[$this->value / 1_000]]></code>
+      <code><![CDATA[microtime(true) * 1_000]]></code>
+    </InvalidOperand>
+  </file>
+  <file src="src/Number/NumberValueObject.php">
+    <InvalidOverride>
+      <code><![CDATA[#[Override]]]></code>
+    </InvalidOverride>
+  </file>
+  <file src="src/String/AbstractStringValueObject.php">
+    <InvalidAttribute>
+      <code><![CDATA[Override]]></code>
+    </InvalidAttribute>
+    <MixedArgument>
+      <code><![CDATA[static::getMaximumLength()]]></code>
+      <code><![CDATA[static::getMinimumLength()]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/String/Format/SearchTerm.php">
+    <ArgumentTypeCoercion>
+      <code><![CDATA[$regex]]></code>
+    </ArgumentTypeCoercion>
+  </file>
+</files>

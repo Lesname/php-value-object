@@ -17,6 +17,9 @@ use LesValueObject\String\Format\Resource\Type;
  */
 final class ForeignReference extends AbstractCompositeValueObject
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly Type $type, public readonly Identifier $id)
     {}
 
@@ -25,6 +28,8 @@ final class ForeignReference extends AbstractCompositeValueObject
      * @throws NotFormat
      * @throws TooLong
      * @throws CannotParseReference
+     *
+     * @psalm-pure
      */
     public static function fromString(string $string): self
     {
@@ -43,12 +48,17 @@ final class ForeignReference extends AbstractCompositeValueObject
      * @throws TooShort
      * @throws NotFormat
      * @throws TooLong
+     *
+     * @psalm-pure
      */
     public static function fromArray(array $array): self
     {
         return new self(new Type($array['type']), new Identifier($array['id']));
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function __toString(): string
     {

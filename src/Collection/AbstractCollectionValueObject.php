@@ -22,24 +22,21 @@ use Traversable;
  */
 abstract class AbstractCollectionValueObject implements IteratorAggregate, CollectionValueObject
 {
-    /** @var array<T> */
+    /** @var list<T> */
     private readonly array $items;
 
     /**
-     * @param iterable<int, T> $items
+     * @param list<T> $items
      *
      * @throws TooFewItems
      * @throws TooManyItems
+     *
+     * @psalm-mutation-free
+     *
+     * @phpstan-ignore method.missingOverride
      */
-    #[Override]
-    public function __construct(iterable $items)
+    public function __construct(array $items)
     {
-        if (!is_array($items)) {
-            $items = iterator_to_array($items, false);
-        } elseif (!array_is_list($items)) {
-            throw new RuntimeException();
-        }
-
         if (count($items) < static::getMinimumSize()) {
             throw new TooFewItems(static::getMinimumSize(), count($items));
         }
@@ -57,7 +54,9 @@ abstract class AbstractCollectionValueObject implements IteratorAggregate, Colle
     #[Override]
     public function getIterator(): Traversable
     {
-        return new ArrayIterator($this->items);
+        return (function () {
+            yield from $this->items;
+        })();
     }
 
     #[Override]

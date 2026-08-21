@@ -11,6 +11,9 @@ use LesValueObject\Exception\AbstractException;
  */
 final class CannotParseReference extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly string $given)
     {
         parent::__construct("Cannot parse '{$given}' as a reference");

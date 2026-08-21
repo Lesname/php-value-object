@@ -15,8 +15,14 @@ interface StringValueObject extends ValueObject, Stringable
 {
     public string $value { get; }
 
-    public function __construct(Stringable|string $value);
+    /**
+     * @psalm-mutation-free
+     */
+    public function __construct(StringValueObject|string $value);
 
+    /**
+     * @psalm-mutation-free
+     */
     public function isEqual(Stringable|string $value): bool;
 
     /**
@@ -28,4 +34,10 @@ interface StringValueObject extends ValueObject, Stringable
      * @psalm-pure
      */
     public static function getMaximumLength(): int;
+
+    /**
+     * @psalm-pure
+     */
+    #[Override]
+    public function __toString(): string;
 }

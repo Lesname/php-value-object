@@ -11,6 +11,9 @@ use LesValueObject\Exception\AbstractException;
  */
 final class MissingBranch extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly string $given)
     {
         parent::__construct("Missing a branch for '{$given}'");

@@ -19,16 +19,25 @@ use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
  */
 interface SignatureCompositeValueObject extends CompositeValueObject, Countable, Traversable
 {
-    /** @param iterable<string, T> $data */
-    public function __construct(iterable $data);
+    /**
+     * @param array<string, T> $data
+     *
+     * @psalm-mutation-free
+     */
+    public function __construct(array $data);
 
     /**
      * @throws PropertyNotFound
      *
      * @return T
+     *
+     * @psalm-mutation-free
      */
     public function get(string $key): ValueObject;
 
+    /**
+     * @psalm-mutation-free
+     */
     public function has(string $key): bool;
 
     /**

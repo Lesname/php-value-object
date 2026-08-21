@@ -20,9 +20,11 @@ use Traversable;
 interface CollectionValueObject extends ValueObject, Countable, Traversable
 {
     /**
-     * @param iterable<int, T> $items
+     * @param list<T> $items
+     *
+     * @psalm-mutation-free
      */
-    public function __construct(iterable $items);
+    public function __construct(array $items);
 
     /**
      * @psalm-pure
@@ -36,6 +38,8 @@ interface CollectionValueObject extends ValueObject, Countable, Traversable
 
     /**
      * @return array<int, T>
+     *
+     * @psalm-pure
      */
     public function toArray(): array;
 

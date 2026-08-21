@@ -11,6 +11,9 @@ use LesValueObject\Exception\AbstractException;
  */
 final class NotMultipleOf extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly float | int $of, public readonly float | int $value)
     {
         parent::__construct("Value {$value} is not multiple of {$of}");

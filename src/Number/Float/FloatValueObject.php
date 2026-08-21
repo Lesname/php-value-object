@@ -16,6 +16,9 @@ interface FloatValueObject extends NumberValueObject
     #[Override]
     public float $value { get; }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function __construct(FloatValueObject|float $value);
 
     /**
