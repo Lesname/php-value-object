@@ -11,6 +11,9 @@ use LesValueObject\Exception\AbstractException;
  */
 final class BranchMismatch extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(
         public readonly string $expected,
         public readonly string $actual

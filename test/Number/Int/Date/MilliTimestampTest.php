@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LesValueObjectTest\Number\Int\Date;
 
 use DateTime;
-use LesValueObject\Enum\Timezone;
 use LesValueObject\Number\Exception\MaxOutBounds;
 use LesValueObject\Number\Exception\MinOutBounds;
 use LesValueObject\Number\Int\Date\MilliTimestamp;

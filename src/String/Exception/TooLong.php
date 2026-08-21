@@ -11,6 +11,9 @@ use LesValueObject\Exception\AbstractException;
  */
 final class TooLong extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(public readonly int $maximal, public readonly int $given)
     {
         parent::__construct("Maximal {$maximal} characters allowed, given {$given}");

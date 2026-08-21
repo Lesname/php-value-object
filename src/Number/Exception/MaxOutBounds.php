@@ -11,6 +11,9 @@ use LesValueObject\Exception\AbstractException;
  */
 final class MaxOutBounds extends AbstractException
 {
+    /**
+     * @psalm-pure
+     */
     public function __construct(
         public readonly float|int $max,
         public readonly float|int $given,

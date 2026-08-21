@@ -32,6 +32,8 @@ final class Ip extends AbstractStringFormatValueObject
 
     /**
      * @throws UnknownVersion
+     *
+     * @psalm-pure
      */
     public static function local(int $version = 6): self
     {

@@ -69,14 +69,20 @@ final class DynamicCompositeValueObject extends AbstractCompositeValueObject imp
         return $this->get($offset);
     }
 
+    /**
+     * @psalm-pure
+     */
     #[Override]
-    public function offsetSet(mixed $offset, mixed $value): void
+    public function offsetSet(mixed $offset, mixed $value): never
     {
         throw new RuntimeException('Immutable object');
     }
 
+    /**
+     * @psalm-pure
+     */
     #[Override]
-    public function offsetUnset(mixed $offset): void
+    public function offsetUnset(mixed $offset): never
     {
         throw new RuntimeException('Immutable object');
     }

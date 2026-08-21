@@ -15,8 +15,13 @@ interface EnumValueObject extends ValueObject
 
     /**
      * @return array<static>
+     *
+     * @psalm-mutation-free
      */
     public static function cases(): array;
 
+    /**
+     * @psalm-mutation-free
+     */
     public static function from(string $value): static;
 }

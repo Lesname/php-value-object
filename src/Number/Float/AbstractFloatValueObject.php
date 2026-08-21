@@ -18,12 +18,15 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  */
 abstract class AbstractFloatValueObject implements FloatValueObject
 {
+    #[Override]
     public readonly float $value;
 
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
+     *
+     * @psalm-pure
      */
     #[Override]
     public function __construct(FloatValueObject | float $value)
@@ -48,7 +51,7 @@ abstract class AbstractFloatValueObject implements FloatValueObject
     }
 
     /**
-     * @psalm-pure
+     * @psalm-mutation-free
      */
     #[Override]
     public function round(int $precision = 0, RoundingMode $mode = RoundingMode::HalfAwayFromZero): float
@@ -57,7 +60,7 @@ abstract class AbstractFloatValueObject implements FloatValueObject
     }
 
     /**
-     * @psalm-pure
+     * @psalm-mutation-free
      */
     #[Override]
     public function format(int $decimals, string $decimalSeparator = '.', string $thousandSeparator = ','): string
@@ -65,6 +68,9 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return number_format($this->value, $decimals, $decimalSeparator, $thousandSeparator);
     }
 
+    /**
+     * @psalm-pure
+     */
     protected static function isMultipleOf(float | int $value, float | int $of): bool
     {
         if (is_int($value) && is_int($of) && $value % $of === 0) {
@@ -102,10 +108,14 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return true;
     }
 
+    /**
+     * @psalm-pure
+     */
     private static function toFloatString(float $float): string
     {
         $string = (string)$float;
 
+        // @phpstan-ignore possiblyImpure.functionCall
         if (preg_match('/0E-(?<size>\d+)$/', $string, $matches) === 1) {
             return sprintf("%.{$matches['size']}f", $float);
         }
@@ -113,36 +123,54 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return $string;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function __toString(): string
     {
         return (string)$this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function jsonSerialize(): float | int
     {
         return $this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function isGreaterThan(NumberValueObject|float|int $value): bool
     {
         return $this->value > $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function isLowerThan(NumberValueObject|float|int $value): bool
     {
         return $this->value < $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function isSame(NumberValueObject|float|int $value): bool
     {
         return $this->getUsableValue($value) === $this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function diff(NumberValueObject|float|int $with): float|int
     {
@@ -153,18 +181,27 @@ abstract class AbstractFloatValueObject implements FloatValueObject
         return $with - $this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function subtract(NumberValueObject|float|int $value): float | int
     {
         return $this->value - $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function append(NumberValueObject|float|int $value): float | int
     {
         return $this->value + $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-pure
+     */
     protected function getUsableValue(NumberValueObject|float|int $value): float | int
     {
         if (is_float($value) || is_int($value)) {

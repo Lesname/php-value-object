@@ -15,14 +15,18 @@ use LesValueObject\String\Exception\TooShort;
  */
 abstract class AbstractStringValueObject implements StringValueObject
 {
+    #[Override]
     public readonly string $value;
 
     /**
      * @throws TooShort
      * @throws TooLong
+     *
+     * @psalm-pure
+     *
+     * @phpstan-ignore method.missingOverride
      */
-    #[Override]
-    public function __construct(Stringable|string $value)
+    public function __construct(StringValueObject|string $value)
     {
         $value = (string)$value;
 
@@ -59,18 +63,12 @@ abstract class AbstractStringValueObject implements StringValueObject
         return $length;
     }
 
-    /**
-     * @psalm-pure
-     */
     #[Override]
     public function __toString(): string
     {
         return $this->value;
     }
 
-    /**
-     * @psalm-pure
-     */
     #[Override]
     public function jsonSerialize(): string
     {

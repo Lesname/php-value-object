@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace LesValueObject\Composite\Signature;
 
 use Override;
-use Exception;
 use Traversable;
 use ArrayIterator;
 use IteratorAggregate;
 use LesValueObject\ValueObject;
-use LesValueObject\ValueObject as T;
 use LesValueObject\Composite\WrappedCompositeValueObject;
 use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
 
@@ -24,21 +22,14 @@ use LesValueObject\Composite\Signature\Exception\PropertyNotFound;
  */
 abstract class AbstractSignatureCompositeValueObject implements IteratorAggregate, SignatureCompositeValueObject, WrappedCompositeValueObject
 {
-    /** @var array<string, T>  */
-    protected readonly array $data;
-
     /**
-     * @param iterable<string, T> $data
+     * @param array<string, T> $data
+     *
+     * @psalm-mutation-free
      */
     #[Override]
-    public function __construct(iterable $data)
-    {
-        if (!is_array($data)) {
-            $this->data = iterator_to_array($data);
-        } else {
-            $this->data = $data;
-        }
-    }
+    public function __construct(protected readonly array $data)
+    {}
 
     /**
      * @return Traversable<string, T>
@@ -46,27 +37,43 @@ abstract class AbstractSignatureCompositeValueObject implements IteratorAggregat
     #[Override]
     public function getIterator(): Traversable
     {
-        return new ArrayIterator($this->data);
+        return (function () {
+            yield from $this->data;
+        })();
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function count(): int
     {
         return count($this->data);
     }
 
+    /**
+     * @throws PropertyNotFound
+     *
+     * @psalm-mutation-free
+     */
     #[Override]
     public function get(string $key): ValueObject
     {
         return $this->data[$key] ?? throw new PropertyNotFound($key);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function has(string $key): bool
     {
         return array_key_exists($key, $this->data);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function jsonSerialize(): mixed
     {

@@ -17,14 +17,18 @@ use LesValueObject\Number\Exception\NotMultipleOf;
  */
 abstract class AbstractIntValueObject implements IntValueObject
 {
+    #[Override]
     public readonly int $value;
 
     /**
      * @throws MaxOutBounds
      * @throws MinOutBounds
      * @throws NotMultipleOf
+     *
+     * @psalm-pure
+     *
+     * @phpstan-ignore method.missingOverride
      */
-    #[Override]
     public function __construct(IntValueObject|int $value)
     {
         if ($value instanceof IntValueObject) {
@@ -47,7 +51,7 @@ abstract class AbstractIntValueObject implements IntValueObject
     }
 
     /**
-     * @psalm-pure
+     * @psalm-mutation-free
      */
     #[Override]
     public function format(string $thousandSeparator = ','): string
@@ -64,6 +68,9 @@ abstract class AbstractIntValueObject implements IntValueObject
         return 1;
     }
 
+    /**
+     * @mutation-free
+     */
     #[Override]
     public function __toString(): string
     {
@@ -76,24 +83,36 @@ abstract class AbstractIntValueObject implements IntValueObject
         return $this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function isGreaterThan(NumberValueObject|float|int $value): bool
     {
         return $this->value > $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function isLowerThan(NumberValueObject|float|int $value): bool
     {
         return $this->value < $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function isSame(NumberValueObject|float|int $value): bool
     {
         return $this->getUsableValue($value) === $this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function diff(NumberValueObject|float|int $with): float|int
     {
@@ -104,18 +123,27 @@ abstract class AbstractIntValueObject implements IntValueObject
         return $with - $this->value;
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function subtract(NumberValueObject|float|int $value): float | int
     {
         return $this->value - $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function append(NumberValueObject|float|int $value): float | int
     {
         return $this->value + $this->getUsableValue($value);
     }
 
+    /**
+     * @psalm-pure
+     */
     protected function getUsableValue(NumberValueObject|float|int $value): float | int
     {
         if (is_float($value) || is_int($value)) {

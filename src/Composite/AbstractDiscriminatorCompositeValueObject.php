@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LesValueObject\Composite;
 
+use RuntimeException;
 use LesValueObject\ValueObject;
 use LesValueObject\Enum\EnumValueObject;
 use LesValueObject\String\StringValueObject;
@@ -18,11 +19,16 @@ abstract class AbstractDiscriminatorCompositeValueObject extends AbstractComposi
     /**
      * @throws BranchMismatch
      * @throws MissingBranch
+     *
+     * @psalm-pure
      */
     public function __construct()
     {
         $discriminator = $this->{static::getDiscriminatingField()};
-        assert($discriminator instanceof StringValueObject || $discriminator instanceof EnumValueObject);
+
+        if (!$discriminator instanceof StringValueObject && !$discriminator instanceof EnumValueObject) {
+            throw new RuntimeException();
+        }
 
         $mapping = static::getDiscriminatingMapping();
 
@@ -31,19 +37,30 @@ abstract class AbstractDiscriminatorCompositeValueObject extends AbstractComposi
         }
 
         $property = $this->{static::getDiscriminatingProperty()};
-        assert(is_object($property));
+
+        if (!is_object($property)) {
+            throw new RuntimeException();
+        }
 
         if (!$property instanceof $mapping[$discriminator->value]) {
             throw new BranchMismatch($mapping[$discriminator->value], $property::class);
         }
     }
 
+    /**
+     * @psalm-pure
+     */
     abstract public static function getDiscriminatingField(): string;
 
+    /**
+     * @psalm-pure
+     */
     abstract public static function getDiscriminatingProperty(): string;
 
     /**
      * @return array<string, class-string<ValueObject>>
+     *
+     * @psalm-pure
      */
     abstract public static function getDiscriminatingMapping(): array;
 }

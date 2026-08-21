@@ -29,18 +29,39 @@ interface NumberValueObject extends ValueObject
      */
     public static function getMaximumValue(): float | int;
 
+    /**
+     * @psalm-pure
+     */
     public function isGreaterThan(NumberValueObject | float | int $value): bool;
 
+    /**
+     * @psalm-pure
+     */
     public function isLowerThan(NumberValueObject | float | int $value): bool;
 
+    /**
+     * @psalm-pure
+     */
     public function isSame(NumberValueObject | float | int $value): bool;
 
+    /**
+     * @psalm-pure
+     */
     public function diff(NumberValueObject | float | int $with): float | int;
 
+    /**
+     * @psalm-mutation-free
+     */
     public function subtract(NumberValueObject | float | int $value): float | int;
 
+    /**
+     * @psalm-mutation-free
+     */
     public function append(NumberValueObject | float | int $value): float | int;
 
+    /**
+     * @psalm-mutation-free
+     */
     #[Override]
     public function __toString(): string;
 }

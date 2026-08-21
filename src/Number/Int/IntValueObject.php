@@ -12,8 +12,12 @@ use LesValueObject\Number\NumberValueObject;
  */
 interface IntValueObject extends NumberValueObject
 {
+    #[Override]
     public int $value { get; }
 
+    /**
+     * @psalm-mutation-free
+     */
     public function __construct(IntValueObject|int $value);
 
     /**
