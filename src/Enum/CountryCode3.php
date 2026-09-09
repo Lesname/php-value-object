@@ -9,11 +9,9 @@ use LesValueObject\Enum\Helper\EnumValueHelper;
 /**
  * @psalm-immutable
  *
- * Iso 3166 Alpha 3 country codes
- *
- * @deprecated use CountryCode3
+ *  Iso 3166 Alpha 3 country codes
  */
-enum CountryCode: string implements EnumValueObject
+enum CountryCode3: string implements EnumValueObject
 {
     use EnumValueHelper;
 
