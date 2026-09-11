@@ -171,7 +171,6 @@ enum CountryCode3: string implements EnumValueObject
     case Nauru = 'NRU';
     case Nepal = 'NPL';
     case Netherlands = 'NLD';
-    case NetherlandsAntilles = 'ANT';
     case NewCaledonia = 'NCL';
     case NewZealand = 'NZL';
     case Nicaragua = 'NIC';
